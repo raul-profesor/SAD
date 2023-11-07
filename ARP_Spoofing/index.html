@@ -282,7 +282,7 @@ Los contenedores víctimas son simplemente imágenes de <a href="https://unpocod
 <ul>
 <li>Comprueba las IPs y las MAC de <em>box1</em>, <em>box2</em> y <em>arpspoofer</em> con <code>ip a</code></li>
 <li>Comprueba la tabla ARP de <em>box1</em> con <code>watch ip neigh</code></li>
-<li>Realiza un ping de <em>box1</em> a <em>box2</em> y mantenlo</li>
+<li>Realiza un ping de <em>box2</em> a <em>box1</em> y mantenlo</li>
 <li>En el contenedor del <code>arpspoofer</code> comienza el <em>spoofeo</em>: <code>/usr/sbin/arpspoof -r -i eth0 -t x.x.x.x y.y.y.y</code> (IPs de box1 y 2)</li>
 </ul>
 </div>

@@ -1,4 +1,40 @@
-# Realización de la práctica
+## Docker
+
+[https://raul-profesor.github.io/DEAW/introduction/](https://raul-profesor.github.io/DEAW/introduction/)
+
+[https://kinsta.com/es/base-de-conocimiento/que-es-docker/](https://kinsta.com/es/base-de-conocimiento/que-es-docker/)
+
+[https://datascientest.com/es/docker-todo-que-saber](https://datascientest.com/es/docker-todo-que-saber)
+
+[https://www.ibm.com/topics/docker](https://www.ibm.com/topics/docker)
+
+## ARP
+
+Cuando una máquina necesita comunicarse con otra en una red, necesita conocer en primera instancia su IP para poder enviar el paquete a su destino, pero en capa 2 de OSI, utiliza direcciones MAC. El protocolo ARP entra en juego en este momento, dado que envía los mensajes pertinentes para averiguar la dirección MAC asociada a una IP concreta.
+
+![](img/arp.gif)
+
+Cuando un dispositivo desea enviar paquetes a otro, lanza un mensaje broadcast ARP preguntando en la red qué disposito posee esa IP concreta y esperando una respuesta únicamente de ese dispositivo identificándose y, además, enviando su MAC.
+
+![](img/arp2.gif)
+
+
+
+De esta forma, los dispositivos en la red van construyendo sus tablas ARP, donde cada entrada hace corresponder una IP con su MAC, de tal forma que si tuvieran que volver a enviar mensajes a esas máquinas, ya no necesitan pasar por el proceso de averigüación de direcciones MAC.
+
+![](img/ip-neighbor-show.png)
+
+## ARP Spoofing
+
+Este ataque es de los conocidos como tipo **Man in the Middle**, llamados así porque consisten en que un atacante o actor malicioso se interpone entre la comnicación de dos víctimas, actuando de intermediario sin que ellas se den cuenta. Esto le permite interceptar toda la comunicación, pudiendo espiarla o incluso modificarla, si así lo desea.
+
+En el caso de un ARP Spoofing, el atacant envía falsos mensajes de respuesta ARP, indicando que su MAC se corresponde con otra IP, la de la víctima y así recibir los mensajes que van destinados a ella.
+
+![](img/spoofing.png)
+
+
+
+## Realización de la práctica
 
 Debéis clonar el repositorio: [https://github.com/raul-profesor/spoofing](https://github.com/raul-profesor/spoofing)
 
@@ -6,7 +42,7 @@ Esta práctica está ubicada dentro de la carpeta `Lab1-ArpSpoofing`.
 
 Vamos a crear la siguiente infraestructura:
 
-![](./img/arp_spoofing.png)
+![](./img/arp_spoofing.png) 
 
 Que consiste en:
 
@@ -45,8 +81,8 @@ Tras los pasos anteriores deberias empezar a ver el tráfico capturado por el co
 
 !!!task "Tarea 5"
     En la captura de TCPDump, indica y explica <u>detalladamente</u>:
-        + Mensajes ARP donde se ve claramente qué está ocurriendo y cuál es el ataque
-        + Mensajes ICMP donde se ve la secuencia de los acontecimienntos 
+        + Mensajes ARP donde se ve **claramente** qué está ocurriendo y cuál es el ataque, indíca explícitamente los mensajes.
+        + Mensajes ICMP donde se ve la secuencia de los acontecimienntos.
 
 !!!task "Tarea 6"
     En la captura de Wireshark filtra por el protocolo ICMP y repite las explicaciones de la Tarea 5.

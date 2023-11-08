@@ -8,6 +8,11 @@
 
 [https://www.ibm.com/topics/docker](https://www.ibm.com/topics/docker)
 
+
+!!!task "Tarea 0"
+        Debéis instalar Docker en **Kali** o **Ubuntu**. Podéis ayudaros del material que consideréis, como por ejemplo [este](https://cabrajeta.com/2020/09/como-instalar-docker-en-kali-linux-2020/) o cualquier otro.
+
+
 ## ARP
 
 Cuando una máquina necesita comunicarse con otra en una red, necesita conocer en primera instancia su IP para poder enviar el paquete a su destino, pero en capa 2 de OSI, utiliza direcciones MAC. El protocolo ARP entra en juego en este momento, dado que envía los mensajes pertinentes para averiguar la dirección MAC asociada a una IP concreta.

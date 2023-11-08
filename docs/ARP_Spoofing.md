@@ -1,3 +1,5 @@
+# Realización de la práctica
+
 Debéis clonar el repositorio: [https://github.com/raul-profesor/spoofing](https://github.com/raul-profesor/spoofing)
 
 Esta práctica está ubicada dentro de la carpeta `Lab1-ArpSpoofing`.
@@ -49,3 +51,5 @@ Tras los pasos anteriores deberias empezar a ver el tráfico capturado por el co
 !!!task "Tarea 6"
     En la captura de Wireshark filtra por el protocolo ICMP y repite las explicaciones de la Tarea 5.
 
+!!!task "Tarea 7"
+        Realiza un diagrama en [https://www.drawio.com/](https://www.drawio.com/) donde expliques claramente de forma gráfica el proceso que has llevado a acabo.

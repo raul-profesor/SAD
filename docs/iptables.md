@@ -23,7 +23,10 @@ Per tal d'iniciar el laboratori, no tanqueu el terminal s'obrirà automàticamen
 labtainer iptables2
 ```
 
-I començaran a desplegar-se els contenidors i se vos obriràn dues pestanyes en el terminal del firewall.
+I començaran a desplegar-se els contenidors i se vos obriràn dues pestanyes en el terminal del firewall. 
+
+!!!tip "Nota"
+    Quan vos pregunte per l'email, deixeu-lo en blanc i dieu-li que esteu segurs de deixar-lo en blanc `(y)`
 
 Per a accedir al terminal de qualsevol contenidor podeu fer servir:
 
@@ -74,7 +77,9 @@ Una vegada has limitat el tràfic amb iptables, torna a fer el escaneig de ports
 
 El contenidor del client inclou un programa anomenat **wizbang**. Executa este script i comprova quin és el port que està intentant utilitzar per a enviar el tràfic. 
 
-Una vegada comprovat, introdueix una regla que permeta este tràfic i comprova que funciona correctament. Fes també la comprovació amb un nou escaneig de ports.
+Una vegada comprovat, introdueix una regla que permeta este tràfic i comprova que funciona correctament (de les dues formes comentades a clase). 
+
+Fes també la comprovació amb un nou escaneig de ports.
 
 Una vegada heu acabat, pareu el laboratori al terminal original amb:
 
@@ -82,10 +87,4 @@ Una vegada heu acabat, pareu el laboratori al terminal original amb:
 stoplab
 ```
 
-
-
-
-
-
-## Referencias
 

@@ -6,20 +6,22 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-      
-      
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/ARP_Spoofing/">
+        <meta name="description" content="En esta práctica sencilla utilizaremos la herramienta Labtainer para levantar varios contenedores Docker y poder hacer una práctica muy sencilla de iptables, configurando una regla básica.">
       
       
       
-        <link rel="next" href="../idps/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/iptables/">
+      
+      
+        <link rel="prev" href="../idps/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>ARP Spoofing - Seguridad y alta disponibilidad</title>
+        <title>Administració sencilla de regles d'iptables fent servir Docker - Seguridad y alta disponibilidad</title>
       
     
     
@@ -85,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker" class="md-skip">
+        <a href="#introduccio" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -120,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ARP Spoofing
+              Administració sencilla de regles d'iptables fent servir Docker
             
           </span>
         </div>
@@ -226,69 +228,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          ARP Spoofing
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../ARP_Spoofing/" class="md-nav__link">
         ARP Spoofing
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    Docker
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arp" class="md-nav__link">
-    ARP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arp-spoofing" class="md-nav__link">
-    ARP Spoofing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#realizacion-de-la-practica" class="md-nav__link">
-    Realización de la práctica
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -314,11 +258,76 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../iptables/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Administració sencilla de regles d'iptables fent servir Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Administració sencilla de regles d'iptables fent servir Docker
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    Introducció
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labtainer" class="md-nav__link">
+    Labtainer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasques" class="md-nav__link">
+    Tasques
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obrir-un-port-per-a-un-nou-servici" class="md-nav__link">
+    Obrir un port per a un nou servici
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referencias
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -338,83 +347,50 @@
                   
 
 
-  <h1>ARP Spoofing</h1>
+  <h1>Administració sencilla de regles d'iptables fent servir Docker</h1>
 
-<h2 id="docker">Docker</h2>
-<p><a href="https://raul-profesor.github.io/DEAW/introduction/">https://raul-profesor.github.io/DEAW/introduction/</a></p>
-<p><a href="https://kinsta.com/es/base-de-conocimiento/que-es-docker/">https://kinsta.com/es/base-de-conocimiento/que-es-docker/</a></p>
-<p><a href="https://datascientest.com/es/docker-todo-que-saber">https://datascientest.com/es/docker-todo-que-saber</a></p>
-<p><a href="https://www.ibm.com/topics/docker">https://www.ibm.com/topics/docker</a></p>
-<div class="admonition task">
-<p class="admonition-title">Tarea 0<p>Debéis instalar Docker en <strong>Kali</strong> o <strong>Ubuntu</strong>. Podéis ayudaros del material que consideréis, como por ejemplo <a href="https://cabrajeta.com/2020/09/como-instalar-docker-en-kali-linux-2020/">este</a> o cualquier otro.</p>
-</p>
-</div>
-<h2 id="arp">ARP</h2>
-<p>Cuando una máquina necesita comunicarse con otra en una red, necesita conocer en primera instancia su IP para poder enviar el paquete a su destino, pero en capa 2 de OSI, utiliza direcciones MAC. El protocolo ARP entra en juego en este momento, dado que envía los mensajes pertinentes para averiguar la dirección MAC asociada a una IP concreta.</p>
-<p><img alt="" src="../img/arp.gif" /></p>
-<p>Cuando un dispositivo desea enviar paquetes a otro, lanza un mensaje broadcast ARP preguntando en la red qué disposito posee esa IP concreta y esperando una respuesta únicamente de ese dispositivo identificándose y, además, enviando su MAC.</p>
-<p><img alt="" src="../img/arp2.gif" /></p>
-<p>De esta forma, los dispositivos en la red van construyendo sus tablas ARP, donde cada entrada hace corresponder una IP con su MAC, de tal forma que si tuvieran que volver a enviar mensajes a esas máquinas, ya no necesitan pasar por el proceso de averigüación de direcciones MAC.</p>
-<p><img alt="" src="../img/ip-neighbor-show.png" /></p>
-<h2 id="arp-spoofing">ARP Spoofing</h2>
-<p>Este ataque es de los conocidos como tipo <strong>Man in the Middle</strong>, llamados así porque consisten en que un atacante o actor malicioso se interpone entre la comnicación de dos víctimas, actuando de intermediario sin que ellas se den cuenta. Esto le permite interceptar toda la comunicación, pudiendo espiarla o incluso modificarla, si así lo desea.</p>
-<p>En el caso de un ARP Spoofing, el atacant envía falsos mensajes de respuesta ARP, indicando que su MAC se corresponde con otra IP, la de la víctima y así recibir los mensajes que van destinados a ella.</p>
-<p><img alt="" src="../img/spoofing.png" /></p>
-<h2 id="realizacion-de-la-practica">Realización de la práctica</h2>
-<p>Debéis clonar el repositorio: <a href="https://github.com/raul-profesor/spoofing">https://github.com/raul-profesor/spoofing</a></p>
-<p>Esta práctica está ubicada dentro de la carpeta <code>Lab1-ArpSpoofing</code>.</p>
-<p>Vamos a crear la siguiente infraestructura:</p>
-<p><img alt="" src="../img/arp_spoofing.png" /> </p>
-<p>Que consiste en:</p>
-<ul>
-<li>Dos contenedores <em>víctimas</em></li>
-<li>Un <em>atacante</em></li>
-<li>Un <em>observador</em> <strong>TcpDumper</strong> cuya única función es escuchar el tráfico de la red</li>
-</ul>
-<p>Pasemos a construir las imágenes que más tarde darán lugar a los contenedores del <em>atacante</em> y del <em>TcpDumper</em> que vamos a ejecutar. Para este cometido no tenéis más que ejecutar el <code>script build.sh</code>.
-Los contenedores víctimas son simplemente imágenes de <a href="https://unpocodejava.com/2021/11/18/queesbusybox/"><strong>busybox</strong></a> sin modificar, directamente del "registry" de Docker.</p>
-<p>Ahora ejecutaremos los 4 contenedores, cada uno en una pestaña distinta del terminal:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>box1<span class="w"> </span>busybox
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>box2<span class="w"> </span>busybox
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>arpspoofer<span class="w"> </span>arpspoofer
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w">  </span>--net<span class="o">=</span>container:arpspoofer<span class="w"> </span>--name<span class="w"> </span>tcpdumper<span class="w"> </span>tcpdumper
+<h2 id="introduccio">Introducció</h2>
+<p>Per a simplificar la infraestructra necessària per a esta pràctica, farem servir un framework anomenat Labtainer. Este framework es capaç de crear diferents laboratoris o escenaris basats en contenidors de Docker. </p>
+<p>En concret, el nostre escenari serà tal que així:</p>
+<p><img alt="" src="../img/iptables.png" /></p>
+<h2 id="labtainer">Labtainer</h2>
+<p>Descarregueu la imatge <code>.ova</code> del link que teniu a Aules i importeu-la en Virtualbox.</p>
+<p>Per tal d'iniciar el laboratori, no tanqueu el terminal s'obrirà automàticament i introudiu:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>labtainer<span class="w"> </span>iptables2
 </code></pre></div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 1</p>
-<ul>
-<li>Comprueba las IPs y las MAC de <em>box1</em>, <em>box2</em> y <em>arpspoofer</em> con <code>ip a</code></li>
-<li>Comprueba la tabla ARP de <em>box1</em> con <code>watch ip neigh</code></li>
-<li>Realiza un ping de <em>box2</em> a <em>box1</em> y mantenlo</li>
-<li>En el contenedor del <code>arpspoofer</code> comienza el <em>spoofeo</em>: <code>/usr/sbin/arpspoof -r -i eth0 -t x.x.x.x y.y.y.y</code> (IPs de box1 y 2)</li>
-</ul>
+<p>I començaran a desplegar-se els contenidors i se vos obriràn dues pestanyes en el terminal del firewall.</p>
+<p>Per a accedir al terminal de qualsevol contenidor podeu fer servir:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;nom_del_contenidor&gt;<span class="w"> </span>/bin/bash
+</code></pre></div>
+<h2 id="tasques">Tasques</h2>
+<p>Des del client prova a fer un escaneig de ports al server i comenta el resultats:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>nmap<span class="w"> </span>server
+</code></pre></div>
+<p>Prova a accedir per SSH:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ssh<span class="w"> </span>server
+</code></pre></div>
+<p>I confirma que s'oferix el servici de Telnet:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>telnet<span class="w"> </span>server
+</code></pre></div>
+<p>Al contenidor <em>firewall</em> està instal·lat Iptables. Fes-lo servir per a permetre únicament la redirecció (forwarding) de tràfic SSH i HTTP. Per tal d'ajudar-te, pots experimentar amb el script <code>example fw.sh</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Atenció</p>
+<p>Considera posar les teues regles d'iptables en un script per tal de poder aplicar-les ràpidament sempre que ho necessites. </p>
 </div>
-<p>Tras los pasos anteriores deberias empezar a ver el tráfico capturado por el contenedor <em>TcpDumper</em>.</p>
-<div class="admonition task">
-<p class="admonition-title">Tarea 2</p>
-<p>Además del tcpdump del contenedor <em>TcpDumper</em> pon a capturar tráfico con Wireshark en la interfaz <code>Docker0</code> de la máquina anfitrión.</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 3</p>
-<p>Describe detalladamente qué observas que está ocurriendo en la captura del contenedor <code>TcpDumper</code></p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 4</p>
-<p>¿Cómo podemos tener una pista de lo que está ocurriendo mirando sólamente el <code>ping</code> que hemos lanzado al principio?</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 5</p>
-<p>En la captura de TCPDump, indica y explica <u>detalladamente</u>:
-    + Mensajes ARP donde se ve <strong>claramente</strong> qué está ocurriendo y cuál es el ataque, indíca explícitamente los mensajes.
-    + Mensajes ICMP donde se ve la secuencia de los acontecimienntos.</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 6</p>
-<p>En la captura de Wireshark filtra por el protocolo ICMP y repite las explicaciones de la Tarea 5.</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 7<p>Realiza un diagrama en <a href="https://www.drawio.com/">https://www.drawio.com/</a> donde expliques claramente de forma gráfica el proceso que has llevado a acabo.</p>
-</p>
-</div>
+<p>Comprova els packets descartats (drop) mirant el logs i assenyalant clarament dins del log on es produeix el drop:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/iptables.log
+</code></pre></div>
+<p>El contenidor <em>firewall</em> també té instal·lada l'aplicació <u>wireshark</u>, fes-la servir per a vore els drops també:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>wireshark<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<p>Una vegada has limitat el tràfic amb iptables, torna a fer el escaneig de ports per a comprovar que la nova situació és correcta.</p>
+<h2 id="obrir-un-port-per-a-un-nou-servici">Obrir un port per a un nou servici</h2>
+<p>El contenidor del client inclou un programa anomenat <strong>wizbang</strong>. Executa este script i comprova quin és el port que està intentant utilitzar per a enviar el tràfic. </p>
+<p>Una vegada comprovat, introdueix una regla que permeta este tràfic i comprova que funciona correctament. Fes també la comprovació amb un nou escaneig de ports.</p>
+<p>Una vegada heu acabat, pareu el laboratori al terminal original amb:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>stoplab
+</code></pre></div>
+<h2 id="referencias">Referencias</h2>
 
 
   

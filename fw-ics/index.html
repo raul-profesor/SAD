@@ -6,22 +6,24 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="En esta práctica sencilla utilizaremos la herramienta Labtainer para levantar varios contenedores Docker y poder hacer una práctica muy sencilla de iptables, configurando una regla básica.">
+        <meta name="description" content="En esta práctica sencilla utilizaremos la herramienta Labtainer para levantar varios contenedores Docker y poder hacer una práctica muy sencilla de iptables, configurando varias reglas básicas para el control de un enrotno ICS (Industrial Control System) con un PLC (Programmable Logic Contro`)">
       
       
       
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/iptables/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/fw-ics/">
       
       
-        <link rel="prev" href="../idps/">
+        <link rel="prev" href="../ARP_Spoofing/">
       
+      
+        <link rel="next" href="../idps/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Administració sencilla de regles d'iptables fent servir Docker - Seguridad y alta disponibilidad</title>
+        <title>Administració de regles d'iptables en un entorn industrial - Seguridad y alta disponibilidad</title>
       
     
     
@@ -122,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Administració sencilla de regles d'iptables fent servir Docker
+              Administració de regles d'iptables en un entorn industrial
             
           </span>
         </div>
@@ -249,11 +251,55 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../fw-ics/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Administració de regles d'iptables en un entorn industrial
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Administració de regles d'iptables en un entorn industrial
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    Introducció
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#realitzacio-del-laboratori" class="md-nav__link">
+    Realització del laboratori
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -279,69 +325,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Administració sencilla de regles d'iptables fent servir Docker
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../iptables/" class="md-nav__link">
         Administració sencilla de regles d'iptables fent servir Docker
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduccio" class="md-nav__link">
-    Introducció
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#labtainer" class="md-nav__link">
-    Labtainer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tasques" class="md-nav__link">
-    Tasques
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#obrir-un-port-per-a-un-nou-servici" class="md-nav__link">
-    Obrir un port per a un nou servici
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -361,54 +349,71 @@
                   
 
 
-  <h1>Administració sencilla de regles d'iptables fent servir Docker</h1>
+  <h1>Administració de regles d'iptables en un entorn industrial</h1>
 
 <h2 id="introduccio">Introducció</h2>
-<p>Per a simplificar la infraestructra necessària per a esta pràctica, farem servir un framework anomenat Labtainer. Este framework es capaç de crear diferents laboratoris o escenaris basats en contenidors de Docker. </p>
-<p>En concret, el nostre escenari serà tal que així:</p>
-<p><img alt="" src="../img/iptables.png" /></p>
-<h2 id="labtainer">Labtainer</h2>
-<p>Descarregueu la imatge <code>.ova</code> del link que teniu a Aules i importeu-la en Virtualbox.</p>
-<p>Per tal d'iniciar el laboratori, no tanqueu el terminal s'obrirà automàticament i introudiu:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>labtainer<span class="w"> </span>iptables2
+<p>!!!Warning Atenció!
+    Heu de fer servir el laboratori de Labtrainer <code>iptables-ics</code></p>
+<p>Este laboratori simula l'ús de Iptables per a limitar l'accés a la xarxa d'un component <a href="https://es.wikipedia.org/wiki/Controlador_l%C3%B3gico_programable">PLC</a> en un entorn indistrial o de <a href="https://es.wikipedia.org/wiki/Operational_technology">tecnología operativa</a>.</p>
+<p>L'escenari concret s'il·lustra en la següent imatge:</p>
+<p><img alt="" src="../img/fw.ics.png" /></p>
+<p>Quan la configuració és correcta:</p>
+<ul>
+<li>El client 1 només pot accedir al PLC via SSH i HTTP (port 8080)</li>
+<li>El client 2 només pot accedir al PLC mitjançant <a href="https://es.wikipedia.org/wiki/Modbus">MODBUS TCP</a> i HTTP (ports 80 i 8080)</li>
+</ul>
+<h2 id="realitzacio-del-laboratori">Realització del laboratori</h2>
+<p>Inicieu el laboratori com ja sabeu</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">labtainer iptables-ics</span>
 </code></pre></div>
-<p>I començaran a desplegar-se els contenidors i se vos obriràn dues pestanyes en el terminal del firewall. </p>
-<div class="admonition tip">
-<p class="admonition-title">Nota</p>
-<p>Quan vos pregunte per l'email, deixeu-lo en blanc i dieu-li que esteu segurs de deixar-lo en blanc <code>(y)</code></p>
+<p>I espereu a que vos retorne els terminals corresponents.</p>
+<ul>
+<li>
+<p>Wireshark està instal·lat en el contenidor que fa de firewall, utilitzeu-lo per a vore el tràfic que atravesa el firewall i per a depurar les vostres regles (<strong>interfaz <code>etho</code></strong>)</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">wireshark &amp;</span>
+</code></pre></div>
++ Tant en el client 1 com en el 2 per a explorar el serveis oferits pel PLC, podeu fer servir:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">./mtcp-simple.py</span>
+</code></pre></div>
+El que iniciarà un client MODBUS senzill. Observa amb <u>Wireshark</u> el tràfic que es genera, notant quin port TCP com a destí utilitza el client quan es conecta amb el PLC.</p>
+</li>
+<li>
+<p>Inicia Firefox en cada client:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">firefox &amp;</span>
+</code></pre></div>
+  I accedeix a:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>http://plc:8080
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>http://plc:80
+</code></pre></div>
+</li>
+<li>
+<p>Per últim, accedeix per ssh des dels clients al PLC (no fa falta establir la conexió, només comprobar que n'hi ha accés):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">ssh plc</span>
+</code></pre></div>
+</li>
+</ul>
+<div class="admonition task">
+<p class="admonition-title">Tasca</p>
+<p>Fent ús de Iptables instal·lat en el contenidor que fa de firewall, escriu unes regles per a que:</p>
+<ol>
+<li>El client 1 només puga accedir al PLC per SSH i HTTP (port 8080 únicament)</li>
+<li>El client 2 només tinga accés mitjançant MODBUS TCP i HTTP (ports 80 i 8080)</li>
+<li>No se permeteix cap altre tàfic dels clients al PLC</li>
+<li>Inclou una regla que puga logar totes les accions</li>
+</ol>
 </div>
-<p>Per a accedir al terminal de qualsevol contenidor podeu fer servir:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;nom_del_contenidor&gt;<span class="w"> </span>/bin/bash
-</code></pre></div>
-<h2 id="tasques">Tasques</h2>
-<p>Des del client prova a fer un escaneig de ports al server i comenta el resultats:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>nmap<span class="w"> </span>server
-</code></pre></div>
-<p>Prova a accedir per SSH:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ssh<span class="w"> </span>server
-</code></pre></div>
-<p>I confirma que s'oferix el servici de Telnet:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>telnet<span class="w"> </span>server
-</code></pre></div>
-<p>Al contenidor <em>firewall</em> està instal·lat Iptables. Fes-lo servir per a permetre únicament la redirecció (forwarding) de tràfic SSH i HTTP. Per tal d'ajudar-te, pots experimentar amb el script <code>example fw.sh</code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Atenció</p>
-<p>Considera posar les teues regles d'iptables en un script per tal de poder aplicar-les ràpidament sempre que ho necessites. </p>
+<div class="admonition tip recomanacions">
+<p class="admonition-title">Tip</p>
+<p>Podeu agafar com a referencia elñ script d'exemple que teniu al firewall <code>example_fw.sh</code></p>
+<p>Fixeu-vos que en este script les IP poden ser diferents de les que vosaltres necessiteu. </p>
+<p>L'última línea del script loguea els missagte a: <code>/var/log/iptables.log</code>. Si incloeu esta directiva en la vostra configuració, podeu observar quan iptables fa drop dels paquets pertinents.</p>
 </div>
-<p>Comprova els packets descartats (drop) mirant el logs i assenyalant clarament dins del log on es produeix el drop:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/iptables.log
-</code></pre></div>
-<p>El contenidor <em>firewall</em> també té instal·lada l'aplicació <u>wireshark</u>, fes-la servir per a vore els drops també:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>wireshark<span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div>
-<p>Una vegada has limitat el tràfic amb iptables, torna a fer el escaneig de ports per a comprovar que la nova situació és correcta.</p>
-<h2 id="obrir-un-port-per-a-un-nou-servici">Obrir un port per a un nou servici</h2>
-<p>El contenidor del client inclou un programa anomenat <strong>wizbang</strong>. Executa este script i comprova quin és el port que està intentant utilitzar per a enviar el tràfic. </p>
-<p>Una vegada comprovat, introdueix una regla que permeta este tràfic i comprova que funciona correctament (de les dues formes comentades a clase). </p>
-<p>Fes també la comprovació amb un nou escaneig de ports.</p>
-<p>Una vegada heu acabat, pareu el laboratori al terminal original amb:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>stoplab
-</code></pre></div>
+<div class="admonition task">
+<p class="admonition-title">Tasca</p>
+<p>Fent ús del comando <code>tail -f /var/log/iptables.log</code>, mostra que es fa drop de paquets que no han d'estar permesos per Iptables.</p>
+<p>Mostra-lo igualment a Wireshark.</p>
+</div>
 
 
   

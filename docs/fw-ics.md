@@ -6,7 +6,7 @@ description: En esta práctica sencilla utilizaremos la herramienta Labtainer pa
 
 ## Introducció
 
-!!!Warning Atenció!
+!!!Warning "Atenció!"
     Heu de fer servir el laboratori de Labtrainer `iptables-ics`
 
 Este laboratori simula l'ús de Iptables per a limitar l'accés a la xarxa d'un component [PLC](https://es.wikipedia.org/wiki/Controlador_l%C3%B3gico_programable) en un entorn indistrial o de [tecnología operativa](https://es.wikipedia.org/wiki/Operational_technology).
@@ -32,22 +32,22 @@ I espereu a que vos retorne els terminals corresponents.
 
 + Wireshark està instal·lat en el contenidor que fa de firewall, utilitzeu-lo per a vore el tràfic que atravesa el firewall i per a depurar les vostres regles (**interfaz `etho`**)
     
-    ```console
+    ```sh
     wireshark &
     ```
 + Tant en el client 1 com en el 2 per a explorar el serveis oferits pel PLC, podeu fer servir:
-    ```console
-    ./mtcp-simple.py
+    ```sh
+    ./mbtcp-simple.py
     ```
     El que iniciarà un client MODBUS senzill. Observa amb <u>Wireshark</u> el tràfic que es genera, notant quin port TCP com a destí utilitza el client quan es conecta amb el PLC.
 
 + Inicia Firefox en cada client:
-    ```console
+    ```sh
     firefox &
     ```
   I accedeix a:
 
-    ```
+    ```sh
     http://plc:8080
 
     http://plc:80
@@ -55,7 +55,7 @@ I espereu a que vos retorne els terminals corresponents.
 
 + Per últim, accedeix per ssh des dels clients al PLC (no fa falta establir la conexió, només comprobar que n'hi ha accés):
 
-    ```console
+    ```sh
     ssh plc
     ```
 
@@ -68,7 +68,7 @@ I espereu a que vos retorne els terminals corresponents.
       4. Inclou una regla que puga logar totes les accions
 
 !!!tip Recomanacions
-    Podeu agafar com a referencia elñ script d'exemple que teniu al firewall `example_fw.sh`
+    Podeu agafar com a referencia el script d'exemple que teniu al firewall `example_fw.sh`
     
     Fixeu-vos que en este script les IP poden ser diferents de les que vosaltres necessiteu. 
 

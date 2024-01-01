@@ -352,8 +352,10 @@
   <h1>Administració de regles d'iptables en un entorn industrial</h1>
 
 <h2 id="introduccio">Introducció</h2>
-<p>!!!Warning Atenció!
-    Heu de fer servir el laboratori de Labtrainer <code>iptables-ics</code></p>
+<div class="admonition warning">
+<p class="admonition-title">Atenció!</p>
+<p>Heu de fer servir el laboratori de Labtrainer <code>iptables-ics</code></p>
+</div>
 <p>Este laboratori simula l'ús de Iptables per a limitar l'accés a la xarxa d'un component <a href="https://es.wikipedia.org/wiki/Controlador_l%C3%B3gico_programable">PLC</a> en un entorn indistrial o de <a href="https://es.wikipedia.org/wiki/Operational_technology">tecnología operativa</a>.</p>
 <p>L'escenari concret s'il·lustra en la següent imatge:</p>
 <p><img alt="" src="../img/fw.ics.png" /></p>
@@ -370,16 +372,16 @@
 <ul>
 <li>
 <p>Wireshark està instal·lat en el contenidor que fa de firewall, utilitzeu-lo per a vore el tràfic que atravesa el firewall i per a depurar les vostres regles (<strong>interfaz <code>etho</code></strong>)</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">wireshark &amp;</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>wireshark<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 + Tant en el client 1 com en el 2 per a explorar el serveis oferits pel PLC, podeu fer servir:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">./mtcp-simple.py</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./mbtcp-simple.py
 </code></pre></div>
 El que iniciarà un client MODBUS senzill. Observa amb <u>Wireshark</u> el tràfic que es genera, notant quin port TCP com a destí utilitza el client quan es conecta amb el PLC.</p>
 </li>
 <li>
 <p>Inicia Firefox en cada client:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">firefox &amp;</span>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>firefox<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
   I accedeix a:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>http://plc:8080
@@ -389,7 +391,7 @@ El que iniciarà un client MODBUS senzill. Observa amb <u>Wireshark</u> el tràf
 </li>
 <li>
 <p>Per últim, accedeix per ssh des dels clients al PLC (no fa falta establir la conexió, només comprobar que n'hi ha accés):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">ssh plc</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ssh<span class="w"> </span>plc
 </code></pre></div>
 </li>
 </ul>
@@ -405,7 +407,7 @@ El que iniciarà un client MODBUS senzill. Observa amb <u>Wireshark</u> el tràf
 </div>
 <div class="admonition tip recomanacions">
 <p class="admonition-title">Tip</p>
-<p>Podeu agafar com a referencia elñ script d'exemple que teniu al firewall <code>example_fw.sh</code></p>
+<p>Podeu agafar com a referencia el script d'exemple que teniu al firewall <code>example_fw.sh</code></p>
 <p>Fixeu-vos que en este script les IP poden ser diferents de les que vosaltres necessiteu. </p>
 <p>L'última línea del script loguea els missagte a: <code>/var/log/iptables.log</code>. Si incloeu esta directiva en la vostra configuració, podeu observar quan iptables fa drop dels paquets pertinents.</p>
 </div>

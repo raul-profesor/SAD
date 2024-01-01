@@ -29,6 +29,8 @@ theme:
     - toc.integrate
     - search.highlight
     - content.code.annotate
+  icon:
+    annotation: material/arrow-right-circle
 markdown_extensions:
   - meta
   - tables

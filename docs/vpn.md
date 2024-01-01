@@ -19,11 +19,11 @@ El túnel s'establirà mitjançant UDP i utilitzant el port **51820** entre cada
 ## Tasques a realitzar    
 
 1. Configurar la VPN per a que els dos clients puguen fer ús d'ella
-2. Configurar el servidor VPN per a que assigne IPs del rang de la LAN
+2. Configurar el servidor VPN per a que assigne IPs d'una subxarxa concreta
 3. Comprovar que una vegada establerta la VPN, el tràfic viatja xifrat a través de la WAN i sense xifrar cap a la LAN.
 4. Configurar el firewall (iptables) per a permetre les conexions al servidor web i al servidor SSH.
 
-## Arxiu docker compose
+## Arxiu docker-compose.yml
 
 
 ```yaml linenums="1" hl_lines="142-146"
@@ -209,8 +209,61 @@ Mentre estigam connectats a la VPN potser que no ens interese que tot el tràfic
 
 Un altre cas típic:
 
-![](../img/split_tunneling.png)
+![](./img/split_tunneling.png)
 
 Aleshores, en les línees del `docker-compose.yml` que heu d'emplenar, haureu d'indicar-le a la VPN que voleu encaminar pel túnel xifrat la pròpia subsarxa de la VPN i també la LAN, per a que puguen comunicar-se entre elles. 
+
+És molt important, <u>**principalment per a configurar les regles del firewall**</u>, que tingau en compte que el tràfic de la VPN segueix el seguent itinerari: client --> túnel xifrat des dels clients fins al servidor VPN --> servidor VPN fins al destí en la LAN. I la tornada del tràfic fa exactament el camí invers.
+
+## Realització de la pràctica
+
+Així les coses, recordem les tasques a realitzar:
+
+!!!task "Tasca 1"
+    Fer les configuracions pertinents amb les variables d'entorn del `docker-compose.yml` per tal d'establir la conexió VPN. 
+
+    Una vegada tingau les configuracions, per a establir el túnel, dins del contenidor dels clients podem fer en el terminal:
+
+    ```sh
+    wg-quick up wg0
+    ```
+
+    I comproveu que es crea una interfaz anomenada `wg0` i que té assignada la IP que l'heu configurat.
+    
+    !!!tip
+        Fixeu-vos que els contenidors del firewall, wireguard i clients tenen configurat uns volums. Això vol dir que les modificacions que fem en els arxius del directori local, es voran reflectides en els dels contenidors.
+    
+
+!!!task "Tasca 2"
+    Tots els contenidors tenen instal·lat *tcpdump* i ho podeu fer servir per a les tasques de *troubleshooting*.
+
+       + El que també heu de comprovar <u>amb aquesta eina</u> és que al accedir al servidor web amb `curl http://webserver` i al servidor SSH amb `ssh sad@sshserver` (contrasenya **seguretat**), amb la VPN sense conectar el tràfic viatja utilitzant el protocol TCP i/o sense xifrar.
+       + Que quan repetiu l'operació amb la VPN establerta, el tràfic viatja per UDP y xifrat.
+     
+    <u>Adjunta captura de pantalles ón es vega clarament la comprovació.</u>
+
+
+!!!task "Tasca 3"
+    Una vegada estiga funcionant perfectament la VPN és el torn de configurar el firewall. 
+
+       + Fiqueu un arxiu anomenat `iptables-rules.sh` en el volum del contenidor del firewall. Aquest arxiu contendrá, per ordre d'aparició:
+         + Neteja de totes les posibles regles que puguen estar configurades previament
+         + Escriviu les regles adequades per a que la política per defecta siga denegar tot el tràfic.
+         + Afegiu regles per a permetre el tráfic pel túnel VPN cap a la subxarxa LAN i als ports necessaris per als servidors HTTP i SSH.
+       
+
+       
+    !!!warning "Atenció"
+        Per una questió de seguretat, configureu les regles d'iptables especificant els noms de les interfaces d'entrada, d'eixida i subsarxa destí la LAN.
+
+        Comproveu, adjuntant captures de pantalla, que les regles funcionen perfectament accedint a tots dos servidors i que els contadors de tràfic de les regles aumenten quan les mostreu.
+
+!!!task "Tasca 4"
+    Una vegada fet tot, prova de llevar de les xarxes que s'enruten per la VPN, la xarxa de la LAN i prova de conectar amb el servidor web i amb el servidor SSH. Què observes i per què?
+
+!!!task "Tasca 5"
+    Com a tasca adicional, intenta configurar l'escenari per a poder accedir pel túnel VPN (interfaz wg0) al servidor Web però no al servidor SSH. A la mateixa vegada, s'ha de poder accedir per SSH des de l'interfaz WAN al servidor SSH però no al servidor web.
+
+
 
 

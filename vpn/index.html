@@ -470,8 +470,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#arxiu-docker-compose" class="md-nav__link">
-    Arxiu docker compose
+  <a href="#arxiu-docker-composeyml" class="md-nav__link">
+    Arxiu docker-compose.yml
   </a>
   
 </li>
@@ -479,6 +479,13 @@
         <li class="md-nav__item">
   <a href="#detalls-de-la-vpn" class="md-nav__link">
     Detalls de la VPN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#realitzacio-de-la-practica" class="md-nav__link">
+    Realització de la pràctica
   </a>
   
 </li>
@@ -524,11 +531,11 @@
 <h2 id="tasques-a-realitzar">Tasques a realitzar</h2>
 <ol>
 <li>Configurar la VPN per a que els dos clients puguen fer ús d'ella</li>
-<li>Configurar el servidor VPN per a que assigne IPs del rang de la LAN</li>
+<li>Configurar el servidor VPN per a que assigne IPs d'una subxarxa concreta</li>
 <li>Comprovar que una vegada establerta la VPN, el tràfic viatja xifrat a través de la WAN i sense xifrar cap a la LAN.</li>
 <li>Configurar el firewall (iptables) per a permetre les conexions al servidor web i al servidor SSH.</li>
 </ol>
-<h2 id="arxiu-docker-compose">Arxiu docker compose</h2>
+<h2 id="arxiu-docker-composeyml">Arxiu docker-compose.yml</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">  1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">  2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">  3</a></span>
@@ -859,6 +866,55 @@
 <p>Un altre cas típic:</p>
 <p><img alt="" src="../img/split_tunneling.png" /></p>
 <p>Aleshores, en les línees del <code>docker-compose.yml</code> que heu d'emplenar, haureu d'indicar-le a la VPN que voleu encaminar pel túnel xifrat la pròpia subsarxa de la VPN i també la LAN, per a que puguen comunicar-se entre elles. </p>
+<p>És molt important, <u><strong>principalment per a configurar les regles del firewall</strong></u>, que tingau en compte que el tràfic de la VPN segueix el seguent itinerari: client --&gt; túnel xifrat des dels clients fins al servidor VPN --&gt; servidor VPN fins al destí en la LAN. I la tornada del tràfic fa exactament el camí invers.</p>
+<h2 id="realitzacio-de-la-practica">Realització de la pràctica</h2>
+<p>Així les coses, recordem les tasques a realitzar:</p>
+<div class="admonition task">
+<p class="admonition-title">Tasca 1</p>
+<p>Fer les configuracions pertinents amb les variables d'entorn del <code>docker-compose.yml</code> per tal d'establir la conexió VPN. </p>
+<p>Una vegada tingau les configuracions, per a establir el túnel, dins del contenidor dels clients podem fer en el terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>wg-quick<span class="w"> </span>up<span class="w"> </span>wg0
+</code></pre></div>
+<p>I comproveu que es crea una interfaz anomenada <code>wg0</code> i que té assignada la IP que l'heu configurat.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Fixeu-vos que els contenidors del firewall, wireguard i clients tenen configurat uns volums. Això vol dir que les modificacions que fem en els arxius del directori local, es voran reflectides en els dels contenidors.</p>
+</div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Tasca 2</p>
+<p>Tots els contenidors tenen instal·lat <em>tcpdump</em> i ho podeu fer servir per a les tasques de <em>troubleshooting</em>.</p>
+<ul>
+<li>El que també heu de comprovar <u>amb aquesta eina</u> és que al accedir al servidor web amb <code>curl http://webserver</code> i al servidor SSH amb <code>ssh sad@sshserver</code> (contrasenya <strong>seguretat</strong>), amb la VPN sense conectar el tràfic viatja utilitzant el protocol TCP i/o sense xifrar.</li>
+<li>Que quan repetiu l'operació amb la VPN establerta, el tràfic viatja per UDP y xifrat.</li>
+</ul>
+<p><u>Adjunta captura de pantalles ón es vega clarament la comprovació.</u></p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Tasca 3</p>
+<p>Una vegada estiga funcionant perfectament la VPN és el torn de configurar el firewall. </p>
+<ul>
+<li>Fiqueu un arxiu anomenat <code>iptables-rules.sh</code> en el volum del contenidor del firewall. Aquest arxiu contendrá, per ordre d'aparició:<ul>
+<li>Neteja de totes les posibles regles que puguen estar configurades previament</li>
+<li>Escriviu les regles adequades per a que la política per defecta siga denegar tot el tràfic.</li>
+<li>Afegiu regles per a permetre el tráfic pel túnel VPN cap a la subxarxa LAN i als ports necessaris per als servidors HTTP i SSH.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Atenció</p>
+<p>Per una questió de seguretat, configureu les regles d'iptables especificant els noms de les interfaces d'entrada, d'eixida i subsarxa destí la LAN.</p>
+<p>Comproveu, adjuntant captures de pantalla, que les regles funcionen perfectament accedint a tots dos servidors i que els contadors de tràfic de les regles aumenten quan les mostreu.</p>
+</div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Tasca 4</p>
+<p>Una vegada fet tot, prova de llevar de les xarxes que s'enruten per la VPN, la xarxa de la LAN i prova de conectar amb el servidor web i amb el servidor SSH. Què observes i per què?</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Tasca 5</p>
+<p>Com a tasca adicional, intenta configurar l'escenari per a poder accedir pel túnel VPN (interfaz wg0) al servidor Web però no al servidor SSH. A la mateixa vegada, s'ha de poder accedir per SSH des de l'interfaz WAN al servidor SSH però no al servidor web.</p>
+</div>
 
 
   

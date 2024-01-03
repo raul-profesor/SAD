@@ -265,5 +265,16 @@ Així les coses, recordem les tasques a realitzar:
     Com a tasca adicional, intenta configurar l'escenari per a poder accedir pel túnel VPN (interfaz wg0) al servidor Web però no al servidor SSH. A la mateixa vegada, s'ha de poder accedir per SSH des de l'interfaz WAN al servidor SSH però no al servidor web.
 
 
+## Referències
 
+[Com saber les IP dels contenidors](https://linuxhandbook.com/get-container-ip/)
 
+[Wireguard docs](https://github.com/pirate/wireguard-docs)
+
+[Wireguard docker documentació](https://github.com/linuxserver/docker-wireguard)
+
+[How to get started with WireGuard VPN](https://upcloud.com/resources/tutorials/get-started-wireguard-vpn)
+
+[WireGuard Remote Access to Docker Containers](https://www.procustodibus.com/blog/2022/02/wireguard-remote-access-to-docker-containers/)
+
+[Restricciones de puertos e IP’s usando Wireguard](https://www.flopy.es/restricciones-de-puertos-e-ips-usando-wireguard/)

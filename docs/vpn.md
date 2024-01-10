@@ -191,6 +191,19 @@ Quan s'inicie l'escenari correctamente, podreu trobar les configuracions de la V
 
 La configuració del client està dins del directori `/config/wg_configs` i la dels clients dins de `/config/peerX`, on la `X` és el número de client. Esta configuració haureu de copiar-la als respectius clients, dins del directori `/etc/wireguard` amb el nom de `wg0.conf`.
 
+
+!!!task "Enllaç al repositori"
+    Trobareu tot el necessari per a construir l'escenari ací: [https://github.com/raul-profesor/practica-wireguard-vpn](https://github.com/raul-profesor/practica-wireguard-vpn)
+
+    Vos cloneu el repositori amb `git clone https://github.com/raul-profesor/practica-wireguard-vpn` i podeu començar a treballar.
+
+    Podeu consultar el significat de cada variable que heu d'omplir a [la pàgina del contenidor de wireguard](https://github.com/linuxserver/docker-wireguard#parameters) o qualsevol altre enllaç de les referèncios o Internet.
+
+!!!tip "Nota"
+    En l'arxiu `.env` es troben guardades les variables que s'han utilitzat al docker-compose.yml. Podeu ficar les dades que falten al docker-compose de dues formes:
+      + Posant directament el seu valor on pertoque
+      + Assignar-li el valor a una variable en l'arxiu `.env` i posant després la variable al docker-compose
+
 ## Detalls de la VPN
 
 La informació relativa a la configuració de la VPN és:

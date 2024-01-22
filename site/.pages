@@ -8,5 +8,3 @@ nav:
         - Administració de regles d'iptables en un entorn industrial: fw-ics.md
     - VPN:
         - Servidor de VPN amb wireguard en un escenari muntat amb Docker: vpn.md
-    - Proxy:
-        - Servidor proxy Squid amb autenticació Radius amb Docker: proxy.md

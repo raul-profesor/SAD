@@ -38,6 +38,19 @@ description: En esta práctica montaremos una infraestructura, utilizando conten
         sed -i 's/Terme a sustituir/Terme nou/g' arxiu
         ```
 
+## Contingut extra per a la recuperació de la pràctica
+
+Per tal de completar la recuperació d'aquesta pràctica es demana, a més de tot lo anterior:
+
+1. Configurar Squid per a que bloquegi totes les descarregues **majors de 10MB**. Podeu comprovar si funciona intentant baixar qualsevol distribució de Linux.
+      + S'ha de mostrar comprovacions tant del navegador com dels logs.
+  
+2. Configurar Squid per a que bloquegi tot accés a Internet a la IP del client.
+      + S'ha de mostrar comprovacions tant del navegador com dels logs.
+  
+        !!!note "Consell"
+               Configurar el bloqueig abans de que arrive a saltar l'autenticació del proxy.
+
 
 ## Referències
 

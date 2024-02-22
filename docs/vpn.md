@@ -277,6 +277,24 @@ Així les coses, recordem les tasques a realitzar:
 !!!task "Tasca 5"
     Com a tasca adicional, intenta configurar l'escenari per a poder accedir pel túnel VPN (interfaz wg0) al servidor Web però no al servidor SSH. A la mateixa vegada, s'ha de poder accedir per SSH des de l'interfaz WAN al servidor SSH però no al servidor web.
 
+## Contingut extra per a la recuperació de la pràctica
+
+Per tal de completar la recuperació d'aquesta pràctica es demana, a més de tot lo anterior **configurar un contenidor docker amb la imatge `kylemanna/openvpn`**:
+
+1. Utilitzeu una màquina Linux
+2. Com a métode d'autenticació s'utilitzaran certificats (podeu posar-le contrasenya o no)
+3. El *Common Name* pel certificat serà SAD
+4. La IP del servidor a la que ens conectarem serà la de la màquina 
+  
+
+!!!warning "Atenció"
+     + S'ha d'explicar i documentar detalladament cada pas que doneu.
+     + S'ha de fer la comprovació de que la VPN funciona:
+         + Conectant des d'un client
+         + Mostrant la interfaz creada per a la VPN
+     + **¿Tens accés a Internet des del client? Independenment de la teua resposta, justifica-la**
+
+
 
 ## Referències
 

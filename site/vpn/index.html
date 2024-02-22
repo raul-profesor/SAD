@@ -19,7 +19,7 @@
         <link rel="next" href="../proxy/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
@@ -131,25 +131,31 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
+      
+        <form class="md-header__option" data-md-component="palette">
           
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
           
-            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-            </label>
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
           
-        
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-            </label>
-          
-        
-      </form>
+        </form>
+      
     
     
     
@@ -482,6 +488,13 @@
         <li class="md-nav__item">
   <a href="#realitzacio-de-la-practica" class="md-nav__link">
     Realització de la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contingut-extra-per-a-la-recuperacio-de-la-practica" class="md-nav__link">
+    Contingut extra per a la recuperació de la pràctica
   </a>
   
 </li>
@@ -978,6 +991,25 @@
 <div class="admonition task">
 <p class="admonition-title">Tasca 5</p>
 <p>Com a tasca adicional, intenta configurar l'escenari per a poder accedir pel túnel VPN (interfaz wg0) al servidor Web però no al servidor SSH. A la mateixa vegada, s'ha de poder accedir per SSH des de l'interfaz WAN al servidor SSH però no al servidor web.</p>
+</div>
+<h2 id="contingut-extra-per-a-la-recuperacio-de-la-practica">Contingut extra per a la recuperació de la pràctica</h2>
+<p>Per tal de completar la recuperació d'aquesta pràctica es demana, a més de tot lo anterior <strong>configurar un contenidor docker amb la imatge <code>kylemanna/openvpn</code></strong>:</p>
+<ol>
+<li>Utilitzeu una màquina Linux</li>
+<li>Com a métode d'autenticació s'utilitzaran certificats (podeu posar-le contrasenya o no)</li>
+<li>El <em>Common Name</em> pel certificat serà SAD</li>
+<li>La IP del servidor a la que ens conectarem serà la de la màquina </li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Atenció</p>
+<ul>
+<li>S'ha d'explicar i documentar detalladament cada pas que doneu.</li>
+<li>S'ha de fer la comprovació de que la VPN funciona:<ul>
+<li>Conectant des d'un client</li>
+<li>Mostrant la interfaz creada per a la VPN</li>
+</ul>
+</li>
+</ul>
 </div>
 <h2 id="referencies">Referències</h2>
 <p><a href="https://linuxhandbook.com/get-container-ip/">Com saber les IP dels contenidors</a></p>

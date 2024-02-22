@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
@@ -129,25 +129,31 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
+      
+        <form class="md-header__option" data-md-component="palette">
           
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
           
-            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-            </label>
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
           
-        
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-            </label>
-          
-        
-      </form>
+        </form>
+      
     
     
     
@@ -505,6 +511,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#contingut-extra-per-a-la-recuperacio-de-la-practica" class="md-nav__link">
+    Contingut extra per a la recuperació de la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencies" class="md-nav__link">
+    Referències
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -540,16 +560,22 @@
 <h2 id="tasques-a-realitzar-i-detalls-de-la-practica">Tasques a realitzar i detalls de la práctica</h2>
 <p><img alt="" src="../img/squid_radius.png" /></p>
 <ol>
-<li>El secret compartit es <em>invent</em></li>
-<li>Com a contrasenya de root de la BBDD MySQL podeu posar la que més vos agrade</li>
-<li>Heu d'omplir els ports a utilitzar per cada servici en el <code>docker-compose.yml</code>(son els ports per defecte)</li>
-<li>Crear un usuari en el arxiu <strong>clients.conf</strong> de Freeradius.</li>
-<li>A l'inici del fitxer <strong>authorize</strong> crear un usuari amb autenticació en text plà (la credencial serà el vostre nom i de contrasenya el cognonm)</li>
+<li>El <em>shared secret</em> és una clau compartida entre els clients i el servidor Radius. S'utilitza per a limitar l'ús no autoriztat del servidor d'autenticació. El secret compartit d'esta pràctica és <em>invent</em>.</li>
+<li>Com a contrasenya de root de la BBDD MySQL podeu posar la que més vos agrade.</li>
+<li>Heu d'omplir els ports a utilitzar per cada servici en el <code>docker-compose.yml</code>(son els ports per defecte del servicis).</li>
+<li>
+<p>L'arxiu <em>clients.conf</em> identifica quins dispositius poden comunicarse amb el servidor Radius amb intencions d'autenticar-se, <strong>però no realitza l'autenticació. Eixa tasca pertany a l'arxiu users o, en el nostre cas, authorize</strong>. </p>
+<p>Has de crear un usuari en el arxiu <strong>clients.conf</strong> de Freeradius (el nomb és indiferent, nombés serveix per a identificar al client). <strong>Mira el diagrama anterior atentament i tingues clar qui demanarà l'autorització a Radius</strong></p>
+</li>
+<li>
+<p>A l'inici del fitxer <strong>authorize</strong> crear un usuari amb autenticació en text plà (la credencial serà el vostre nom i de contrasenya el cognom). Este arxiu <u>sí serveix per a l'autenticació</u></p>
+</li>
 <li>Heu d'omplir l'arxiu <strong>radius_config</strong> de Squid.</li>
 <li>Afegir una ACL (llista d'accés) que es cride <code>SSL_Ports</code> i que incloga el port 443.</li>
-<li>Configurar Firefox per a utilitzar el proxy, tant http, com https.</li>
+<li>Firefox enviarà tot el seu tràfic (http i https) al port configurat per a Squid. Configurar Firefox per a utilitzar el proxy, tant http, com https (mateix port d'Squid).</li>
+<li>Quan tot estiga funcionant, baixe-vos e instal·leu el certificat autogenerat per a que el tràfic HTTPS siga completament confiable i no done problemes.</li>
 <li>
-<p>Insertar un usuari en la BBDD <code>radius</code> des del contenidor de <em>freeradius</em>, en la taula <code>radcheck</code>. Els valors:</p>
+<p>Insertar un usuari en la BBDD <code>radius</code> <strong>des del contenidor de <em>freeradius</em></strong>, en la taula <code>radcheck</code>. Els valors:</p>
 <div class="highlight"><pre><span></span><code>username --&gt; Omplir
 attribute --&gt; &quot;Cleartext-Password&quot;
 op --&gt; &quot;:=&quot;
@@ -557,9 +583,40 @@ value --&gt; Omplir
 </code></pre></div>
 </li>
 <li>
-<p>Totes les comprovacions s'han de fer mostrant els logs</p>
+<p>Totes les comprovacions s'han de fer mostrant els logs, tant d'Squid a on es puga veure tots els accesos a Internet que realitzeu, com de Freeradius i a on es mostren ambdòs autenticacions.</p>
 </li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Atenció<p>Haurás de modificar el <code>radius.conf</code> del contenidor radius per a loguear els intents d'autenticació, tant si s'utilitza un password correcte, com si és incorrecte.
+Donat que no teniu editor de texts en el contenidor, podeu trobar utilitat en aquest comand:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/Terme a sustituir/Terme nou/g&#39;</span><span class="w"> </span>arxiu
+</code></pre></div>
+</p>
+</div>
+<h2 id="contingut-extra-per-a-la-recuperacio-de-la-practica">Contingut extra per a la recuperació de la pràctica</h2>
+<p>Per tal de completar la recuperació d'aquesta pràctica es demana, a més de tot lo anterior:</p>
+<ol>
+<li>
+<p>Configurar Squid per a que bloquegi totes les descarregues <strong>majors de 10MB</strong>. Podeu comprovar si funciona intentant baixar qualsevol distribució de Linux.</p>
+<ul>
+<li>S'ha de mostrar comprovacions tant del navegador com dels logs.</li>
+</ul>
+</li>
+<li>
+<p>Configurar Squid per a que bloquegi tot accés a Internet a la IP del client.</p>
+<ul>
+<li>
+<p>S'ha de mostrar comprovacions tant del navegador com dels logs.</p>
+<div class="admonition note">
+<p class="admonition-title">Consell</p>
+<p>Configurar el bloqueig abans de que arrive a saltar l'autenticació del proxy.</p>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="referencies">Referències</h2>
+<p><a href="https://wiki.squid-cache.org/ConfigExamples/Authenticate/Radius#create-radius-configuration-file"> Configuring a Squid Server to authenticate from RADIUS</a></p>
 
 
   

@@ -493,6 +493,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#contingut-extra-per-a-la-recuperacio-de-la-practica" class="md-nav__link">
+    Contingut extra per a la recuperació de la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#referencies" class="md-nav__link">
     Referències
   </a>
@@ -984,6 +991,25 @@
 <div class="admonition task">
 <p class="admonition-title">Tasca 5</p>
 <p>Com a tasca adicional, intenta configurar l'escenari per a poder accedir pel túnel VPN (interfaz wg0) al servidor Web però no al servidor SSH. A la mateixa vegada, s'ha de poder accedir per SSH des de l'interfaz WAN al servidor SSH però no al servidor web.</p>
+</div>
+<h2 id="contingut-extra-per-a-la-recuperacio-de-la-practica">Contingut extra per a la recuperació de la pràctica</h2>
+<p>Per tal de completar la recuperació d'aquesta pràctica es demana, a més de tot lo anterior <strong>configurar un contenidor docker amb la imatge <code>kylemanna/openvpn</code></strong>:</p>
+<ol>
+<li>Utilitzeu una màquina Linux</li>
+<li>Com a métode d'autenticació s'utilitzaran certificats (podeu posar-le contrasenya o no)</li>
+<li>El <em>Common Name</em> pel certificat serà SAD</li>
+<li>La IP del servidor a la que ens conectarem serà la de la màquina </li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Atenció</p>
+<ul>
+<li>S'ha d'explicar i documentar detalladament cada pas que doneu.</li>
+<li>S'ha de fer la comprovació de que la VPN funciona:<ul>
+<li>Conectant des d'un client</li>
+<li>Mostrant la interfaz creada per a la VPN</li>
+</ul>
+</li>
+</ul>
 </div>
 <h2 id="referencies">Referències</h2>
 <p><a href="https://linuxhandbook.com/get-container-ip/">Com saber les IP dels contenidors</a></p>

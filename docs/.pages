@@ -10,3 +10,4 @@ nav:
         - Servidor de VPN amb wireguard en un escenari muntat amb Docker: vpn.md
     - Proxy:
         - Servidor proxy Squid amb autenticació Radius amb Docker: proxy.md
+        - Proxy inverso para Docker con Traefik: proxy-traefik.md

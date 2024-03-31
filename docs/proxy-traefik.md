@@ -105,7 +105,7 @@ Al anterior archivo `docker-compose.yaml` le añadiremos el siguiente servicio:
       - "traefik.http.routers.whoami.rule=Host(`_______`)" #(2)
       - "traefik.http.routers.whoami.entrypoints=_______" #(3)
     networks:
-      - red_traefik #(4)
+      - red_traefik #(5)
 ```
 
 1. Le decimos a Traefik que hay un servicio que queremos exponer
@@ -125,7 +125,7 @@ Añadimos, a continuación de los anteriores, un nuevo servicio en el fichero `y
       replicas: 4 #(3)
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami2.rule=Host(`_______`) && Path(`______`)"
+      - "traefik.http.routers.whoami2.rule=Host(`_______`) && Path(`______`)" #(4)
       - "traefik.http.routers.whoami2.entrypoints=web"
     networks:
       - red_traefik #(5)

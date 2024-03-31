@@ -1,7 +1,7 @@
 ---
 title: Monitorización mediante sistemas detectores de intrusos (IDS) y sistemas de prevención de intrusos (IPS)
 
-description: Dentro de la parte de seguridad defensiva del curso de especialista en ciberseguridad vamos a tratar esta vez los Intrusion Detection System (IDS), así como los Intrusion Prevention SYstem (IDP), enumerando sus ventajas y desventajas. En concreto vamos a trabajar con Suricata y justificaremos el motivo por el que lo preferiremos frente a Snort.
+description: Dentro de la parte de seguridad defensiva del curso de especialista en ciberseguridad vamos a tratar esta vez los Intrusion Detection System (IDS), así como los Intrusion Prevention SYstem (IDP), enumerando sus ventajas y desventajas. En concreto vamos a trabajar con Suricata y justificaremos el motivo por el que lo preferiremos frente a Snort. Práctica SAD, Seguretat i alta disponibilitat, Seguridad y alta disponibilidad.
 ---
 
 ## Introducción

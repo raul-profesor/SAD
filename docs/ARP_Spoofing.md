@@ -1,8 +1,7 @@
-
 ---
 title: Escenari d'ARP Spoofing amb Docker
 
-description: En esta práctica vamos a simular, mediante un entorno con contenedores, un escenario donde se produce un ARP spoofing. En primer lugar estudiaremos el funcionamiento del protocolo ARP, incluyendo los mensajes utilizados. Tras ello y mediante un sniffing de tráfico con tcpdump y wireshark, veremos qué está pasando en un escenario con esta clase de envenenamiento.
+description: En esta práctica vamos a simular, mediante un entorno con contenedores, un escenario donde se produce un ARP spoofing. En primer lugar estudiaremos el funcionamiento del protocolo ARP, incluyendo los mensajes utilizados. Tras ello y mediante un sniffing de tráfico con tcpdump y wireshark, veremos qué está pasando en un escenario con esta clase de envenenamiento. Práctica SAD, Seguretat i alta disponibilitat, Seguridad y alta disponibilidad.
 ---
 
 

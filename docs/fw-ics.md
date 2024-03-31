@@ -1,7 +1,7 @@
 ---
 title: Administració de regles d'iptables en un entorn industrial
 
-description: En esta práctica sencilla utilizaremos la herramienta Labtainer para levantar varios contenedores Docker y poder hacer una práctica muy sencilla de iptables, configurando varias reglas básicas para el control de un enrotno ICS (Industrial Control System) con un PLC (Programmable Logic Contro`)
+description: En esta práctica sencilla utilizaremos la herramienta Labtainer para levantar varios contenedores Docker y poder hacer una práctica muy sencilla de iptables, configurando varias reglas básicas para el control de un enrotno ICS (Industrial Control System) con un PLC (Programmable Logic Controller). Práctica SAD, Seguretat i alta disponibilitat, Seguridad y alta disponibilidad.
 ---
 
 ## Introducció

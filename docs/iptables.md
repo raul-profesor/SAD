@@ -1,7 +1,7 @@
 ---
 title: Administració senzilla de regles d'iptables fent servir Docker
 
-description: En esta práctica sencilla utilizaremos la herramienta Labtainer para levantar varios contenedores Docker y poder hacer una práctica muy sencilla de iptables, configurando una regla básica.
+description: En esta práctica sencilla utilizaremos la herramienta Labtainer para levantar varios contenedores Docker y poder hacer una práctica muy sencilla de iptables, configurando una regla básica. Práctica SAD, Seguretat i alta disponibilitat, Seguridad y alta disponibilidad. Práctica SAD, Seguretat i alta disponibilitat, Seguridad y alta disponibilidad.
 ---
 
 ## Introducció

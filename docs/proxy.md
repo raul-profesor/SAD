@@ -1,7 +1,7 @@
 ---
 title: Configuració de proxy Squid amb servidor d'autenticació freeradius en Docker
 
-description: En esta práctica montaremos una infraestructura, utilizando contenedores Docker, donde un navegador Firefox utilizará un proxy Squid para accedder a Internet, tanto http como https. Además se utilizará Freeradius como servidor de autenticación. Práctica SAD, Seguretat i alta disponibilitat, Seguridad y alta disponibilidad.
+description: Apuntes y prácticas Seguridad y Alta disponibilidad (SAD - ASIR). En esta práctica montaremos una infraestructura, utilizando contenedores Docker, donde un navegador Firefox utilizará un proxy Squid para acceder a Internet, tanto http como https. Además se utilizará Freeradius como servidor de autenticación. 
 ---
 
 ## Tasques a realitzar i detalls de la práctica

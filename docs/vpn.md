@@ -1,7 +1,7 @@
 ---
 title: Servidor de VPN amb wireguard en un escenari muntat amb Docker
 
-description: En esta práctica montaremos una infraestructura, utilizando contenedores Docker, con 3 redes; wan, lan y dmz. Colocaremos el servidor VPN en la dmz, en la lan colocaremos un servidor web y otro SSH. Tendremos un firewall iptables en un servidor que unirá las 3 redes. Tras ello, desde el cliente ubicado en la wan y tras configurar adecuadamente iptables, intentaremos acceder a los dos servidores de la lan y al de VPN. Práctica SAD, Seguretat i alta disponibilitat, Seguridad y alta disponibilidad.
+description: Apuntes y prácticas Seguridad y Alta disponibilidad (SAD - ASIR). En esta práctica montaremos una infraestructura, utilizando contenedores Docker, con 3 redes; wan, lan y dmz. Colocaremos el servidor VPN en la dmz, en la lan colocaremos un servidor web y otro SSH. Tendremos un firewall iptables en un servidor que unirá las 3 redes. Tras ello, desde el cliente ubicado en la wan y tras configurar adecuadamente iptables, intentaremos acceder a los dos servidores de la lan y al de VPN. 
 ---
 
 ## Introducció

@@ -1,7 +1,7 @@
 ---
 title: Configuración de Caddy como proxy inverso para contenedores Docker
 
-description: En esta práctica montaremos una infraestructura haciendo uso de Caddy, que actuará como proxy inverso de varios contenedores. Es una práctica alternativa a la que ya hemos visto con Traefik. Práctica SAD, Seguretat i alta disponibilitat, Seguridad y alta disponibilidad.
+description: Apuntes y prácticas Seguridad y Alta disponibilidad (SAD - ASIR). En esta práctica montaremos una infraestructura haciendo uso de Caddy, que actuará como proxy inverso (reverse proxy) de varios contenedores. Es una práctica alternativa a la que ya hemos visto con Traefik. 
 ---
 
 ## ¿Qué es Caddy?

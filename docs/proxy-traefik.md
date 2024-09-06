@@ -1,7 +1,7 @@
 ---
 title: Configuración de Traefik como proxy inverso para contenedores Docker
 
-description: En esta práctica montaremos una infraestructura haciendo uso de Traefik, que actuará como proxy inverso y balanceador de carga de varios contenedores. Además, veremos algunas características como proxy inverso que es, tales como filtrado de IPs o autorización básica. Práctica SAD, Seguretat i alta disponibilitat, Seguridad y alta disponibilidad.
+description: Apuntes y prácticas Seguridad y Alta disponibilidad (SAD - ASIR). En esta práctica montaremos una infraestructura haciendo uso de Traefik, que actuará como proxy inverso (reverse proxy) y balanceador de carga (load balancer) de varios contenedores Docker. Además, veremos algunas características como proxy inverso que es, tales como filtrado de IPs o autorización básica. 
 ---
 
 ## ¿Qué es Traefik?

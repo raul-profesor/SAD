@@ -91,6 +91,9 @@ veracrypt --version
 
 #### <u>Pas 3</u>: Muntar el volum de VeraCrypt
 
+1. Heu de crear la carpeta: `/mnt/veracrypt1`
+2. 
+
 #### <u>Pas 4</u>: Transferir el arxiu xifrat a Windows
 
 #### <u>Pas 5</u>: Instal·lar VeraCrypt en Windows

@@ -1,4 +1,8 @@
 nav:
+    - Integritat, confidencialitat i disponibilitat: 
+        - Integritat amb AIDE: intconfdis.md
+        - Confidencialitat amb Veracrypt: intconfdis2.md
+
     - Spoofing: 
         - ARP Spoofing: ARP_Spoofing.md
     - IDS/IPS:

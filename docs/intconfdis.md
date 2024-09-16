@@ -58,7 +58,7 @@ AIDE s'utilitza habitualment en entorns Linux i Unix com a part d'una estratègi
 
 5. Dins del vostre home, crear una carpeta amb el nom `scripts` i dins crear un arxiu buit amb el nomb `miscript.sh` 
 
-8. Una vegada instal·lat, haureu de modificar l'arxiu de configuració per a incluir un *group* a on es comproven els següents atributs per als arxius:
+8. Una vegada instal·lat, haureu de modificar l'arxiu de configuració per a incluir un *group* amb el nom **FIPSR** a on es comproven els següents atributs per als arxius:
    
    
       + Permisos dels arxius  
@@ -69,25 +69,30 @@ AIDE s'utilitza habitualment en entorns Linux i Unix com a part d'una estratègi
       + Tamany de l'arxiu
       + Hora de modificació de l'arxiu
       + Comprovar integritat de l'arxiu amb hashes md5 i sha256
-   
 
-9. Inicialitzar la base de dades d'aide
+9. Afegeix també a l'arxiu de configuració les següents línies:
+```linuxconf
+/etc/.*\.conf$ FIPSR
+/var/log/.*\.log$ FIPSR
+/home/.*\.sh$ FIPSR
+```
+10. Inicialitzar la base de dades d'aide
 
-10. Substituir l'arxiu de base de dades antic per el nou
+11. Substituir l'arxiu de base de dades antic per el nou
 
-11. Canviar els permisos de l'arxiu de logs del sistema `/var/log/messages` (permísos del tipus 777)
+12. Canviar els permisos de l'arxiu de logs del sistema `/var/log/messages` (permísos del tipus 777)
 
-12. Incloure el text *"Entrada maliciosa"* al final de l'arxiu `/etc/ssh/sshd_config`
+13. Incloure el text *"Entrada maliciosa"* al final de l'arxiu `/etc/ssh/sshd_config`
 
-13. Elimina l'arxiu `miscript.sh`
+14. Elimina l'arxiu `miscript.sh`
 
-14. Fer un ***check*** amb aide i en la exida, identificar les 3 modificacions que heu fet abans i que detecta aide (indiqueu en quina línea vos informa de les modificacions i quin atribut dels configurats abans ha fet servir)
+15. Fer un ***check*** amb aide i en la exida, identificar les 3 modificacions que heu fet abans i que detecta aide (indiqueu en quina línea vos informa de les modificacions i quin atribut dels configurats abans ha fet servir)
 
-15. Desfés els 3 canvis que has fet i torna el sistema a la seua situació inicial. Després fes un check amb aide i explica que veus.
+16. Desfés els 3 canvis que has fet i torna el sistema a la seua situació inicial. Després fes un check amb aide i explica que veus.
 
-16. Fes `sudo yum update && sudo yum upgrade`i identifica els canvis detectats però que sí son legítims
+17. Fes `sudo yum update && sudo yum upgrade`i identifica els canvis detectats però que sí son legítims
 
-17. Actualitza la base de dades i substitueix l'arxiu antic pel nou d'aide per tal de que accepte el nou estat del sistema i fes un nou check, ¿qué veus en la eixida?
+18. Actualitza la base de dades i substitueix l'arxiu antic pel nou d'aide per tal de que accepte el nou estat del sistema i fes un nou check, ¿qué veus en la eixida?
 
 
 ## Referències

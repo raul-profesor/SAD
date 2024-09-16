@@ -6,24 +6,22 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apuntes y prácticas Seguridad y Alta disponibilidad (SAD - ASIR). En esta práctica sencilla utilizaremos la herramienta Labtainer para levantar varios contenedores Docker y poder hacer una práctica muy sencilla de iptables, configurando una regla básica iptables.">
       
       
-      
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/iptables/">
-      
-      
-        <link rel="prev" href="../idps/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/intconfdis2/">
       
       
-        <link rel="next" href="../fw-ics/">
+        <link rel="prev" href="../intconfdis/">
+      
+      
+        <link rel="next" href="../ARP_Spoofing/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>Administració senzilla de regles d'iptables fent servir Docker - Seguridad y alta disponibilidad</title>
+        <title>Confidencialitat amb Veracrypt - Seguridad y alta disponibilidad</title>
       
     
     
@@ -89,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduccio" class="md-skip">
+        <a href="#confidencialitat-mitjantcant-xifrat-darxius-amb-veracrypt" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -124,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Administració senzilla de regles d'iptables fent servir Docker
+              Confidencialitat amb Veracrypt
             
           </span>
         </div>
@@ -230,14 +228,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
       
       
       
@@ -246,7 +246,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_1">
           <span class="md-nav__icon md-icon"></span>
           Integritat, confidencialitat i disponibilitat
@@ -271,11 +271,158 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../intconfdis2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Confidencialitat amb Veracrypt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Confidencialitat amb Veracrypt
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#confidencialitat-mitjantcant-xifrat-darxius-amb-veracrypt" class="md-nav__link">
+    Confidencialitat mitjantçant xifrat d'arxius amb Veracrypt
+  </a>
+  
+    <nav class="md-nav" aria-label="Confidencialitat mitjantçant xifrat d'arxius amb Veracrypt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-veracrypt" class="md-nav__link">
+    Què és Veracrypt?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caracteristiques-clau-de-veracrypt" class="md-nav__link">
+    Característiques clau de VeraCrypt:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#com-funciona-veracrypt" class="md-nav__link">
+    Com funciona VeraCrypt:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#casos-dus" class="md-nav__link">
+    Casos d'ús:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#veracrypt-contra-truecrypt" class="md-nav__link">
+    VeraCrypt contra TrueCrypt:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resum" class="md-nav__link">
+    Resum:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilitzant-veracrypt-per-a-la-privadesa-cross-platform-linux-windows" class="md-nav__link">
+    Utilitzant Veracrypt per a la privadesa cross platform (Linux - Windows)
+  </a>
+  
+    <nav class="md-nav" aria-label="Utilitzant Veracrypt per a la privadesa cross platform (Linux - Windows)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pas-1-installacio-de-veracrypt" class="md-nav__link">
+    Pas 1: Instal·lació de VeraCrypt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-2-crear-volum-de-veracrypt-contenidor-xifrat" class="md-nav__link">
+    Pas 2: Crear volum de VeraCrypt (contenidor xifrat)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-3-muntar-el-volum-de-veracrypt" class="md-nav__link">
+    Pas 3: Muntar el volum de VeraCrypt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-4-transferir-el-arxiu-xifrat-a-windows" class="md-nav__link">
+    Pas 4: Transferir el arxiu xifrat a Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-5-installar-veracrypt-en-windows" class="md-nav__link">
+    Pas 5: Instal·lar VeraCrypt en Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-6-muntar-el-volum-xifrat-en-windows" class="md-nav__link">
+    Pas 6: Muntar el volum xifrat en Windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencies" class="md-nav__link">
+    Referències
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -391,16 +538,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
       
       
       
@@ -409,7 +554,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Firewall
@@ -420,69 +565,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Administració senzilla de regles d'iptables fent servir Docker
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../iptables/" class="md-nav__link">
         Administració senzilla de regles d'iptables fent servir Docker
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduccio" class="md-nav__link">
-    Introducció
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#labtainer" class="md-nav__link">
-    Labtainer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tasques" class="md-nav__link">
-    Tasques
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#obrir-un-port-per-a-un-nou-servici" class="md-nav__link">
-    Obrir un port per a un nou servici
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -649,54 +736,144 @@
                   
 
 
-  <h1>Administració senzilla de regles d'iptables fent servir Docker</h1>
+  <h1>Confidencialitat amb Veracrypt</h1>
 
-<h2 id="introduccio">Introducció</h2>
-<p>Per a simplificar la infraestructra necessària per a esta pràctica, farem servir un framework anomenat Labtainer. Este framework es capaç de crear diferents laboratoris o escenaris basats en contenidors de Docker. </p>
-<p>En concret, el nostre escenari serà tal que així:</p>
-<p><img alt="" src="../img/iptables.png" /></p>
-<h2 id="labtainer">Labtainer</h2>
-<p>Descarregueu la imatge <code>.ova</code> del link que teniu a Aules i importeu-la en Virtualbox.</p>
-<p>Per tal d'iniciar el laboratori, no tanqueu el terminal s'obrirà automàticament i introudiu:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>labtainer<span class="w"> </span>iptables2
-</code></pre></div>
-<p>I començaran a desplegar-se els contenidors i se vos obriràn dues pestanyes en el terminal del firewall. </p>
+<h2 id="confidencialitat-mitjantcant-xifrat-darxius-amb-veracrypt">Confidencialitat mitjantçant xifrat d'arxius amb Veracrypt</h2>
+<h3 id="que-es-veracrypt">Què és Veracrypt?</h3>
+<p>VeraCrypt és un software de xifratge de codi obert que s'utilitza per protegir dades sensibles mitjançant la creació de volums xifrats (discs virtuals) o xifrant particions o unitats senceres. </p>
+<p>Proporciona una forta protecció per a les dades mitjançant algorismes de xifratge estàndard del sector i es pot utilitzar en diversos sistemes operatius, inclosos Linux, Windows i macOS.</p>
+<p><img alt="" src="../img/vera.png" /></p>
+<h3 id="caracteristiques-clau-de-veracrypt">Característiques clau de VeraCrypt:</h3>
+<ol>
+<li>
+<p><strong>Volums xifrats (discs virtuals)</strong>: VeraCrypt permet crear un <strong>disc virtual xifrat</strong> dins d'un fitxer. Aleshores, aquest fitxer es pot muntar com si fos un disc real, la qual cosa permet emmagatzemar fitxers de manera segura. Quan el volum no està muntat, les dades són inaccessibles i apareixen com a dades aleatòries.</p>
+</li>
+<li>
+<p><strong>Partició/xifratge de la unitat</strong>: Podeu xifrar una partició sencera o una unitat externa (com ara unitats USB) de manera que tot el que s'emmagatzema a la partició es xifra automàticament.</p>
+</li>
+<li>
+<p><strong>Xifrat de la unitat del sistema</strong>: VeraCrypt ofereix la possibilitat de <strong>xifrar tota la unitat del sistema</strong> (inclòs el sistema operatiu), proporcionant un xifratge de disc complet (FDE). Això garanteix que no es pugui accedir a cap informació del disc sense la clau de desxifrat, fins i tot si algú accedeix físicament al disc.</p>
+</li>
+<li>
+<p><strong>Volums ocults i sistemes operatius</strong>: VeraCrypt admet la creació de <strong>volums ocults</strong> i <strong>sistemes operatius ocults</strong>. Aquesta característica s'utilitza per a una negació plausible, permetent als usuaris tenir un sistema operatiu o un volum "señí" mentre mantenen amagat el real.</p>
+</li>
+<li>
+<p><strong>Algorismes de xifratge forts</strong>: VeraCrypt utilitza diversos algorismes de xifratge potents com ara <strong>AES (Advanced Encryption Standard)</strong>, <strong>Snake</strong> i <strong>Twofish</strong>, sols o combinats (en cascada).</p>
+</li>
+<li>
+<p><strong>Multiplataforma</strong>: VeraCrypt està disponible per a Linux, Windows i macOS, el que significa que els contenidors xifrats creats en una plataforma es poden obrir en una altra sempre que s'instal·li el programari adequat.</p>
+</li>
+<li>
+<p><strong>Protecció basada en contrasenyes i fitxers de claus</strong>: VeraCrypt admet tant el xifratge basat en contrasenyes com l'ús de <strong>fitxers de claus</strong> per a més seguretat. Un fitxer de claus és un fitxer (com una imatge o un document aleatori) que s'ha de presentar juntament amb la contrasenya per desbloquejar el volum xifrat.</p>
+</li>
+<li>
+<p><strong>Autenticació d'arrencada</strong>: Si tota la unitat del sistema està xifrada, VeraCrypt proporciona un mecanisme d'<strong>autenticació prèvia a l'arrencada</strong>, que requereix que introduïu la contrasenya de desxifrat abans que el sistema operatiu es pugui carregar.</p>
+</li>
+</ol>
+<h3 id="com-funciona-veracrypt">Com funciona VeraCrypt:</h3>
+<ol>
+<li>
+<p><strong>Procés de xifratge</strong>: quan creeu un volum xifrat, VeraCrypt utilitza l'algoritme de xifratge seleccionat per xifrar totes les dades que s'emmagatzemaran al volum. El procés es fa de manera transparent, el que significa que podeu interactuar amb els fitxers normalment un cop muntat el volum, però les dades del disc estan xifrades.</p>
+</li>
+<li>
+<p><strong>Montatge/Desmuntatge</strong>:</p>
+</li>
+<li>Munteu un volum xifrat proporcionant la contrasenya i/o el fitxer de claus correctes, moment en què actua com una unitat de disc normal on podeu copiar, moure i accedir a fitxers.</li>
+<li>
+<p>Quan hàgiu acabat, podeu <strong>desmuntar</strong> el volum i les dades seran inaccessibles tret que es tornin a muntar amb les credencials correctes.</p>
+</li>
+<li>
+<p><strong>Algoritmes de xifratge</strong>: VeraCrypt utilitza una combinació dels algorismes de xifratge següents, amb l'opció de posar-los en cascada per a més seguretat:</p>
+<ul>
+<li><strong>AES</strong> (estàndard de xifratge avançat)</li>
+<li><strong>Serp</strong></li>
+<li><strong>Dos peixos</strong></li>
+<li><strong>Camèlia</strong> (disponible en versions més noves)</li>
+</ul>
+</li>
+</ol>
+<h3 id="casos-dus">Casos d'ús:</h3>
+<ul>
+<li>
+<p><strong>Seguretat de dades</strong>: s'utilitza àmpliament per protegir dades sensibles, com ara documents personals, registres financers i altra informació que ha de romandre privada.</p>
+</li>
+<li>
+<p><strong>Encriptació portàtil</strong>: en xifrar unitats USB o emmagatzematge extern, els usuaris poden portar dades segures i portàtils.</p>
+</li>
+<li>
+<p><strong>Encriptació de disc per a la privadesa</strong>: xifrar el sistema o les unitats de dades garanteix que la informació sensible romangui protegida en cas de robatori o accés no autoritzat.</p>
+</li>
+</ul>
+<h3 id="veracrypt-contra-truecrypt">VeraCrypt contra TrueCrypt:</h3>
+<p>VeraCrypt és un <strong>successor de TrueCrypt</strong>, una eina de xifratge popular que es va suspendre el 2014. VeraCrypt aborda diverses vulnerabilitats de seguretat que hi havia a TrueCrypt i té funcions millorades per a un millor xifratge i rendiment.</p>
+<h3 id="resum">Resum:</h3>
+<p>VeraCrypt és una potent eina per xifrar dades sensibles, que ofereix una varietat de mètodes de xifratge, des de volums simples basats en fitxers fins a xifratge complet del sistema, proporcionant un alt nivell de seguretat i privadesa per als usuaris en múltiples plataformes.</p>
 <div class="admonition tip">
-<p class="admonition-title">Nota</p>
-<p>Quan vos pregunte per l'email, deixeu-lo en blanc i dieu-li que esteu segurs de deixar-lo en blanc <code>(y)</code></p>
-</div>
-<p>Per a accedir al terminal de qualsevol contenidor podeu fer servir:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;nom_del_contenidor&gt;<span class="w"> </span>/bin/bash
-</code></pre></div>
-<h2 id="tasques">Tasques</h2>
-<p>Des del client prova a fer un escaneig de ports al server i comenta el resultats:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>nmap<span class="w"> </span>server
-</code></pre></div>
-<p>Prova a accedir per SSH:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ssh<span class="w"> </span>server
-</code></pre></div>
-<p>I confirma que s'oferix el servici de Telnet:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>telnet<span class="w"> </span>server
-</code></pre></div>
-<p>Al contenidor <em>firewall</em> està instal·lat Iptables. Fes-lo servir per a permetre únicament la redirecció (forwarding) de tràfic SSH i HTTP. Per tal d'ajudar-te, pots experimentar amb el script <code>example fw.sh</code>.</p>
-<div class="admonition warning">
 <p class="admonition-title">Atenció</p>
-<p>Considera posar les teues regles d'iptables en un script per tal de poder aplicar-les ràpidament sempre que ho necessites. </p>
+<p>Per tal de treballar amb més facilitat, vos recomane conectar-vos per SSH a la màquina virtual de tal forma que, entre altres coses, podreu pegar text en el vostre terminal sense problema:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">ssh vostre_usuari@ip_rocky</span>
+</code></pre></div>
 </div>
-<p>Comprova els packets descartats (drop) mirant el logs i assenyalant clarament dins del log on es produeix el drop:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/iptables.log
+<h3 id="utilitzant-veracrypt-per-a-la-privadesa-cross-platform-linux-windows">Utilitzant Veracrypt per a la privadesa cross platform (Linux - Windows)</h3>
+<h4 id="pas-1-installacio-de-veracrypt"><u>Pas 1</u>: Instal·lació de VeraCrypt</h4>
+<p>En primer lloc, haureu d'instalar Veracrypt però per a ser utilitzat en mode línia de comandos, en lloc de amb interficie gràfica (GUI):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>fuse<span class="w"> </span>wget<span class="w"> </span>tar<span class="w"> </span>bzip2
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>$<span class="w"> </span>wget<span class="w"> </span>https://launchpad.net/veracrypt/trunk/1.26.14/+download/veracrypt-1.26.14-setup.tar.bz2
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>gcc<span class="w"> </span>make<span class="w"> </span>wxBase<span class="w"> </span>wxGTK3-devel<span class="w"> </span>fuse-devel
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>$<span class="w"> </span>sudo<span class="w"> </span>./veracrypt-1.26.14-setup-console-x64
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>$<span class="w"> </span>veracrypt<span class="w"> </span>--version
 </code></pre></div>
-<p>El contenidor <em>firewall</em> també té instal·lada l'aplicació <u>wireshark</u>, fes-la servir per a vore els drops també:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>wireshark<span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div>
-<p>Una vegada has limitat el tràfic amb iptables, torna a fer el escaneig de ports per a comprovar que la nova situació és correcta.</p>
-<h2 id="obrir-un-port-per-a-un-nou-servici">Obrir un port per a un nou servici</h2>
-<p>El contenidor del client inclou un programa anomenat <strong>wizbang</strong>. Executa este script i comprova quin és el port que està intentant utilitzar per a enviar el tràfic. </p>
-<p>Una vegada comprovat, introdueix una regla que permeta este tràfic i comprova que funciona correctament (de les dues formes comentades a clase). </p>
-<p>Fes també la comprovació amb un nou escaneig de ports.</p>
-<p>Una vegada heu acabat, pareu el laboratori al terminal original amb:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>stoplab
-</code></pre></div>
+<h4 id="pas-2-crear-volum-de-veracrypt-contenidor-xifrat"><u>Pas 2</u>: Crear volum de VeraCrypt (contenidor xifrat)</h4>
+<ol>
+<li>
+<p>Crear un contenidor buit de Veracrypt:</p>
+<p><code>$ veracrypt --text --create /ruta/carpeta/arxiu_xifrat</code></p>
+</li>
+<li>
+<p>A les opcions interactives que vos anirà demanant heu d'utilitzar les següents dades:</p>
+<ul>
+<li>Volume type: normal</li>
+<li>Xifrat: AES</li>
+<li>Hash: SHA-512</li>
+<li>Filesystem: FAT</li>
+<li>Password</li>
+<li>PIM (2n factor autenticació)</li>
+<li>Keyfile path: buit</li>
+</ul>
+</li>
+</ol>
+<h4 id="pas-3-muntar-el-volum-de-veracrypt"><u>Pas 3</u>: Muntar el volum de VeraCrypt</h4>
+<ol>
+<li>
+<p>Heu de crear la carpeta: <code>/mnt/veracrypt1</code></p>
+</li>
+<li>
+<p>Després es necessari muntar el arxiu xifrat que heu creat previament  com a una unitat del sistema
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>/mnt/veracrypt1<span class="w"> </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>veracrypt<span class="w"> </span>--text<span class="w"> </span>/ruta/al/arxiu<span class="w"> </span>/mnt/veracrypt1<span class="w"> </span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Creeu 3 fitxers de text amb qualsevol contingut i després copieu-los a la unitat que heu muntat en el pas anterior.</p>
+</li>
+<li>
+<p>Desmunteu la unitat
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>veracrypt<span class="w"> </span>--dismount<span class="w"> </span>/mnt/veracrypt1<span class="w"> </span>
+</code></pre></div></p>
+</li>
+<li>Ara els continguts de la carpeta estan xifrats i emmagatzemast dins en l'arxiu <code>arxiu_xifrat</code></li>
+</ol>
+<h4 id="pas-4-transferir-el-arxiu-xifrat-a-windows"><u>Pas 4</u>: Transferir el arxiu xifrat a Windows</h4>
+<p>Aquest pas ho podeu realitzar mitjançant una unitat usb (pendrive), utilitzant el comand <code>scp</code>, muntant un server web amb python3 en Rocky Linux i accedint des del navegador web de Windows...</p>
+<h4 id="pas-5-installar-veracrypt-en-windows"><u>Pas 5</u>: Instal·lar VeraCrypt en Windows</h4>
+<p>Podeu obtenir-lo <a href="https://www.veracrypt.fr/en/Downloads.html">ací</a>.</p>
+<h4 id="pas-6-muntar-el-volum-xifrat-en-windows"><u>Pas 6</u>: Muntar el volum xifrat en Windows</h4>
+<p>Munteu el volum que heu xifrat  previament en Linux i comproveu que, efectivament, podeu accedir als arxius xifrats previament.</p>
+<h2 id="referencies">Referències</h2>
 
 
   

@@ -66,18 +66,22 @@ VeraCrypt és una potent eina per xifrar dades sensibles, que ofereix una variet
 En primer lloc, haureu d'instalar Veracrypt però per a ser utilitzat en mode línia de comandos, en lloc de amb interficie gràfica (GUI):
 
 ```bash
-sudo yum install fuse wget tar bzip2
-wget https://launchpad.net/veracrypt/trunk/1.26.14/+download/veracrypt-1.26.14-setup.tar.bz2
-sudo dnf install gcc make wxBase wxGTK3-devel fuse-devel
-sudo ./veracrypt-1.26.14-setup-console-x64
-veracrypt --version
+$ sudo yum install fuse wget tar bzip2
+
+$ wget https://launchpad.net/veracrypt/trunk/1.26.14/+download/veracrypt-1.26.14-setup.tar.bz2
+
+$ sudo dnf install gcc make wxBase wxGTK3-devel fuse-devel
+
+$ sudo ./veracrypt-1.26.14-setup-console-x64
+
+$ veracrypt --version
 ```
 
 #### <u>Pas 2</u>: Crear volum de VeraCrypt (contenidor xifrat)
 
 1. Crear un contenidor buit de Veracrypt:
 
-      `veracrypt --text --create /ruta/carpeta/arxiu_xifrat`
+      `$ veracrypt --text --create /ruta/carpeta/arxiu_xifrat`
 
 2. A les opcions interactives que vos anirà demanant heu d'utilitzar les següents dades:
       + Volume type: normal
@@ -92,14 +96,28 @@ veracrypt --version
 #### <u>Pas 3</u>: Muntar el volum de VeraCrypt
 
 1. Heu de crear la carpeta: `/mnt/veracrypt1`
-2. 
+   
+2. Després es necessari muntar el arxiu xifrat que heu creat previament  com a una unitat del sistema
+```bash 
+$ sudo mkdir /mnt/veracrypt1 
+$ sudo veracrypt --text /ruta/al/arxiu /mnt/veracrypt1 
+``` 
+3. Creeu 3 fitxers de text amb qualsevol contingut i després copieu-los a la unitat que heu muntat en el pas anterior.
+
+4. Desmunteu la unitat
+```bash 
+$ sudo veracrypt --dismount /mnt/veracrypt1 
+``` 
+1. Ara els continguts de la carpeta estan xifrats i emmagatzemast dins en l'arxiu `arxiu_xifrat`
 
 #### <u>Pas 4</u>: Transferir el arxiu xifrat a Windows
+Aquest pas ho podeu realitzar mitjançant una unitat usb (pendrive), utilitzant el comand `scp`, muntant un server web amb python3 en Rocky Linux i accedint des del navegador web de Windows...
 
 #### <u>Pas 5</u>: Instal·lar VeraCrypt en Windows
+Podeu obtenir-lo [ací](https://www.veracrypt.fr/en/Downloads.html).
 
-#### <u>Pas 6</u>: Muntar el volum xifrat en Weindows
-
+#### <u>Pas 6</u>: Muntar el volum xifrat en Windows
+Munteu el volum que heu xifrat  previament en Linux i comproveu que, efectivament, podeu accedir als arxius xifrats previament.
 
 
 

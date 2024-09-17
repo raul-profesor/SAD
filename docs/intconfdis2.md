@@ -36,7 +36,7 @@ Proporciona una forta protecció per a les dades mitjançant algorismes de xifra
 3. **Algoritmes de xifratge**: VeraCrypt utilitza una combinació dels algorismes de xifratge següents, amb l'opció de posar-los en cascada per a més seguretat:
       - **AES** (estàndard de xifratge avançat)
       - **Serp**
-      - **Dos peixos**
+      - **Twofish**
       - **Camèlia** (disponible en versions més noves)
 
 ### Casos d'ús:
@@ -72,7 +72,9 @@ $ wget https://launchpad.net/veracrypt/trunk/1.26.14/+download/veracrypt-1.26.14
 
 $ sudo dnf install gcc make wxBase wxGTK3-devel fuse-devel
 
-$ sudo ./veracrypt-1.26.14-setup-console-x64
+$ tar -xvjf veracrypt-1.26.14-setup.tar.bz2
+
+$ sudo ./veracrypt-1.26.14-setup-console-x64 (opció 1)
 
 $ veracrypt --version
 ```
@@ -85,6 +87,7 @@ $ veracrypt --version
 
 2. A les opcions interactives que vos anirà demanant heu d'utilitzar les següents dades:
       + Volume type: normal
+      + Tamany: 100M
       + Xifrat: AES
       + Hash: SHA-512
       + Filesystem: FAT
@@ -102,7 +105,7 @@ $ veracrypt --version
 $ sudo mkdir /mnt/veracrypt1 
 $ sudo veracrypt --text /ruta/al/arxiu /mnt/veracrypt1 
 ``` 
-3. Creeu 3 fitxers de text amb qualsevol contingut i després copieu-los a la unitat que heu muntat en el pas anterior.
+3. Creeu 3 fitxers de text amb qualsevol contingut de text i després copieu-los a la unitat que heu muntat en el pas anterior.
 
 4. Desmunteu la unitat
 ```bash 
@@ -113,11 +116,35 @@ $ sudo veracrypt --dismount /mnt/veracrypt1
 #### <u>Pas 4</u>: Transferir el arxiu xifrat a Windows
 Aquest pas ho podeu realitzar mitjançant una unitat usb (pendrive), utilitzant el comand `scp`, muntant un server web amb python3 en Rocky Linux i accedint des del navegador web de Windows...
 
+Per exemple,
+
+En Rocky Linux, en el directory a on tenim el contenidor buit creat abans:
+
+```python
+$ python3 -m http.server
+```
+I des de Windows, amb el navegador web haureu d'accedir a `http://IP_Rocky:8000` i descarregar l'arxiu.
+
+Comprovar que l'arxiu està xifrat al símbol del sistema de Windows:
+
+```cmd
+> type arxiu
+```
+
 #### <u>Pas 5</u>: Instal·lar VeraCrypt en Windows
+
 Podeu obtenir-lo [ací](https://www.veracrypt.fr/en/Downloads.html).
 
+Comproveu 
+
 #### <u>Pas 6</u>: Muntar el volum xifrat en Windows
-Munteu el volum que heu xifrat  previament en Linux i comproveu que, efectivament, podeu accedir als arxius xifrats previament.
+Munteu el volum que heu xifrat  previament en Linux i comproveu que, efectivament, podeu accedir als arxius xifrats previament:
+
++ Seleccioneu una unitat lliure
++ Seleccioneu l'arxiu a muntar (el contenidor buit d'abans)
++ Doneu-li a muntar (no oblideu marcar que fa falta PIM)
++ Espereu una estona i hauría d'apareixer-vos com a una nova unitat del sistema
++ Comproveu que podeu accedir a la informació dins dels 3 arxius de text
 
 
 

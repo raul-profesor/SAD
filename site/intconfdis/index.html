@@ -737,7 +737,7 @@
 <p>Dins del vostre home, crear una carpeta amb el nom <code>scripts</code> i dins crear un arxiu buit amb el nomb <code>miscript.sh</code> </p>
 </li>
 <li>
-<p>Una vegada instal·lat, haureu de modificar l'arxiu de configuració per a incluir un <em>group</em> a on es comproven els següents atributs per als arxius:</p>
+<p>Una vegada instal·lat, haureu de modificar l'arxiu de configuració per a incluir un <em>group</em> amb el nom <strong>FIPSR</strong> a on es comproven els següents atributs per als arxius:</p>
 <ul>
 <li>Permisos dels arxius  </li>
 <li>Número inode (cada arxiu ha de tindre un número d'inode que no ha de canviar)</li>
@@ -748,6 +748,13 @@
 <li>Hora de modificació de l'arxiu</li>
 <li>Comprovar integritat de l'arxiu amb hashes md5 i sha256</li>
 </ul>
+</li>
+<li>
+<p>Afegeix també a l'arxiu de configuració les següents línies:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/etc/.*\.conf$ FIPSR
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>/var/log/.*\.log$ FIPSR
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>/home/.*\.sh$ FIPSR
+</code></pre></div></p>
 </li>
 <li>
 <p>Inicialitzar la base de dades d'aide</p>

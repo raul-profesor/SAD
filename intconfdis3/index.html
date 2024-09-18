@@ -8,21 +8,27 @@
       
       
       
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/intconfdis3/">
       
       
-      <link rel="icon" href="/SAD/assets/images/favicon.png">
+        <link rel="prev" href="../intconfdis2/">
+      
+      
+        <link rel="next" href="../ARP_Spoofing/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>Seguridad y alta disponibilidad</title>
+        <title>Disponibilitat de serveis amb Nmap - Seguridad y alta disponibilidad</title>
       
     
     
-      <link rel="stylesheet" href="/SAD/assets/stylesheets/main.ded33207.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ded33207.min.css">
       
         
-        <link rel="stylesheet" href="/SAD/assets/stylesheets/palette.a0c5b2b5.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
 
@@ -38,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="/SAD/stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("/SAD/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -80,6 +86,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#disponibilitat-de-serveis-amb-nmap" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -92,7 +103,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="/SAD/." title="Seguridad y alta disponibilidad" class="md-header__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
+    <a href=".." title="Seguridad y alta disponibilidad" class="md-header__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -111,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Disponibilitat de serveis amb Nmap
             
           </span>
         </div>
@@ -200,7 +211,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/SAD/." title="Seguridad y alta disponibilidad" class="md-nav__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
+    <a href=".." title="Seguridad y alta disponibilidad" class="md-nav__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -217,14 +228,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
       
       
       
@@ -233,7 +246,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_1">
           <span class="md-nav__icon md-icon"></span>
           Integritat, confidencialitat i disponibilitat
@@ -246,7 +259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/intconfdis/" class="md-nav__link">
+      <a href="../intconfdis/" class="md-nav__link">
         Integritat amb AIDE
       </a>
     </li>
@@ -260,7 +273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/intconfdis2/" class="md-nav__link">
+      <a href="../intconfdis2/" class="md-nav__link">
         Confidencialitat amb Veracrypt
       </a>
     </li>
@@ -272,11 +285,61 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/SAD/intconfdis3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Disponibilitat de serveis amb Nmap
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Disponibilitat de serveis amb Nmap
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disponibilitat-de-serveis-amb-nmap" class="md-nav__link">
+    Disponibilitat de serveis amb Nmap
+  </a>
+  
+    <nav class="md-nav" aria-label="Disponibilitat de serveis amb Nmap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#escaneig-de-ports-amb-nmap" class="md-nav__link">
+    Escaneig de ports amb Nmap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -323,7 +386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/ARP_Spoofing/" class="md-nav__link">
+      <a href="../ARP_Spoofing/" class="md-nav__link">
         ARP Spoofing
       </a>
     </li>
@@ -372,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/idps/" class="md-nav__link">
+      <a href="../idps/" class="md-nav__link">
         Monitorización mediante sistemas detectores de intrusos (IDS) y sistemas de prevención de intrusos (IPS)
       </a>
     </li>
@@ -421,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/iptables/" class="md-nav__link">
+      <a href="../iptables/" class="md-nav__link">
         Administració senzilla de regles d'iptables fent servir Docker
       </a>
     </li>
@@ -435,7 +498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/fw-ics/" class="md-nav__link">
+      <a href="../fw-ics/" class="md-nav__link">
         Administració de regles d'iptables en un entorn industrial
       </a>
     </li>
@@ -484,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/vpn/" class="md-nav__link">
+      <a href="../vpn/" class="md-nav__link">
         Servidor de VPN amb wireguard en un escenari muntat amb Docker
       </a>
     </li>
@@ -533,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/proxy/" class="md-nav__link">
+      <a href="../proxy/" class="md-nav__link">
         Servidor proxy Squid amb autenticació Radius amb Docker
       </a>
     </li>
@@ -547,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/proxy-traefik/" class="md-nav__link">
+      <a href="../proxy-traefik/" class="md-nav__link">
         Proxy inverso para Docker con Traefik
       </a>
     </li>
@@ -561,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/proxy-caddy/" class="md-nav__link">
+      <a href="../proxy-caddy/" class="md-nav__link">
         Proxy inverso con Caddy para contenedores Docker
       </a>
     </li>
@@ -587,8 +650,30 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+  <h1>Disponibilitat de serveis amb Nmap</h1>
+
+<h2 id="disponibilitat-de-serveis-amb-nmap">Disponibilitat de serveis amb Nmap</h2>
+<p>Identificar i analitzar la disponibilitat de serveis o servidors, ports oberts i versions de sistemes operatius que els suporten, suposa la informació base per a l’estudi de les innumerables vulnerabilitats dels sistemes en xarxa. D’aquest mode es podran prendre mesures front a aquests punts febles dels nostres sistemes.</p>
+<p>Nmap és una ferramenta de codi obert per a l’exploració de xarxa i auditoria de seguretat. Utilitza paquets IP per a determinar quins equips es troben disponibles a la xarxa, quins serveis ofereixen i mitjançant quines aplicacions (nom i versió de l’aplicació), quins sistemes operatius (i les seues versions) executen, quins tipus filtrat de paquets i tallafocs estan utilitzant, així com altres característiques.</p>
+<p><img alt="" src="../img/nmap_logo.png" /></p>
+<h3 id="escaneig-de-ports-amb-nmap">Escaneig de ports amb Nmap</h3>
+<ol>
+<li>Instal·la Nmap a Rocky Linux des dels repositoris</li>
+<li>Una vegada fet lo anterior, realitza un escaneig ràpid i sense opcions a `http://scanme.nmap.org</li>
+<li>Mostra els resultats i identifica a quin servei pertany cada port</li>
+<li>Fes un nou escaneig i utilitza les opcions necessàries per tal d'identificar quin software es fa servir per al DNS i quin per al servidor Web. A més, identifica quina versió de eixe servidor web s'està utilitzant i sobre quin sistema operatiu. Adjunta una captura de pantalla a on senyales estos paràmetres.</li>
+</ol>
+
+
+  
+
+
+
+
+                
               </article>
             </div>
           
@@ -625,10 +710,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "/SAD/", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate"], "search": "/SAD/assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="/SAD/assets/javascripts/bundle.51198bba.min.js"></script>
+      <script src="../assets/javascripts/bundle.51198bba.min.js"></script>
       
     
   </body>

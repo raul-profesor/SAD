@@ -281,6 +281,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intconfdis3/" class="md-nav__link">
+        Disponibilitat de serveis amb Nmap
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -844,13 +858,13 @@
 <p>Para permitir que Suricata permita una recarga <em>en vivo</em> de las reglas, es decir, que se puedan añadir, eliminar y editar las reglas sin la necesidad de reiniciar el proceso de Suricata:    </p>
 <p><img alt="" src="../img/idps_11.png" /></p>
 <p>Y con este comando le diremos a Suricata que recargue todas las reglas sin reiniciar el proceso:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">kill -usr2 $(pidof suricata)</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">kill -usr2 $(pidof suricata)</span>
+</span></code></pre></div>
 </li>
 <li>
 <p>Actualizamos las reglas de Suricata:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">suricata-update -o /etc/suricata/rules</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">suricata-update -o /etc/suricata/rules</span>
+</span></code></pre></div>
 </li>
 <li>
 <p>Y para validar la configuración (tardará un poco):
@@ -858,10 +872,10 @@
 </li>
 <li>
 <p>Se inicia el servicio y se comprueba que está activo (tardará un par de minutos en cargar y parsear las reglas):
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">systemctl start suricata.service</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="go">systemctl start suricata.service</span>
-</code></pre></div>
+    <div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">systemctl start suricata.service</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="go">systemctl start suricata.service</span>
+</span></code></pre></div>
     <img alt="" src="../img/idps_13.png" /></p>
 </li>
 </ul>
@@ -874,18 +888,18 @@
 <p><img alt="" src="../img/idps_14.png" /></p>
 <p>Que generará una alarma cuando un posible intruso use el comando <code>id</code> y éste responda con root. </p>
 <p>Para comprobarlo, accederemos a un site que simule este comportamiento ejecutando lo el siguiente comando:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">curl http://testmynids.org/uid/index.html</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">curl http://testmynids.org/uid/index.html</span>
+</span></code></pre></div>
 </li>
 <li>
 <p>Y examinamos los logs en busca de la alerta, utilizando su identificador:</p>
 <p><img alt="" src="../img/idps_15.png" /></p>
 <p>Suricata también loguea eventos en <code>/var/log/suricata/eve.log</code> usando un formato JSON. La documentación de Suricata recomienda usar la utilidad <code>jq</code> para leer y filtrar las entradas de este archivo. Así pues, lo instalamos:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">apt install jq</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">apt install jq</span>
+</span></code></pre></div>
 <p>Y buscamos la alerta correspondiente:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">jq &#39;select(.alert .signature_id==2100498)&#39; /var/log/suricata/eve.json</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">jq &#39;select(.alert .signature_id==2100498)&#39; /var/log/suricata/eve.json</span>
+</span></code></pre></div>
 </li>
 </ul>
 <div class="admonition task">
@@ -896,41 +910,41 @@
 <li>
 <p>Configurar Suricata como IPS y comprobar su funcionamiento</p>
 <p>En este caso vamos a ver como trabajar en capa 3 con el modo <em>inline</em> de Suricata usando <code>iptables</code>. Para ello, necesitamos instalar una dependencia:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">apt-get -y install libnetfilter-queue-dev</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">apt-get -y install libnetfilter-queue-dev</span>
+</span></code></pre></div>
 <p>Ahora haremos que Suricata corra en modo NFQ, o lo que es lo mismo, le decimos que acepte los paquetes que le reenvíe <code>iptables</code> sin que el firewall siga aplicando sus reglas al paquete (es posible que tarde varios minutos):</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">suricata -c /etc/suricata/suricata.yaml -q 0</span>
-</code></pre></div>
+<p><div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">suricata -c /etc/suricata/suricata.yaml -q 0</span>
+</span></code></pre></div>
 De la misma forma, debemos decirle al firewall que reenvíe todos los paquete que entran y salen de nuestra máquina a Suricata:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">sudo iptables -I INPUT -j NFQUEUE</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="go">sudo iptables -I OUTPUT -j NFQUEUE</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">sudo iptables -I INPUT -j NFQUEUE</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="go">sudo iptables -I OUTPUT -j NFQUEUE</span>
+</span></code></pre></div>
 <p>Podemos ver las reglas activas del firewall con:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="go">iptables -vnL</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="go">iptables -vnL</span>
+</span></code></pre></div>
 <p>Por defecto Suricata corre en modo IDS así que para activar el IPS haremos:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="go">systemctl edit suricata.service</span>
-</code></pre></div>
+<p><div class="language-console highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="go">systemctl edit suricata.service</span>
+</span></code></pre></div>
 Y añadimos las líneas resaltadas:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c">### Editing /etc/systemd/system/suricata.service.d/override.conf</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c">### Anything between here and the comment below will become the new contents of the file</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="hll"><span class="s">[Service]</span>
-</span><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="hll">ExecStart<span class="s">= </span>
-</span><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="hll">ExecStart<span class="s">=/usr/bin/suricata -c /etc/suricata/suricata.yaml --pidfile /run/suricata.pid -q 0 -vvv</span>
-</span><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="hll">Type<span class="s">=simple</span>
-</span><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c">### Lines below this comment will be discarded</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="s">. . .</span>
-</code></pre></div>
+<div class="language-linuxconfig highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c">### Editing /etc/systemd/system/suricata.service.d/override.conf</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c">### Anything between here and the comment below will become the new contents of the file</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="hll"><span class="s">[Service]</span>
+</span></span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="hll">ExecStart<span class="s">= </span>
+</span></span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="hll">ExecStart<span class="s">=/usr/bin/suricata -c /etc/suricata/suricata.yaml --pidfile /run/suricata.pid -q 0 -vvv</span>
+</span></span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="hll">Type<span class="s">=simple</span>
+</span></span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c">### Lines below this comment will be discarded</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="s">. . .</span>
+</span></code></pre></div>
 <p>Donde <code>ExecStart=</code> borra el comando por defecto que systemd utiliza para iniciar un servicio. La siguiente línea define el nuevo comando a utilizar y <code>Type=simple</code> se asegura de que systemd pueda manejar el proceso de Suricata como cualquier otro servicio cuando está corriendo en modo IPS.</p>
 <p>Guardamos y reiniciamos systemd para que detecte la nueva configuración del servicio de Suricata:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="go">systemctl daemon-reload</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="go">systemctl daemon-reload</span>
+</span></code></pre></div>
 <p>Reiniciamos Suricata y comprobamos su estado:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="go">sudo systemctl restart suricata.service</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="go">sudo systemctl status suricata.service</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="go">sudo systemctl restart suricata.service</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="go">sudo systemctl status suricata.service</span>
+</span></code></pre></div>
 <div class="admonition task">
 <p class="admonition-title">Tarea</p>
 <p>Modifica la regla que hemos comprobado anteriormente para que en lugar de generar una alerta (alert), descarte (drop) los paquetes que hagan match con esa regla.</p>
@@ -945,21 +959,21 @@ Y añadimos las líneas resaltadas:</p>
 <p>A partir de la documentación proporcionada o de otra que podáis encontrar por Internet, escribid una regla de Suricata para que cuando se produzca una conexión desde cualquier IP origen a cualquier IP destino y puerto 8000, el tráfico sea bloqueado por <code>iptables</code>. 
 Ponedle SID 9000001 por ejemplo, para que no haya conflicto con otra regla ya existente.
 Para comprobarla, en la máquina donde está Suricata:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="go">nc -nvlp 8000</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="go">nc -nvlp 8000</span>
+</span></code></pre></div>
 <p>Y en la máquina anfitriona:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="go">nc IP_Maq_Virtual 8000</span>
-</code></pre></div>
+<p><div class="language-console highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="go">nc IP_Maq_Virtual 8000</span>
+</span></code></pre></div>
 <img alt="" src="../img/idps_18.png" /> </p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Nota</p>
 <p>Recordad el comando para recargar las reglas (puede tardar un rato):
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="go">kill -USR2 $(pidof suricata)</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="go">kill -USR2 $(pidof suricata)</span>
+</span></code></pre></div>
 Si no os funciona, de acuerdo con la <a href="https://suricata.readthedocs.io/en/suricata-6.0.0/rule-management/rule-reload.html">documentación</a>, probad:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="go">suricatasc -c ruleset-reload-nonblocking</span>
-</code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="go">suricatasc -c ruleset-reload-nonblocking</span>
+</span></code></pre></div>
 </div>
 </li>
 </ol>

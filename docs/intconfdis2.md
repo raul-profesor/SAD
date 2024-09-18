@@ -130,6 +130,21 @@ Comprovar que l'arxiu està xifrat al símbol del sistema de Windows:
 ```cmd
 > type arxiu
 ```
+!!!failure "Atenció!"
+
+      És possible que no pugau accedir des del navegador web a Rocky i això es degut al firewall que bloqueja les connexions. La solució passa per dir-li al firewall del nostre Linux que permeta la connexió al port 8000.
+
+      Obrim el port:
+
+      ```bash
+      sudo firewall-cmd --zone=public --add-port=8000/tcp --permanent
+      ```
+
+      Reiniciar el firewall per a aplicar els canvis:
+
+      ```bash
+      sudo firewall-cmd --reload
+      ```
 
 #### <u>Pas 5</u>: Instal·lar VeraCrypt en Windows
 

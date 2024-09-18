@@ -894,6 +894,16 @@ I des de Windows, amb el navegador web haureu d'accedir a <code>http://IP_Rocky:
 <p>Comprovar que l'arxiu està xifrat al símbol del sistema de Windows:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&gt; type arxiu
 </span></code></pre></div>
+<div class="admonition failure">
+<p class="admonition-title">Atenció!</p>
+<p>És possible que no pugau accedir des del navegador web a Rocky i això es degut al firewall que bloqueja les connexions. La solució passa per dir-li al firewall del nostre Linux que permeta la connexió al port 8000.</p>
+<p>Obrim el port:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--add-port<span class="o">=</span><span class="m">8000</span>/tcp<span class="w"> </span>--permanent
+</span></code></pre></div>
+<p>Reiniciar el firewall per a aplicar els canvis:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
+</span></code></pre></div>
+</div>
 <h4 id="pas-5-installar-veracrypt-en-windows"><u>Pas 5</u>: Instal·lar VeraCrypt en Windows</h4>
 <p>Podeu obtenir-lo <a href="https://www.veracrypt.fr/en/Downloads.html">ací</a>.</p>
 <h4 id="pas-6-muntar-el-volum-xifrat-en-windows"><u>Pas 6</u>: Muntar el volum xifrat en Windows</h4>

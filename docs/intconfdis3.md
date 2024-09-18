@@ -1,61 +1,14 @@
-## Aquí títol
+## Disponibilitat de serveis amb Nmap
 
-```bash
-#!/bin/bash
+Identificar i analitzar la disponibilitat de serveis o servidors, ports oberts i versions de sistemes operatius que els suporten, suposa la informació base per a l’estudi de les innumerables vulnerabilitats dels sistemes en xarxa. D’aquest mode es podran prendre mesures front a aquests punts febles dels nostres sistemes.
 
-# Update the package database
-sudo dnf update -y
+Nmap és una ferramenta de codi obert per a l’exploració de xarxa i auditoria de seguretat. Utilitza paquets IP per a determinar quins equips es troben disponibles a la xarxa, quins serveis ofereixen i mitjançant quines aplicacions (nom i versió de l’aplicació), quins sistemes operatius (i les seues versions) executen, quins tipus filtrat de paquets i tallafocs estan utilitzant, així com altres característiques.
 
-# Uninstall any old versions of Docker
-sudo dnf remove -y docker \
-                  docker-client \
-                  docker-client-latest \
-                  docker-common \
-                  docker-latest \
-                  docker-latest-logrotate \
-                  docker-logrotate \
-                  docker-engine
+![](img/nmap_logo.png)
 
-# Set up the Docker repository
-sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+### Escaneig de ports amb Nmap
 
-# Install required packages for repository management
-sudo dnf install -y dnf-plugins-core
-
-# Install Docker Engine
-sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-# Start Docker service
-sudo systemctl start docker
-
-# Enable Docker to start on boot
-sudo systemctl enable docker
-
-# Add your user to the 'docker' group to run docker without sudo (optional)
-sudo usermod -aG docker $USER
-
-# Install Docker Compose (standalone binary version, optional if using plugin)
-DOCKER_COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
-sudo curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
-# Apply executable permissions to Docker Compose binary
-sudo chmod +x /usr/local/bin/docker-compose
-
-# Verify Docker Compose installation
-docker-compose --version
-
-# Enable Docker Compose plugin (if not using the standalone binary)
-sudo ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
-
-# Restart the Docker service (important if usermod was used)
-sudo systemctl restart docker
-
-# Output the Docker and Docker Compose versions
-echo "Docker version:"
-docker --version
-
-echo "Docker Compose version:"
-docker-compose --version
-
-echo "Docker and Docker Compose installation completed!"
-```
+1. Instal·la Nmap a Rocky Linux des dels repositoris
+2. Una vegada fet lo anterior, realitza un escaneig ràpid i sense opcions a `http://scanme.nmap.org
+3. Mostra els resultats i identifica a quin servei pertany cada port
+4. Fes un nou escaneig i utilitza les opcions necessàries per tal d'identificar quin software es fa servir per al DNS i quin per al servidor Web. A més, identifica quina versió de eixe servidor web s'està utilitzant i sobre quin sistema operatiu. Adjunta una captura de pantalla a on senyales estos paràmetres.

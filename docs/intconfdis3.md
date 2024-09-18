@@ -9,6 +9,6 @@ Nmap és una ferramenta de codi obert per a l’exploració de xarxa i auditoria
 ### Escaneig de ports amb Nmap
 
 1. Instal·la Nmap a Rocky Linux des dels repositoris
-2. Una vegada fet lo anterior, realitza un escaneig ràpid i sense opcions a `http://scanme.nmap.org
+2. Una vegada fet lo anterior, realitza un escaneig ràpid i sense opcions a `http://scanme.nmap.org`
 3. Mostra els resultats i identifica a quin servei pertany cada port
 4. Fes un nou escaneig i utilitza les opcions necessàries per tal d'identificar quin software es fa servir per al DNS i quin per al servidor Web. A més, identifica quina versió de eixe servidor web s'està utilitzant i sobre quin sistema operatiu. Adjunta una captura de pantalla a on senyales estos paràmetres.

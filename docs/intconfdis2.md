@@ -135,8 +135,6 @@ Comprovar que l'arxiu està xifrat al símbol del sistema de Windows:
 
 Podeu obtenir-lo [ací](https://www.veracrypt.fr/en/Downloads.html).
 
-Comproveu 
-
 #### <u>Pas 6</u>: Muntar el volum xifrat en Windows
 Munteu el volum que heu xifrat  previament en Linux i comproveu que, efectivament, podeu accedir als arxius xifrats previament:
 

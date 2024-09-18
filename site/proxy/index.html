@@ -281,6 +281,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intconfdis3/" class="md-nav__link">
+        Disponibilitat de serveis amb Nmap
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -663,7 +677,7 @@
 <li>Quan tot estiga funcionant, baixe-vos e instal·leu el certificat autogenerat per a que el tràfic HTTPS siga completament confiable i no done problemes.</li>
 <li>
 <p>Insertar un usuari en la BBDD <code>radius</code> <strong>des del contenidor de <em>freeradius</em></strong>, en la taula <code>radcheck</code>. Els valors:</p>
-<div class="highlight"><pre><span></span><code>username --&gt; Omplir
+<div class="language-text highlight"><pre><span></span><code>username --&gt; Omplir
 attribute --&gt; &quot;Cleartext-Password&quot;
 op --&gt; &quot;:=&quot;
 value --&gt; Omplir
@@ -676,8 +690,8 @@ value --&gt; Omplir
 <div class="admonition warning">
 <p class="admonition-title">Atenció<p>Haurás de modificar el <code>radius.conf</code> del contenidor radius per a loguear els intents d'autenticació, tant si s'utilitza un password correcte, com si és incorrecte.
 Donat que no teniu editor de texts en el contenidor, podeu trobar utilitat en aquest comand:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/Terme a sustituir/Terme nou/g&#39;</span><span class="w"> </span>arxiu
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/Terme a sustituir/Terme nou/g&#39;</span><span class="w"> </span>arxiu
+</span></code></pre></div>
 </p>
 </div>
 <h2 id="contingut-extra-per-a-la-recuperacio-de-la-practica">Contingut extra per a la recuperació de la pràctica</h2>

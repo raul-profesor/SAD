@@ -168,3 +168,27 @@ Here’s how you would approach the solution based on the steps and hints provid
 ### **Final Deliverable:**
 - A report that includes:
   1.
+
+
+  Esquema de la solució:
+A continuació s'explica com s'aproximarà a la solució en funció dels passos i consells proporcionats:
+
+Consum total d'energia:
+
+Sumeu el consum d'energia de tots els sistemes: [ 800 + 600 + 100 + 80 + 1000 + 400 + 300 = 3280 , \text{W} ]
+Convertir a VA:
+
+Utilitzant un factor de potència de 0,8: [ \text{Capacitat del SAI (VA)} = \frac{3280}{0,8} = 4100 , \text{VA} ]
+Seleccioneu els models de SAI:
+
+Necessites un total de 4100 VA per donar suport a tots els sistemes.
+Per als sistemes d'alta prioritat (1400 W), utilitzeu dues unitats CyberPower 3000VA per garantir 30 minuts de temps d'activitat amb redundància.
+Per als sistemes de prioritat mitjana (580 W), utilitzeu una unitat Eaton 5P 2200VA, que proporciona més d'1 hora de temps d'execució amb una càrrega del 30%.
+Per als sistemes de baixa prioritat (1300 W), dues unitats APC Smart-UPS 1500VA manejaran la càrrega i proporcionaran uns 10-15 minuts de temps d'execució.
+Redundància:
+
+La redundància es proporciona per als sistemes d'alta prioritat mitjançant l'ús de dues unitats UPS CyberPower 3000VA. Si un falla, l'altre pot continuar donant suport als sistemes.
+Consideracions de ciberseguretat:
+
+Assegureu-vos que la supervisió remota estigui habilitat per al SAI, assegureu les interfícies de gestió amb contrasenyes fortes i restringiu l'accés a la xarxa al SAI.
+Utilitzeu l'encriptació per a les comunicacions (p. ex., SNMPv3 o HTTPS) entre el SAI i el programari de supervisió.

@@ -6,23 +6,31 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="En este ejercicio se simula un escenario real donde el alumna ha de elegir el SAI que mejor cubra los requerimientos de seguridad que son necesarios en la empresa">
       
       
       
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/SAI/">
       
-      <link rel="icon" href="/SAD/assets/images/favicon.png">
+      
+        <link rel="prev" href="../intconfdis3/">
+      
+      
+        <link rel="next" href="../ARP_Spoofing/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Seguridad y alta disponibilidad</title>
+        <title>Elecció de SAI - Seguridad y alta disponibilidad</title>
       
     
     
-      <link rel="stylesheet" href="/SAD/assets/stylesheets/main.ded33207.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ded33207.min.css">
       
         
-        <link rel="stylesheet" href="/SAD/assets/stylesheets/palette.a0c5b2b5.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
 
@@ -38,11 +46,11 @@
       
     
     
-      <link rel="stylesheet" href="/SAD/stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-    <script>__md_scope=new URL("/SAD/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -82,6 +90,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#exercici-guiat-triant-el-sai-adequat-per-a-sistemes-critics" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +107,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="/SAD/." title="Seguridad y alta disponibilidad" class="md-header__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
+    <a href=".." title="Seguridad y alta disponibilidad" class="md-header__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -113,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Elecció de SAI
             
           </span>
         </div>
@@ -208,7 +221,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/SAD/." title="Seguridad y alta disponibilidad" class="md-nav__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
+    <a href=".." title="Seguridad y alta disponibilidad" class="md-nav__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -254,7 +267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/intconfdis/" class="md-nav__link">
+      <a href="../intconfdis/" class="md-nav__link">
         Integritat amb AIDE
       </a>
     </li>
@@ -268,7 +281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/intconfdis2/" class="md-nav__link">
+      <a href="../intconfdis2/" class="md-nav__link">
         Confidencialitat amb Veracrypt
       </a>
     </li>
@@ -282,7 +295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/intconfdis3/" class="md-nav__link">
+      <a href="../intconfdis3/" class="md-nav__link">
         Disponibilitat de serveis amb Nmap
       </a>
     </li>
@@ -302,14 +315,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
       
       
       
@@ -318,7 +333,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Seguretat física
@@ -329,11 +344,150 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/SAD/SAI/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SAI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         SAI
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercici-guiat-triant-el-sai-adequat-per-a-sistemes-critics" class="md-nav__link">
+    Exercici guiat: Triant el SAI adequat per a sistemes crítics
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercici guiat: Triant el SAI adequat per a sistemes crítics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectiu" class="md-nav__link">
+    Objectiu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escenari" class="md-nav__link">
+    Escenari
+  </a>
+  
+    <nav class="md-nav" aria-label="Escenari">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sistemes-critics" class="md-nav__link">
+    Sistemes crítics
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passos-i-consells" class="md-nav__link">
+    Passos i consells
+  </a>
+  
+    <nav class="md-nav" aria-label="Passos i consells">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pas-1-calculeu-el-consum-total-denergia" class="md-nav__link">
+    Pas 1:  Calculeu el consum total d'energia
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-2-converteix-el-consum-denergia-a-la-capacitat-del-sai-va" class="md-nav__link">
+    Pas 2: Converteix el consum d'energia a la capacitat del SAI (VA)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-3-calculeu-el-temps-dexecucio-del-sai-per-a-cada-sistema" class="md-nav__link">
+    Pas 3: Calculeu el temps d'execució del SAI per a cada sistema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-4-dividiu-els-sistemes-per-prioritat" class="md-nav__link">
+    Pas 4: Dividiu els sistemes per prioritat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-5-seleccioneu-els-models-de-sai-adequats" class="md-nav__link">
+    Pas 5: Seleccioneu els models de SAI adequats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-6-considereu-la-redundancia-i-la-ciberseguretat" class="md-nav__link">
+    Pas 6: Considereu la redundància i la ciberseguretat
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preguntes-per-respondre-al-vostre-informe" class="md-nav__link">
+    Preguntes per respondre al vostre informe:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entrega-final" class="md-nav__link">
+    Entrega final:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -380,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/ARP_Spoofing/" class="md-nav__link">
+      <a href="../ARP_Spoofing/" class="md-nav__link">
         ARP Spoofing
       </a>
     </li>
@@ -429,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/idps/" class="md-nav__link">
+      <a href="../idps/" class="md-nav__link">
         Monitorización mediante sistemas detectores de intrusos (IDS) y sistemas de prevención de intrusos (IPS)
       </a>
     </li>
@@ -478,7 +632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/iptables/" class="md-nav__link">
+      <a href="../iptables/" class="md-nav__link">
         Administració senzilla de regles d'iptables fent servir Docker
       </a>
     </li>
@@ -492,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/fw-ics/" class="md-nav__link">
+      <a href="../fw-ics/" class="md-nav__link">
         Administració de regles d'iptables en un entorn industrial
       </a>
     </li>
@@ -541,7 +695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/vpn/" class="md-nav__link">
+      <a href="../vpn/" class="md-nav__link">
         Servidor de VPN amb wireguard en un escenari muntat amb Docker
       </a>
     </li>
@@ -590,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/proxy/" class="md-nav__link">
+      <a href="../proxy/" class="md-nav__link">
         Servidor proxy Squid amb autenticació Radius amb Docker
       </a>
     </li>
@@ -604,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/proxy-traefik/" class="md-nav__link">
+      <a href="../proxy-traefik/" class="md-nav__link">
         Proxy inverso para Docker con Traefik
       </a>
     </li>
@@ -618,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SAD/proxy-caddy/" class="md-nav__link">
+      <a href="../proxy-caddy/" class="md-nav__link">
         Proxy inverso con Caddy para contenedores Docker
       </a>
     </li>
@@ -644,8 +798,232 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+  <h1>SAI</h1>
+
+<h2 id="exercici-guiat-triant-el-sai-adequat-per-a-sistemes-critics">Exercici guiat: Triant el SAI adequat per a sistemes crítics</h2>
+<h3 id="objectiu">Objectiu</h3>
+<p>Els estudiants avaluaran els requisits d'alimentació i seleccionaran el SAI adequat per als sistemes crítics en un escenari. Se'ls proporcionarà consells per guiar-los a l'hora de triar els models de SAI correctes, calcular el temps d'execució i considerar mesures de redundància i ciberseguretat.</p>
+<hr />
+<h3 id="escenari">Escenari</h3>
+<p>Sou l'administrador informàtic d'una empresa mitjana amb diversos sistemes crítics. A causa dels freqüents talls elèctrics, se vos ha encarregat d'escollir un sistema SAI per mantenir aquests sistemes operatius durant el temps necessari.</p>
+<hr />
+<h4 id="sistemes-critics">Sistemes crítics</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Sistema</strong></th>
+<th><strong>Consum d'energía (Watts)</strong></th>
+<th><strong>Nivell de prioritat</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Servidor base de dades</td>
+<td>800 W</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Servidor Web</td>
+<td>600 W</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Firewall</td>
+<td>100 W</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Network Switch</td>
+<td>80 W</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Workstation (x5)</td>
+<td>200 W cadascuna</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>CCTV System (Cameras &amp; NVR)</td>
+<td>400 W</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Backup NAS</td>
+<td>300 W</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<p>El vostre objectiu és triar els models de SAI adequats que puguin gestionar el consum d'energia i assegurar-vos que cada sistema tingui el temps d'execució requerit. També hauríeu de considerar la redundància per als sistemes d'alta prioritat i abordar els problemes de ciberseguretat pel que fa a la gestió d'SAI.</p>
+</div>
+<hr />
+<h3 id="passos-i-consells">Passos i consells</h3>
+<h4 id="pas-1-calculeu-el-consum-total-denergia">Pas 1:  Calculeu el consum total d'energia</h4>
+<div class="admonition tip">
+<p class="admonition-title">Pista<p>El consum total d'energia és la suma de la potència absorbida de tots els sistemes. Assegureu-vos d'incloure tots els sistemes al vostre càlcul. El consum d'energia es dóna en watts.</p>
+</p>
+</div>
+<hr />
+<h4 id="pas-2-converteix-el-consum-denergia-a-la-capacitat-del-sai-va">Pas 2: Converteix el consum d'energia a la capacitat del SAI (VA)</h4>
+<div class="admonition tip">
+<p class="admonition-title">Pista<p>Els sistemes SAI solen estar classificats en Volt-Amps (VA). Per convertir la potència total en watts a VA, utilitzeu la fórmula següent:</p>
+<p>$$ 
+\text{Capacitat del SAI (VA)} = \frac{\text{Potència total (watts)}}{\text{Factor de potència}} 
+$$</p>
+<p>On el factor de potència és generalment de 0,8 per a la majoria de les unitats SAI. Aquesta conversió és necessària perquè els sistemes SAI tenen en compte la potència reactiva, per això VA i watts difereixen.</p>
+</p>
+</div>
+<hr />
+<h4 id="pas-3-calculeu-el-temps-dexecucio-del-sai-per-a-cada-sistema">Pas 3: Calculeu el temps d'execució del SAI per a cada sistema</h4>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>La majoria de fulls de dades del SAI proporcionen corbes o taules de temps d'execució que mostren quant de temps el SAI pot suportar una càrrega específica. Si coneixeu la càrrega de potència en watts i la capacitat del SAI, utilitzeu aquests recursos per determinar quant de temps el SAI proporcionarà energia de reserva.</p>
+<p>També podeu utilitzar la fórmula simplificada per aproximar el temps d'execució:
+$$
+\text{Temps d'execució del SAI (minuts)} = \frac{\text{Capacitat del SAI (Wh)}}{\text{Càrrega del sistema (Watts)}}
+$$</p>
+</div>
+<hr />
+<h4 id="pas-4-dividiu-els-sistemes-per-prioritat">Pas 4: Dividiu els sistemes per prioritat</h4>
+<p>No tots els sistemes necessiten el mateix temps de funcionament. Agrupeu els sistemes per nivell de prioritat per assignar millor els recursos del SAI. Els sistemes crítics com el servidor de bases de dades i el servidor web haurien de tenir temps d'execució més llargs i possiblement redundància, mentre que els sistemes de prioritat més baixa poden tenir temps d'execució més curts.</p>
+<ul>
+<li>
+<p><strong>Sistemes d'alta prioritat (servidor de bases de dades, servidor web):</strong> necessiten entre 20 i 40 minuts de temps d'activitat.</p>
+</li>
+<li>
+<p><strong>Sistemes de prioritat mitjana (tallafoc, commutador de xarxa, CCTV):</strong> necessiten entre 20 minuts i 30 minuts de funcionament.</p>
+</li>
+<li>
+<p><strong>Sistemes de baixa prioritat (estacions de treball, NAS de còpia de seguretat):</strong> només necessiten 8 minuts per a un apagat segur.</p>
+</li>
+</ul>
+<hr />
+<h4 id="pas-5-seleccioneu-els-models-de-sai-adequats">Pas 5: Seleccioneu els models de SAI adequats</h4>
+<p>Utilitzeu la taula següent per ajudar-vos a triar el SAI adequat per a cada grup de sistemes en funció dels seus requisits d'alimentació i necessitats de temps d'execució.
+Penseu si necessiteu comprar diverses unitats SAI o una de més gran per cobrir tots els sistemes.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Busqueu les especificacions de cadascún dels SAI i consulteu les gràfiques de <em>runtime</em> per tal de completar la taula</p>
+</div>
+<table>
+<thead>
+<tr>
+<th><strong>Model SAI</strong></th>
+<th><strong>Capacitat (VA)</strong></th>
+<th><strong>Factor potència</strong></th>
+<th><strong>Càrrega màxima (Watts)</strong></th>
+<th><strong>Temps d'execució en càrrega màxima (Minuts)</strong></th>
+<th><strong>Temps d'execució amb 50% de càrrega (Minuts)</strong></th>
+<th><strong>Preu (€)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APC SAI Smart UPS SRT 1500VA (SRT1500XLA)</td>
+<td>1500</td>
+<td>0.9</td>
+<td></td>
+<td></td>
+<td></td>
+<td>800€</td>
+</tr>
+<tr>
+<td>Eaton 5P 2200VA (9PX2200GRT-L)</td>
+<td>2200</td>
+<td>0.9091</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1715€</td>
+</tr>
+<tr>
+<td>CyberPower 3000VA  (OL3000RTXL2U)</td>
+<td>3000</td>
+<td>0.9</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2600€</td>
+</tr>
+<tr>
+<td>CyberPower 5000VA  (PR5000LCDRTXL5U)</td>
+<td>5000</td>
+<td>0.9</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3800€</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="pas-6-considereu-la-redundancia-i-la-ciberseguretat">Pas 6: Considereu la redundància i la ciberseguretat</h4>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Per als sistemes d'alta prioritat (p. ex., servidor de bases de dades, servidor web), considereu la possibilitat d'implementar la redundància utilitzant dues unitats SAI si fera falta. La redundància garanteix que si falla un SAI, la segona unitat pot fer-se càrrec, mantenint el sistema operatiu.</p>
+<p>A més, assegureu-vos que el SAI admet la supervisió remota (mitjançant SNMP o interfícies basades en web) perquè pugueu rebre alertes i controlar l'estat de la bateria. </p>
+</div>
+<h3 id="preguntes-per-respondre-al-vostre-informe">Preguntes per respondre al vostre informe:</h3>
+<ol>
+<li>
+<p>Consum total d'energia: quin és el consum total d'energia de tots els sistemes?</p>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Suma la potència (en watts) de tots els sistemes.</p>
+</div>
+</li>
+<li>
+<p>Capacitat del SAI: Quina és la capacitat total del SAI (en VA) necessària per a tots els sistemes?</p>
+<div class="admonition tip">
+<p class="admonition-title">Consell</p>
+<p>Utilitzeu la fórmula que se vos indica i un factor de potència de 0,8 per convertir watts a VA.</p>
+</div>
+</li>
+<li>
+<p>Selecció de SAI: quins models de SAI heu triat i per què?</p>
+<div class="admonition tip">
+<p class="admonition-title">Consell</p>
+<p>Tingueu en compte el temps d'execució, la càrrega i el preu quan seleccioneu el SAI. Procureu economitzar al màxim la vostra elecció.</p>
+</div>
+</li>
+<li>
+<p>Redundància: heu inclòs alguna redundància per a sistemes d'alta prioritat? Per què o per què no?</p>
+<div class="admonition tip">
+<p class="admonition-title">Suggeriment</p>
+<p>La redundància pot evitar temps d'inactivitat en cas d'avaria del SAI.</p>
+</div>
+</li>
+<li>
+<p>Consideracions de ciberseguretat: quines mesures de seguretat prendràs per garantir que la interfície de gestió de l'SAI estigui segura?</p>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Si tenim una eina de monitorització del SAI a la que s'accedix mitjantçant un accés web, què faríes per a tindre un accés segur?</p>
+</div>
+</li>
+</ol>
+<h3 id="entrega-final">Entrega final:</h3>
+<p>Un informe que inclou:</p>
+<ul>
+<li>Càlculs de potència i temps d'execució.</li>
+<li>Selecció i justificació del model de SAI.</li>
+<li>Planificació de redundància per a sistemes d'alta prioritat.</li>
+<li>Mesures de ciberseguretat per assegurar la gestió de SAI.</li>
+<li>Cost total de la implementació amb tots els SAI.</li>
+</ul>
+
+
+  
+
+
+
+
+                
               </article>
             </div>
           
@@ -682,12 +1060,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "/SAD/", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate"], "search": "/SAD/assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="/SAD/assets/javascripts/bundle.51198bba.min.js"></script>
+      <script src="../assets/javascripts/bundle.51198bba.min.js"></script>
       
-        <script src="/SAD/javascripts/katex.js"></script>
+        <script src="../javascripts/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       

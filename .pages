@@ -3,6 +3,8 @@ nav:
         - Integritat amb AIDE: intconfdis.md
         - Confidencialitat amb Veracrypt: intconfdis2.md
         - Disponibilitat de serveis amb Nmap: intconfdis3.md
+    - Seguretat física:
+        - SAI: SAI.md
 
     - Spoofing: 
         - ARP Spoofing: ARP_Spoofing.md

@@ -36,15 +36,15 @@ Sou l'administrador informàtic d'una empresa mitjana amb diversos sistemes crí
 
 ### Passos i consells
 
-#### Pas 1:  Calculeu el consum total d'energia
+#### Pas 1:  Calculeu el consum total d'energia del sistema
 
 !!!tip "Pista"
         El consum total d'energia és la suma de la potència absorbida de tots els sistemes. Assegureu-vos d'incloure tots els sistemes al vostre càlcul. El consum d'energia es dóna en watts.
 
 ---
 
-#### Pas 2: Converteix el consum d'energia a la capacitat del SAI (VA)
-   
+#### Pas 2: Converteix el consum d'energia a la capacitat del SAI (VA) per a tot el sistema
+
 !!!tip "Pista"
         Els sistemes SAI solen estar classificats en Volt-Amps (VA). Per convertir la potència total en watts a VA, utilitzeu la fórmula següent:
 
@@ -54,9 +54,11 @@ Sou l'administrador informàtic d'una empresa mitjana amb diversos sistemes crí
 
         On el factor de potència és generalment de 0,8 per a la majoria de les unitats SAI. Aquesta conversió és necessària perquè els sistemes SAI tenen en compte la potència reactiva, per això VA i watts difereixen.
 
+!!!question "Tasca"
+    Busca, troba i indica un SAI adequat que puga cobrir tota la potència del sistema.
 ----
 
-#### Pas 3: Calculeu el temps d'execució del SAI per a cada sistema
+#### Pas 3: Calculeu el temps d'execució del SAI per a tot el sistema
 
 !!!tip "Pista"
     La majoria de fulls de dades del SAI proporcionen corbes o taules de temps d'execució que mostren quant de temps el SAI pot suportar una càrrega específica. Si coneixeu la càrrega de potència en watts i la capacitat del SAI, utilitzeu aquests recursos per determinar quant de temps el SAI proporcionarà energia de reserva.

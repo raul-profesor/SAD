@@ -6,22 +6,24 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="En este ejercicio se simula un escenario real donde el alumna ha de elegir el SAI que mejor cubra los requerimientos de seguridad que son necesarios en la empresa">
       
       
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/intconfdis2/">
+      
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/SAI/">
       
       
-        <link rel="prev" href="../intconfdis/">
+        <link rel="prev" href="../intconfdis3/">
       
       
-        <link rel="next" href="../intconfdis3/">
+        <link rel="next" href="../ARP_Spoofing/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>Confidencialitat amb Veracrypt - Seguridad y alta disponibilidad</title>
+        <title>Elecció de SAI - Seguridad y alta disponibilidad</title>
       
     
     
@@ -89,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#confidencialitat-mitjantcant-xifrat-darxius-amb-veracrypt" class="md-skip">
+        <a href="#exercici-guiat-triant-el-sai-adequat-per-a-sistemes-critics" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -124,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Confidencialitat amb Veracrypt
+              Elecció de SAI
             
           </span>
         </div>
@@ -230,16 +232,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
       
       
       
@@ -248,7 +248,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_1">
           <span class="md-nav__icon md-icon"></span>
           Integritat, confidencialitat i disponibilitat
@@ -273,158 +273,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Confidencialitat amb Veracrypt
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../intconfdis2/" class="md-nav__link">
         Confidencialitat amb Veracrypt
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#confidencialitat-mitjantcant-xifrat-darxius-amb-veracrypt" class="md-nav__link">
-    Confidencialitat mitjantçant xifrat d'arxius amb Veracrypt
-  </a>
-  
-    <nav class="md-nav" aria-label="Confidencialitat mitjantçant xifrat d'arxius amb Veracrypt">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#que-es-veracrypt" class="md-nav__link">
-    Què és Veracrypt?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#caracteristiques-clau-de-veracrypt" class="md-nav__link">
-    Característiques clau de VeraCrypt:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#com-funciona-veracrypt" class="md-nav__link">
-    Com funciona VeraCrypt:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#casos-dus" class="md-nav__link">
-    Casos d'ús:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#veracrypt-contra-truecrypt" class="md-nav__link">
-    VeraCrypt contra TrueCrypt:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resum" class="md-nav__link">
-    Resum:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utilitzant-veracrypt-per-a-la-privadesa-cross-platform-linux-windows" class="md-nav__link">
-    Utilitzant Veracrypt per a la privadesa cross platform (Linux - Windows)
-  </a>
-  
-    <nav class="md-nav" aria-label="Utilitzant Veracrypt per a la privadesa cross platform (Linux - Windows)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pas-1-installacio-de-veracrypt" class="md-nav__link">
-    Pas 1: Instal·lació de VeraCrypt
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-2-crear-volum-de-veracrypt-contenidor-xifrat" class="md-nav__link">
-    Pas 2: Crear volum de VeraCrypt (contenidor xifrat)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-3-muntar-el-volum-de-veracrypt" class="md-nav__link">
-    Pas 3: Muntar el volum de VeraCrypt
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-4-transferir-el-arxiu-xifrat-a-windows" class="md-nav__link">
-    Pas 4: Transferir el arxiu xifrat a Windows
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-5-installar-veracrypt-en-windows" class="md-nav__link">
-    Pas 5: Instal·lar VeraCrypt en Windows
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-6-muntar-el-volum-xifrat-en-windows" class="md-nav__link">
-    Pas 6: Muntar el volum xifrat en Windows
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencies" class="md-nav__link">
-    Referències
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -456,14 +309,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
       
       
       
@@ -472,7 +327,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Seguretat física
@@ -483,11 +338,150 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../SAI/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SAI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         SAI
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercici-guiat-triant-el-sai-adequat-per-a-sistemes-critics" class="md-nav__link">
+    Exercici guiat: Triant el SAI adequat per a sistemes crítics
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercici guiat: Triant el SAI adequat per a sistemes crítics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectiu" class="md-nav__link">
+    Objectiu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escenari" class="md-nav__link">
+    Escenari
+  </a>
+  
+    <nav class="md-nav" aria-label="Escenari">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sistemes-critics" class="md-nav__link">
+    Sistemes crítics
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passos-i-consells" class="md-nav__link">
+    Passos i consells
+  </a>
+  
+    <nav class="md-nav" aria-label="Passos i consells">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pas-1-calculeu-el-consum-total-denergia-del-sistema" class="md-nav__link">
+    Pas 1:  Calculeu el consum total d'energia del sistema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-2-converteix-el-consum-denergia-a-la-capacitat-del-sai-va-per-a-tot-el-sistema" class="md-nav__link">
+    Pas 2: Converteix el consum d'energia a la capacitat del SAI (VA) per a tot el sistema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-3-calculeu-el-temps-dexecucio-del-sai-per-a-tot-el-sistema" class="md-nav__link">
+    Pas 3: Calculeu el temps d'execució del SAI per a tot el sistema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-4-dividiu-els-sistemes-per-prioritat" class="md-nav__link">
+    Pas 4: Dividiu els sistemes per prioritat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-5-seleccioneu-els-models-de-sai-adequats" class="md-nav__link">
+    Pas 5: Seleccioneu els models de SAI adequats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-6-considereu-la-redundancia-i-la-ciberseguretat" class="md-nav__link">
+    Pas 6: Considereu la redundància i la ciberseguretat
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preguntes-per-respondre-al-vostre-informe" class="md-nav__link">
+    Preguntes per respondre al vostre informe:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entrega-final" class="md-nav__link">
+    Entrega final:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -801,172 +795,225 @@
                   
 
 
-  <h1>Confidencialitat amb Veracrypt</h1>
+  <h1>SAI</h1>
 
-<h2 id="confidencialitat-mitjantcant-xifrat-darxius-amb-veracrypt">Confidencialitat mitjantçant xifrat d'arxius amb Veracrypt</h2>
-<h3 id="que-es-veracrypt">Què és Veracrypt?</h3>
-<p>VeraCrypt és un software de xifratge de codi obert que s'utilitza per protegir dades sensibles mitjançant la creació de volums xifrats (discs virtuals) o xifrant particions o unitats senceres. </p>
-<p>Proporciona una forta protecció per a les dades mitjançant algorismes de xifratge estàndard del sector i es pot utilitzar en diversos sistemes operatius, inclosos Linux, Windows i macOS.</p>
-<p><img alt="" src="../img/vera.png" /></p>
-<h3 id="caracteristiques-clau-de-veracrypt">Característiques clau de VeraCrypt:</h3>
-<ol>
-<li>
-<p><strong>Volums xifrats (discs virtuals)</strong>: VeraCrypt permet crear un <strong>disc virtual xifrat</strong> dins d'un fitxer. Aleshores, aquest fitxer es pot muntar com si fos un disc real, la qual cosa permet emmagatzemar fitxers de manera segura. Quan el volum no està muntat, les dades són inaccessibles i apareixen com a dades aleatòries.</p>
-</li>
-<li>
-<p><strong>Partició/xifratge de la unitat</strong>: Podeu xifrar una partició sencera o una unitat externa (com ara unitats USB) de manera que tot el que s'emmagatzema a la partició es xifra automàticament.</p>
-</li>
-<li>
-<p><strong>Xifrat de la unitat del sistema</strong>: VeraCrypt ofereix la possibilitat de <strong>xifrar tota la unitat del sistema</strong> (inclòs el sistema operatiu), proporcionant un xifratge de disc complet (FDE). Això garanteix que no es pugui accedir a cap informació del disc sense la clau de desxifrat, fins i tot si algú accedeix físicament al disc.</p>
-</li>
-<li>
-<p><strong>Volums ocults i sistemes operatius</strong>: VeraCrypt admet la creació de <strong>volums ocults</strong> i <strong>sistemes operatius ocults</strong>. Aquesta característica s'utilitza per a una negació plausible, permetent als usuaris tenir un sistema operatiu o un volum "señí" mentre mantenen amagat el real.</p>
-</li>
-<li>
-<p><strong>Algorismes de xifratge forts</strong>: VeraCrypt utilitza diversos algorismes de xifratge potents com ara <strong>AES (Advanced Encryption Standard)</strong>, <strong>Snake</strong> i <strong>Twofish</strong>, sols o combinats (en cascada).</p>
-</li>
-<li>
-<p><strong>Multiplataforma</strong>: VeraCrypt està disponible per a Linux, Windows i macOS, el que significa que els contenidors xifrats creats en una plataforma es poden obrir en una altra sempre que s'instal·li el programari adequat.</p>
-</li>
-<li>
-<p><strong>Protecció basada en contrasenyes i fitxers de claus</strong>: VeraCrypt admet tant el xifratge basat en contrasenyes com l'ús de <strong>fitxers de claus</strong> per a més seguretat. Un fitxer de claus és un fitxer (com una imatge o un document aleatori) que s'ha de presentar juntament amb la contrasenya per desbloquejar el volum xifrat.</p>
-</li>
-<li>
-<p><strong>Autenticació d'arrencada</strong>: Si tota la unitat del sistema està xifrada, VeraCrypt proporciona un mecanisme d'<strong>autenticació prèvia a l'arrencada</strong>, que requereix que introduïu la contrasenya de desxifrat abans que el sistema operatiu es pugui carregar.</p>
-</li>
-</ol>
-<h3 id="com-funciona-veracrypt">Com funciona VeraCrypt:</h3>
-<ol>
-<li>
-<p><strong>Procés de xifratge</strong>: quan creeu un volum xifrat, VeraCrypt utilitza l'algoritme de xifratge seleccionat per xifrar totes les dades que s'emmagatzemaran al volum. El procés es fa de manera transparent, el que significa que podeu interactuar amb els fitxers normalment un cop muntat el volum, però les dades del disc estan xifrades.</p>
-</li>
-<li>
-<p><strong>Montatge/Desmuntatge</strong>:</p>
-</li>
-<li>Munteu un volum xifrat proporcionant la contrasenya i/o el fitxer de claus correctes, moment en què actua com una unitat de disc normal on podeu copiar, moure i accedir a fitxers.</li>
-<li>
-<p>Quan hàgiu acabat, podeu <strong>desmuntar</strong> el volum i les dades seran inaccessibles tret que es tornin a muntar amb les credencials correctes.</p>
-</li>
-<li>
-<p><strong>Algoritmes de xifratge</strong>: VeraCrypt utilitza una combinació dels algorismes de xifratge següents, amb l'opció de posar-los en cascada per a més seguretat:</p>
-<ul>
-<li><strong>AES</strong> (estàndard de xifratge avançat)</li>
-<li><strong>Serp</strong></li>
-<li><strong>Twofish</strong></li>
-<li><strong>Camèlia</strong> (disponible en versions més noves)</li>
-</ul>
-</li>
-</ol>
-<h3 id="casos-dus">Casos d'ús:</h3>
-<ul>
-<li>
-<p><strong>Seguretat de dades</strong>: s'utilitza àmpliament per protegir dades sensibles, com ara documents personals, registres financers i altra informació que ha de romandre privada.</p>
-</li>
-<li>
-<p><strong>Encriptació portàtil</strong>: en xifrar unitats USB o emmagatzematge extern, els usuaris poden portar dades segures i portàtils.</p>
-</li>
-<li>
-<p><strong>Encriptació de disc per a la privadesa</strong>: xifrar el sistema o les unitats de dades garanteix que la informació sensible romangui protegida en cas de robatori o accés no autoritzat.</p>
-</li>
-</ul>
-<h3 id="veracrypt-contra-truecrypt">VeraCrypt contra TrueCrypt:</h3>
-<p>VeraCrypt és un <strong>successor de TrueCrypt</strong>, una eina de xifratge popular que es va suspendre el 2014. VeraCrypt aborda diverses vulnerabilitats de seguretat que hi havia a TrueCrypt i té funcions millorades per a un millor xifratge i rendiment.</p>
-<h3 id="resum">Resum:</h3>
-<p>VeraCrypt és una potent eina per xifrar dades sensibles, que ofereix una varietat de mètodes de xifratge, des de volums simples basats en fitxers fins a xifratge complet del sistema, proporcionant un alt nivell de seguretat i privadesa per als usuaris en múltiples plataformes.</p>
+<h2 id="exercici-guiat-triant-el-sai-adequat-per-a-sistemes-critics">Exercici guiat: Triant el SAI adequat per a sistemes crítics</h2>
+<h3 id="objectiu">Objectiu</h3>
+<p>Els estudiants avaluaran els requisits d'alimentació i seleccionaran el SAI adequat per als sistemes crítics en un escenari. Se'ls proporcionarà consells per guiar-los a l'hora de triar els models de SAI correctes, calcular el temps d'execució i considerar mesures de redundància i ciberseguretat.</p>
+<hr />
+<h3 id="escenari">Escenari</h3>
+<p>Sou l'administrador informàtic d'una empresa mitjana amb diversos sistemes crítics. A causa dels freqüents talls elèctrics, se vos ha encarregat d'escollir un sistema SAI per mantenir aquests sistemes operatius durant el temps necessari.</p>
+<hr />
+<h4 id="sistemes-critics">Sistemes crítics</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Sistema</strong></th>
+<th><strong>Consum d'energía (Watts)</strong></th>
+<th><strong>Nivell de prioritat</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Servidor base de dades</td>
+<td>800 W</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Servidor Web</td>
+<td>600 W</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Firewall</td>
+<td>100 W</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Network Switch</td>
+<td>80 W</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Workstation (x5)</td>
+<td>200 W cadascuna</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>CCTV System (Cameras &amp; NVR)</td>
+<td>400 W</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Backup NAS</td>
+<td>300 W</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<p>El vostre objectiu és triar els models de SAI adequats que puguin gestionar el consum d'energia i assegurar-vos que cada sistema tingui el temps d'execució requerit. També hauríeu de considerar la redundància per als sistemes d'alta prioritat i abordar els problemes de ciberseguretat pel que fa a la gestió d'SAI.</p>
+</div>
+<hr />
+<h3 id="passos-i-consells">Passos i consells</h3>
+<h4 id="pas-1-calculeu-el-consum-total-denergia-del-sistema">Pas 1:  Calculeu el consum total d'energia del sistema</h4>
 <div class="admonition tip">
-<p class="admonition-title">Atenció</p>
-<p>Per tal de treballar amb més facilitat, vos recomane conectar-vos per SSH a la màquina virtual de tal forma que, entre altres coses, podreu pegar text en el vostre terminal sense problema:</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">ssh vostre_usuari@ip_rocky</span>
-</span></code></pre></div>
+<p class="admonition-title">Pista<p>El consum total d'energia és la suma de la potència absorbida de tots els sistemes. Assegureu-vos d'incloure tots els sistemes al vostre càlcul. El consum d'energia es dóna en watts.</p>
+</p>
 </div>
-<h3 id="utilitzant-veracrypt-per-a-la-privadesa-cross-platform-linux-windows">Utilitzant Veracrypt per a la privadesa cross platform (Linux - Windows)</h3>
-<h4 id="pas-1-installacio-de-veracrypt"><u>Pas 1</u>: Instal·lació de VeraCrypt</h4>
-<p>En primer lloc, haureu d'instalar Veracrypt però per a ser utilitzat en mode línia de comandos, en lloc de amb interficie gràfica (GUI):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>fuse<span class="w"> </span>wget<span class="w"> </span>tar<span class="w"> </span>bzip2
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>$<span class="w"> </span>wget<span class="w"> </span>https://launchpad.net/veracrypt/trunk/1.26.14/+download/veracrypt-1.26.14-setup.tar.bz2
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>gcc<span class="w"> </span>make<span class="w"> </span>wxBase<span class="w"> </span>wxGTK3-devel<span class="w"> </span>fuse-devel
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>$<span class="w"> </span>tar<span class="w"> </span>-xvjf<span class="w"> </span>veracrypt-1.26.14-setup.tar.bz2
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>$<span class="w"> </span>sudo<span class="w"> </span>./veracrypt-1.26.14-setup-console-x64<span class="w"> </span><span class="o">(</span>opció<span class="w"> </span><span class="m">1</span><span class="o">)</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>$<span class="w"> </span>veracrypt<span class="w"> </span>--version
-</span></code></pre></div>
-<h4 id="pas-2-crear-volum-de-veracrypt-contenidor-xifrat"><u>Pas 2</u>: Crear volum de VeraCrypt (contenidor xifrat)</h4>
+<hr />
+<h4 id="pas-2-converteix-el-consum-denergia-a-la-capacitat-del-sai-va-per-a-tot-el-sistema">Pas 2: Converteix el consum d'energia a la capacitat del SAI (VA) per a tot el sistema</h4>
+<div class="admonition tip">
+<p class="admonition-title">Pista<p>Els sistemes SAI solen estar classificats en Volt-Amps (VA). Per convertir la potència total en watts a VA, utilitzeu la fórmula següent:</p>
+<p>$$ 
+\text{Capacitat del SAI (VA)} = \frac{\text{Potència total (watts)}}{\text{Factor de potència}} 
+$$</p>
+<p>On el factor de potència és generalment de 0,8 per a la majoria de les unitats SAI. Aquesta conversió és necessària perquè els sistemes SAI tenen en compte la potència reactiva, per això VA i watts difereixen.</p>
+</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<p>Busca, troba i indica un SAI adequat que puga cobrir tota la potència del sistema.</p>
+</div>
+<hr />
+<h4 id="pas-3-calculeu-el-temps-dexecucio-del-sai-per-a-tot-el-sistema">Pas 3: Calculeu el temps d'execució del SAI per a tot el sistema</h4>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>La majoria de fulls de dades del SAI proporcionen corbes o taules de temps d'execució que mostren quant de temps el SAI pot suportar una càrrega específica. Si coneixeu la càrrega de potència en watts i la capacitat del SAI, utilitzeu aquests recursos per determinar quant de temps el SAI proporcionarà energia de reserva.</p>
+<p>També podeu utilitzar la fórmula simplificada per aproximar el temps d'execució:
+$$
+\text{Temps d'execució del SAI (minuts)} = \frac{\text{Capacitat del SAI (Wh)}}{\text{Càrrega del sistema (Watts)}}
+$$</p>
+</div>
+<hr />
+<h4 id="pas-4-dividiu-els-sistemes-per-prioritat">Pas 4: Dividiu els sistemes per prioritat</h4>
+<p>No tots els sistemes necessiten el mateix temps de funcionament. Agrupeu els sistemes per nivell de prioritat per assignar millor els recursos del SAI. Els sistemes crítics com el servidor de bases de dades i el servidor web haurien de tenir temps d'execució més llargs i possiblement redundància, mentre que els sistemes de prioritat més baixa poden tenir temps d'execució més curts.</p>
+<ul>
+<li>
+<p><strong>Sistemes d'alta prioritat (servidor de bases de dades, servidor web):</strong> necessiten entre 20 i 40 minuts de temps d'activitat.</p>
+</li>
+<li>
+<p><strong>Sistemes de prioritat mitjana (tallafoc, commutador de xarxa, CCTV):</strong> necessiten entre 20 minuts i 30 minuts de funcionament.</p>
+</li>
+<li>
+<p><strong>Sistemes de baixa prioritat (estacions de treball, NAS de còpia de seguretat):</strong> només necessiten 8 minuts per a un apagat segur.</p>
+</li>
+</ul>
+<hr />
+<h4 id="pas-5-seleccioneu-els-models-de-sai-adequats">Pas 5: Seleccioneu els models de SAI adequats</h4>
+<p>Utilitzeu la taula següent per ajudar-vos a triar el SAI adequat per a cada grup de sistemes en funció dels seus requisits d'alimentació i necessitats de temps d'execució.
+Penseu si necessiteu comprar diverses unitats SAI o una de més gran per cobrir tots els sistemes.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Busqueu les especificacions de cadascún dels SAI i consulteu les gràfiques de <em>runtime</em> per tal de completar la taula</p>
+</div>
+<table>
+<thead>
+<tr>
+<th><strong>Model SAI</strong></th>
+<th><strong>Capacitat (VA)</strong></th>
+<th><strong>Factor potència</strong></th>
+<th><strong>Càrrega màxima (Watts)</strong></th>
+<th><strong>Temps d'execució en càrrega màxima (Minuts)</strong></th>
+<th><strong>Temps d'execució amb 50% de càrrega (Minuts)</strong></th>
+<th><strong>Preu (€)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APC SAI Smart UPS SRT 1500VA (SRT1500XLA)</td>
+<td>1500</td>
+<td>0.9</td>
+<td></td>
+<td></td>
+<td></td>
+<td>800€</td>
+</tr>
+<tr>
+<td>Eaton 5P 2200VA (9PX2200GRT-L)</td>
+<td>2200</td>
+<td>0.9091</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1715€</td>
+</tr>
+<tr>
+<td>CyberPower 3000VA  (OL3000RTXL2U)</td>
+<td>3000</td>
+<td>0.9</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2600€</td>
+</tr>
+<tr>
+<td>CyberPower 5000VA  (PR5000LCDRTXL5U)</td>
+<td>5000</td>
+<td>0.9</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3800€</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="pas-6-considereu-la-redundancia-i-la-ciberseguretat">Pas 6: Considereu la redundància i la ciberseguretat</h4>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Per als sistemes d'alta prioritat (p. ex., servidor de bases de dades, servidor web), considereu la possibilitat d'implementar la redundància utilitzant dues unitats SAI si fera falta. La redundància garanteix que si falla un SAI, la segona unitat pot fer-se càrrec, mantenint el sistema operatiu.</p>
+<p>A més, assegureu-vos que el SAI admet la supervisió remota (mitjançant SNMP o interfícies basades en web) perquè pugueu rebre alertes i controlar l'estat de la bateria. </p>
+</div>
+<h3 id="preguntes-per-respondre-al-vostre-informe">Preguntes per respondre al vostre informe:</h3>
 <ol>
 <li>
-<p>Crear un contenidor buit de Veracrypt:</p>
-<p><code>$ veracrypt --text --create /ruta/carpeta/arxiu_xifrat</code></p>
-</li>
-<li>
-<p>A les opcions interactives que vos anirà demanant heu d'utilitzar les següents dades:</p>
-<ul>
-<li>Volume type: normal</li>
-<li>Tamany: 100M</li>
-<li>Xifrat: AES</li>
-<li>Hash: SHA-512</li>
-<li>Filesystem: FAT</li>
-<li>Password</li>
-<li>PIM (2n factor autenticació)</li>
-<li>Keyfile path: buit</li>
-</ul>
-</li>
-</ol>
-<h4 id="pas-3-muntar-el-volum-de-veracrypt"><u>Pas 3</u>: Muntar el volum de VeraCrypt</h4>
-<ol>
-<li>
-<p>Heu de crear la carpeta: <code>/mnt/veracrypt1</code></p>
-</li>
-<li>
-<p>Després es necessari muntar el arxiu xifrat que heu creat previament  com a una unitat del sistema
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>/mnt/veracrypt1<span class="w"> </span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>veracrypt<span class="w"> </span>--text<span class="w"> </span>/ruta/al/arxiu<span class="w"> </span>/mnt/veracrypt1<span class="w"> </span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Creeu 3 fitxers de text amb qualsevol contingut de text i després copieu-los a la unitat que heu muntat en el pas anterior.</p>
-</li>
-<li>
-<p>Desmunteu la unitat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>veracrypt<span class="w"> </span>--dismount<span class="w"> </span>/mnt/veracrypt1<span class="w"> </span>
-</span></code></pre></div></p>
-</li>
-<li>Ara els continguts de la carpeta estan xifrats i emmagatzemast dins en l'arxiu <code>arxiu_xifrat</code></li>
-</ol>
-<h4 id="pas-4-transferir-el-arxiu-xifrat-a-windows"><u>Pas 4</u>: Transferir el arxiu xifrat a Windows</h4>
-<p>Aquest pas ho podeu realitzar mitjançant una unitat usb (pendrive), utilitzant el comand <code>scp</code>, muntant un server web amb python3 en Rocky Linux i accedint des del navegador web de Windows...</p>
-<p>Per exemple,</p>
-<p>En Rocky Linux, en el directory a on tenim el contenidor buit creat abans:</p>
-<p><div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="err">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span>
-</span></code></pre></div>
-I des de Windows, amb el navegador web haureu d'accedir a <code>http://IP_Rocky:8000</code> i descarregar l'arxiu.</p>
-<p>Comprovar que l'arxiu està xifrat al símbol del sistema de Windows:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&gt; type arxiu
-</span></code></pre></div>
-<div class="admonition failure">
-<p class="admonition-title">Atenció!</p>
-<p>És possible que no pugau accedir des del navegador web a Rocky i això es degut al firewall que bloqueja les connexions. La solució passa per dir-li al firewall del nostre Linux que permeta la connexió al port 8000.</p>
-<p>Obrim el port:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--add-port<span class="o">=</span><span class="m">8000</span>/tcp<span class="w"> </span>--permanent
-</span></code></pre></div>
-<p>Reiniciar el firewall per a aplicar els canvis:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
-</span></code></pre></div>
+<p>Consum total d'energia: quin és el consum total d'energia de tots els sistemes?</p>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Suma la potència (en watts) de tots els sistemes.</p>
 </div>
-<h4 id="pas-5-installar-veracrypt-en-windows"><u>Pas 5</u>: Instal·lar VeraCrypt en Windows</h4>
-<p>Podeu obtenir-lo <a href="https://www.veracrypt.fr/en/Downloads.html">ací</a>.</p>
-<h4 id="pas-6-muntar-el-volum-xifrat-en-windows"><u>Pas 6</u>: Muntar el volum xifrat en Windows</h4>
-<p>Munteu el volum que heu xifrat  previament en Linux i comproveu que, efectivament, podeu accedir als arxius xifrats previament:</p>
+</li>
+<li>
+<p>Capacitat del SAI: Quina és la capacitat total del SAI (en VA) necessària per a tots els sistemes?</p>
+<div class="admonition tip">
+<p class="admonition-title">Consell</p>
+<p>Utilitzeu la fórmula que se vos indica i un factor de potència de 0,8 per convertir watts a VA.</p>
+</div>
+</li>
+<li>
+<p>Selecció de SAI: quins models de SAI heu triat i per què?</p>
+<div class="admonition tip">
+<p class="admonition-title">Consell</p>
+<p>Tingueu en compte el temps d'execució, la càrrega i el preu quan seleccioneu el SAI. Procureu economitzar al màxim la vostra elecció.</p>
+</div>
+</li>
+<li>
+<p>Redundància: heu inclòs alguna redundància per a sistemes d'alta prioritat? Per què o per què no?</p>
+<div class="admonition tip">
+<p class="admonition-title">Suggeriment</p>
+<p>La redundància pot evitar temps d'inactivitat en cas d'avaria del SAI.</p>
+</div>
+</li>
+<li>
+<p>Consideracions de ciberseguretat: quines mesures de seguretat prendràs per garantir que la interfície de gestió de l'SAI estigui segura?</p>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Si tenim una eina de monitorització del SAI a la que s'accedix mitjantçant un accés web, què faríes per a tindre un accés segur?</p>
+</div>
+</li>
+</ol>
+<h3 id="entrega-final">Entrega final:</h3>
+<p>Un informe que inclou:</p>
 <ul>
-<li>Seleccioneu una unitat lliure</li>
-<li>Seleccioneu l'arxiu a muntar (el contenidor buit d'abans)</li>
-<li>Doneu-li a muntar (no oblideu marcar que fa falta PIM)</li>
-<li>Espereu una estona i hauría d'apareixer-vos com a una nova unitat del sistema</li>
-<li>Comproveu que podeu accedir a la informació dins dels 3 arxius de text</li>
+<li>Càlculs de potència i temps d'execució.</li>
+<li>Selecció i justificació del model de SAI.</li>
+<li>Planificació de redundància per a sistemes d'alta prioritat.</li>
+<li>Mesures de ciberseguretat per assegurar la gestió de SAI.</li>
+<li>Cost total de la implementació amb tots els SAI.</li>
 </ul>
-<h2 id="referencies">Referències</h2>
 
 
   

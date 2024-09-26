@@ -5,7 +5,8 @@ nav:
         - Disponibilitat de serveis amb Nmap: intconfdis3.md
     - Seguretat física:
         - SAI: SAI.md
-
+    - Normativa:
+        - RGPD, LOPDGDD y LSSI: normativa.md
     - Spoofing: 
         - ARP Spoofing: ARP_Spoofing.md
     - IDS/IPS:

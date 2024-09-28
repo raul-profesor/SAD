@@ -13,7 +13,7 @@ Actividades
         Pregunta: ¿Qué tipos de datos personales recoge WebData? ¿Son necesarios todos estos datos? ¿Cumplen con las normativas aplicables?
 
     Evaluación de la Política de Privacidad
-        Pregunta: ¿Qué debe incluir una política de privacidad para que cumpla con las normativas vigentes?
+        Pregunta: ¿Qué debe incluir una política de privacidad para que cumpla con las normativas vigentes (RGPD?
 
     Uso de cookies y gestión del consentimiento
         Pregunta: ¿Qué pasos debe seguir WebData para cumplir con la LSSI en cuanto al uso de cookies? ¿Es necesario obtener consentimiento para todas las cookies?

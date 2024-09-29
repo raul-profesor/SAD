@@ -6,24 +6,24 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apuntes y prácticas Seguridad y Alta disponibilidad (SAD - ASIR).En esta práctica vamos a simular, mediante un entorno con contenedores Docker, un escenario donde se produce un ARP spoofing. En primer lugar estudiaremos el funcionamiento del protocolo ARP, incluyendo los mensajes utilizados. Tras ello y mediante un sniffing de tráfico con tcpdump y wireshark, veremos qué está pasando en un escenario con esta clase de envenenamiento.">
+        <meta name="description" content="En este ejercicio se simula un escenario real para asentar conocimientos sobre GPDR (RGPD), LOPDGDD i LSSI. SAD, Seguridad y Alta Disponibilidad, ASIR.">
       
       
       
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/ARP_Spoofing/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/normativa/">
       
       
-        <link rel="prev" href="../normativa/">
+        <link rel="prev" href="../SAI/">
       
       
-        <link rel="next" href="../idps/">
+        <link rel="next" href="../ARP_Spoofing/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Escenari d'ARP Spoofing amb Docker - Seguridad y alta disponibilidad</title>
+        <title>Exercici sobre normativa GPDR, LOPDGDD i LSSI - Seguridad y alta disponibilidad</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#arp-spoofing" class="md-skip">
+        <a href="#exercici-practic-compliment-de-normatives-en-una-plataforma-web" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Escenari d'ARP Spoofing amb Docker
+              Exercici sobre normativa GPDR, LOPDGDD i LSSI
             
           </span>
         </div>
@@ -364,14 +364,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
@@ -380,7 +382,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Normativa
@@ -391,11 +393,122 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../normativa/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RGPD, LOPDGDD y LSSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         RGPD, LOPDGDD y LSSI
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercici-practic-compliment-de-normatives-en-una-plataforma-web" class="md-nav__link">
+    Exercici pràctic: Compliment de normatives en una plataforma web
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercici pràctic: Compliment de normatives en una plataforma web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    Context
+  </a>
+  
+    <nav class="md-nav" aria-label="Context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    Objetivos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasques" class="md-nav__link">
+    Tasques
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-identificacio-i-classificacio-de-dades-personals" class="md-nav__link">
+    1. Identificació i classificació de dades personals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-avaluacio-de-la-politica-de-privadesa" class="md-nav__link">
+    2. Avaluació de la Política de Privadesa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-us-de-cookies-i-gestio-del-consentiment" class="md-nav__link">
+    3. Ús de cookies i gestió del consentiment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-avaluacio-de-drets-dels-usuaris" class="md-nav__link">
+    4. Avaluació de drets dels usuaris
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencies" class="md-nav__link">
+    Referències
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -413,16 +526,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
       
       
       
@@ -431,7 +542,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Spoofing
@@ -442,73 +553,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          ARP Spoofing
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../ARP_Spoofing/" class="md-nav__link">
         ARP Spoofing
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    Docker
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arp" class="md-nav__link">
-    ARP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arp-spoofing_1" class="md-nav__link">
-    ARP Spoofing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#realizacion-de-la-practica" class="md-nav__link">
-    Realización de la práctica
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -773,82 +822,65 @@
                   
 
 
-<h1 id="arp-spoofing">ARP Spoofing</h1>
-<h2 id="docker">Docker</h2>
-<p><a href="https://raul-profesor.github.io/DEAW/introduction/">https://raul-profesor.github.io/DEAW/introduction/</a></p>
-<p><a href="https://kinsta.com/es/base-de-conocimiento/que-es-docker/">https://kinsta.com/es/base-de-conocimiento/que-es-docker/</a></p>
-<p><a href="https://datascientest.com/es/docker-todo-que-saber">https://datascientest.com/es/docker-todo-que-saber</a></p>
-<p><a href="https://www.ibm.com/topics/docker">https://www.ibm.com/topics/docker</a></p>
-<div class="admonition task">
-<p class="admonition-title">Tarea 0<p>Debéis instalar Docker en <strong>Kali</strong> o <strong>Ubuntu</strong>. Podéis ayudaros del material que consideréis, como por ejemplo <a href="https://cabrajeta.com/2020/09/como-instalar-docker-en-kali-linux-2020/">este</a> o cualquier otro.</p>
-</p>
-</div>
-<h2 id="arp">ARP</h2>
-<p>Cuando una máquina necesita comunicarse con otra en una red, necesita conocer en primera instancia su IP para poder enviar el paquete a su destino, pero en capa 2 de OSI, utiliza direcciones MAC. El protocolo ARP entra en juego en este momento, dado que envía los mensajes pertinentes para averiguar la dirección MAC asociada a una IP concreta.</p>
-<p><img alt="" src="../img/arp.gif" /></p>
-<p>Cuando un dispositivo desea enviar paquetes a otro, lanza un mensaje broadcast ARP preguntando en la red qué disposito posee esa IP concreta y esperando una respuesta únicamente de ese dispositivo identificándose y, además, enviando su MAC.</p>
-<p><img alt="" src="../img/arp2.gif" /></p>
-<p>De esta forma, los dispositivos en la red van construyendo sus tablas ARP, donde cada entrada hace corresponder una IP con su MAC, de tal forma que si tuvieran que volver a enviar mensajes a esas máquinas, ya no necesitan pasar por el proceso de averigüación de direcciones MAC.</p>
-<p><img alt="" src="../img/ip-neighbor-show.png" /></p>
-<h2 id="arp-spoofing_1">ARP Spoofing</h2>
-<p>Este ataque es de los conocidos como tipo <strong>Man in the Middle</strong>, llamados así porque consisten en que un atacante o actor malicioso se interpone entre la comnicación de dos víctimas, actuando de intermediario sin que ellas se den cuenta. Esto le permite interceptar toda la comunicación, pudiendo espiarla o incluso modificarla, si así lo desea.</p>
-<p>En el caso de un ARP Spoofing, el atacant envía falsos mensajes de respuesta ARP, indicando que su MAC se corresponde con otra IP, la de la víctima y así recibir los mensajes que van destinados a ella.</p>
-<p><img alt="" src="../img/spoofing.png" /></p>
-<h2 id="realizacion-de-la-practica">Realización de la práctica</h2>
-<p>Debéis clonar el repositorio: <a href="https://github.com/raul-profesor/spoofing">https://github.com/raul-profesor/spoofing</a></p>
-<p>Esta práctica está ubicada dentro de la carpeta <code>Lab1-ArpSpoofing</code>.</p>
-<p>Vamos a crear la siguiente infraestructura:</p>
-<p><img alt="" src="../img/arp_spoofing.png" /> </p>
-<p>Que consiste en:</p>
+  <h1>RGPD, LOPDGDD y LSSI</h1>
+
+<h2 id="exercici-practic-compliment-de-normatives-en-una-plataforma-web">Exercici pràctic: Compliment de normatives en una plataforma web</h2>
+<h3 id="context">Context</h3>
+<p>L'empresa fictícia WebData, que ofereix serveis de venda de productes en línia, emmagatzema dades personals dels seus clients (número, email, adreça d'enviament) i utilitza cookies per a anàlisi de trànsit i publicitat personalitzada.</p>
+<h4 id="objetivos">Objetivos</h4>
 <ul>
-<li>Dos contenedores <em>víctimas</em></li>
-<li>Un <em>atacante</em></li>
-<li>Un <em>observador</em> <strong>TcpDumper</strong> cuya única función es escuchar el tráfico de la red</li>
+<li>
+<p>Identificar les dades personals i analitzar si WebData compleix les normatives de protecció de dades (RGPD i LOPDGDD).</p>
+</li>
+<li>
+<p>Verificar el compliment de les obligacions sobre l'ús de cookies i polítiques de privadesa segons la LSSI.</p>
+</li>
 </ul>
-<p>Pasemos a construir las imágenes que más tarde darán lugar a los contenedores del <em>atacante</em> y del <em>TcpDumper</em> que vamos a ejecutar. Para este cometido no tenéis más que ejecutar el <code>script build.sh</code>.
-Los contenedores víctimas son simplemente imágenes de <a href="https://unpocodejava.com/2021/11/18/queesbusybox/"><strong>busybox</strong></a> sin modificar, directamente del "registry" de Docker.</p>
-<p>Ahora ejecutaremos los 4 contenedores, cada uno en una pestaña distinta del terminal:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>box1<span class="w"> </span>busybox
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>box2<span class="w"> </span>busybox
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>arpspoofer<span class="w"> </span>arpspoofer
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w">  </span>--net<span class="o">=</span>container:arpspoofer<span class="w"> </span>--name<span class="w"> </span>tcpdumper<span class="w"> </span>tcpdumper
-</span></code></pre></div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 1</p>
+<hr />
+<h3 id="tasques">Tasques</h3>
+<h4 id="1-identificacio-i-classificacio-de-dades-personals">1. Identificació i classificació de dades personals</h4>
+<div class="admonition question">
+<p class="admonition-title">Pregunta</p>
+<p>Quins tipus de dades personals recull WebData? Són necessàries totes aquestes dades?</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
 <ul>
-<li>Comprueba las IPs y las MAC de <em>box1</em>, <em>box2</em> y <em>arpspoofer</em> con <code>ip a</code></li>
-<li>Comprueba la tabla ARP de <em>box1</em> con <code>watch ip neigh</code></li>
-<li>Realiza un ping de <em>box2</em> a <em>box1</em> y mantenlo</li>
-<li>En el contenedor del <code>arpspoofer</code> comienza el <em>spoofeo</em>: <code>/usr/sbin/arpspoof -r -i eth0 -t x.x.x.x y.y.y.y</code> (IPs de box1 y 2)</li>
+<li>Recorda les categoríes de les dades contemplades en el RGPD</li>
+<li>Recorda els principals aspectes del reglament (RGPD) que hem vist en teoría i raona quin d'ells aplica ací</li>
 </ul>
 </div>
-<p>Tras los pasos anteriores deberias empezar a ver el tráfico capturado por el contenedor <em>TcpDumper</em>.</p>
-<div class="admonition task">
-<p class="admonition-title">Tarea 2</p>
-<p>Además del tcpdump del contenedor <em>TcpDumper</em> pon a capturar tráfico con Wireshark en la interfaz <code>Docker0</code> de la máquina anfitrión.</p>
+<h4 id="2-avaluacio-de-la-politica-de-privadesa">2. Avaluació de la Política de Privadesa</h4>
+<div class="admonition question">
+<p class="admonition-title">Pregunta</p>
+<p>Què ha d'incloure una política de privadesa perquè compleixi les normatives vigents (RGPD i LOPDGDD)?</p>
 </div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 3</p>
-<p>Describe detalladamente qué observas que está ocurriendo en la captura del contenedor <code>TcpDumper</code></p>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Ajuda't d'una búsqueda en Internet i identifica els aspectes bàsics que ha de tindre la política de privadesa </p>
 </div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 4</p>
-<p>¿Cómo podemos tener una pista de lo que está ocurriendo mirando sólamente el <code>ping</code> que hemos lanzado al principio?</p>
+<h4 id="3-us-de-cookies-i-gestio-del-consentiment">3. Ús de cookies i gestió del consentiment</h4>
+<div class="admonition question">
+<p class="admonition-title">Pregunta</p>
+<p>Quins passos ha de seguir WebData per complir la LSSI quant a l'ús de cookies? És necessari obtenir consentiment per a totes les cookies?</p>
 </div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 5</p>
-<p>En la captura de TCPDump, indica y explica <u>detalladamente</u>:
-    + Mensajes ARP donde se ve <strong>claramente</strong> qué está ocurriendo y cuál es el ataque, indíca explícitamente los mensajes.
-    + Mensajes ICMP donde se ve la secuencia de los acontecimienntos.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Ajuda't d'una búsqueda en Internet per tal de nombrar els aspectes més bàsics i importants relacionats amb els tipus de cookies, transparència, política o consentiment, entre altres.</p>
 </div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 6</p>
-<p>En la captura de Wireshark filtra por el protocolo ICMP y repite las explicaciones de la Tarea 5.</p>
+<h4 id="4-avaluacio-de-drets-dels-usuaris">4. Avaluació de drets dels usuaris</h4>
+<div class="admonition question">
+<p class="admonition-title">Pregunta</p>
+<p>Quins drets tenen els usuaris segons el RGPD i la LOPDGDD respecte a les vostres dades personals? Com pot WebData garantir que els usuaris puguin exercir aquests drets?</p>
 </div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 7<p>Realiza un diagrama en <a href="https://www.drawio.com/">https://www.drawio.com/</a> donde expliques claramente de forma gráfica el proceso que has llevado a acabo.</p>
-</p>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Una vegada més, busca en Internet quin son eixos drets i de quina forma s'ha de facilitar com exercir-los.</p>
 </div>
+<h2 id="referencies">Referències</h2>
+<p><a href="https://www.aepd.es/guias/informe-politicas-de-privacidad-adaptacion-rgpd.pdf">Informe políticas de privacidad</a></p>
+<p><a href="https://www.aepd.es/guias/guia-cookies.pdf">Guía cookies</a></p>
+<p><a href="https://ayudaleyprotecciondatos.es/lopdgdd/">LOPDGDD</a></p>
 
 
   

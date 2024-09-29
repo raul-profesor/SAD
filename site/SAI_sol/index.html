@@ -6,24 +6,22 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apuntes y prácticas Seguridad y Alta disponibilidad (SAD - ASIR).En esta práctica vamos a simular, mediante un entorno con contenedores Docker, un escenario donde se produce un ARP spoofing. En primer lugar estudiaremos el funcionamiento del protocolo ARP, incluyendo los mensajes utilizados. Tras ello y mediante un sniffing de tráfico con tcpdump y wireshark, veremos qué está pasando en un escenario con esta clase de envenenamiento.">
       
       
-      
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/ARP_Spoofing/">
-      
-      
-        <link rel="prev" href="../normativa/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/SAI_sol/">
       
       
-        <link rel="next" href="../idps/">
+        <link rel="prev" href="../SAI/">
+      
+      
+        <link rel="next" href="../fw-ics/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Escenari d'ARP Spoofing amb Docker - Seguridad y alta disponibilidad</title>
+        <title>SAI sol - Seguridad y alta disponibilidad</title>
       
     
     
@@ -91,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#arp-spoofing" class="md-skip">
+        <a href="#guided-exercise-choosing-the-right-ups-for-critical-systems" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -126,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Escenari d'ARP Spoofing amb Docker
+              SAI sol
             
           </span>
         </div>
@@ -413,16 +411,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
       
       
       
@@ -431,7 +427,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Spoofing
@@ -442,73 +438,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          ARP Spoofing
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../ARP_Spoofing/" class="md-nav__link">
         ARP Spoofing
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    Docker
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arp" class="md-nav__link">
-    ARP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arp-spoofing_1" class="md-nav__link">
-    ARP Spoofing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#realizacion-de-la-practica" class="md-nav__link">
-    Realización de la práctica
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -773,82 +707,260 @@
                   
 
 
-<h1 id="arp-spoofing">ARP Spoofing</h1>
-<h2 id="docker">Docker</h2>
-<p><a href="https://raul-profesor.github.io/DEAW/introduction/">https://raul-profesor.github.io/DEAW/introduction/</a></p>
-<p><a href="https://kinsta.com/es/base-de-conocimiento/que-es-docker/">https://kinsta.com/es/base-de-conocimiento/que-es-docker/</a></p>
-<p><a href="https://datascientest.com/es/docker-todo-que-saber">https://datascientest.com/es/docker-todo-que-saber</a></p>
-<p><a href="https://www.ibm.com/topics/docker">https://www.ibm.com/topics/docker</a></p>
-<div class="admonition task">
-<p class="admonition-title">Tarea 0<p>Debéis instalar Docker en <strong>Kali</strong> o <strong>Ubuntu</strong>. Podéis ayudaros del material que consideréis, como por ejemplo <a href="https://cabrajeta.com/2020/09/como-instalar-docker-en-kali-linux-2020/">este</a> o cualquier otro.</p>
-</p>
-</div>
-<h2 id="arp">ARP</h2>
-<p>Cuando una máquina necesita comunicarse con otra en una red, necesita conocer en primera instancia su IP para poder enviar el paquete a su destino, pero en capa 2 de OSI, utiliza direcciones MAC. El protocolo ARP entra en juego en este momento, dado que envía los mensajes pertinentes para averiguar la dirección MAC asociada a una IP concreta.</p>
-<p><img alt="" src="../img/arp.gif" /></p>
-<p>Cuando un dispositivo desea enviar paquetes a otro, lanza un mensaje broadcast ARP preguntando en la red qué disposito posee esa IP concreta y esperando una respuesta únicamente de ese dispositivo identificándose y, además, enviando su MAC.</p>
-<p><img alt="" src="../img/arp2.gif" /></p>
-<p>De esta forma, los dispositivos en la red van construyendo sus tablas ARP, donde cada entrada hace corresponder una IP con su MAC, de tal forma que si tuvieran que volver a enviar mensajes a esas máquinas, ya no necesitan pasar por el proceso de averigüación de direcciones MAC.</p>
-<p><img alt="" src="../img/ip-neighbor-show.png" /></p>
-<h2 id="arp-spoofing_1">ARP Spoofing</h2>
-<p>Este ataque es de los conocidos como tipo <strong>Man in the Middle</strong>, llamados así porque consisten en que un atacante o actor malicioso se interpone entre la comnicación de dos víctimas, actuando de intermediario sin que ellas se den cuenta. Esto le permite interceptar toda la comunicación, pudiendo espiarla o incluso modificarla, si así lo desea.</p>
-<p>En el caso de un ARP Spoofing, el atacant envía falsos mensajes de respuesta ARP, indicando que su MAC se corresponde con otra IP, la de la víctima y así recibir los mensajes que van destinados a ella.</p>
-<p><img alt="" src="../img/spoofing.png" /></p>
-<h2 id="realizacion-de-la-practica">Realización de la práctica</h2>
-<p>Debéis clonar el repositorio: <a href="https://github.com/raul-profesor/spoofing">https://github.com/raul-profesor/spoofing</a></p>
-<p>Esta práctica está ubicada dentro de la carpeta <code>Lab1-ArpSpoofing</code>.</p>
-<p>Vamos a crear la siguiente infraestructura:</p>
-<p><img alt="" src="../img/arp_spoofing.png" /> </p>
-<p>Que consiste en:</p>
+  <h1>SAI sol</h1>
+
+<p>Certainly! Below is a similar exercise, but this time with <strong>hints</strong> to guide students on how to make decisions about UPS selection, power consumption, and cybersecurity considerations.</p>
+<hr />
+<h3 id="guided-exercise-choosing-the-right-ups-for-critical-systems"><strong>Guided Exercise: Choosing the Right UPS for Critical Systems</strong></h3>
+<h4 id="objective"><strong>Objective:</strong></h4>
+<p>Students will assess power requirements and select the appropriate UPS for critical systems in a scenario. They will be provided with hints to guide them in choosing the correct UPS models, calculating runtime, and considering redundancy and cybersecurity measures.</p>
+<hr />
+<h3 id="scenario"><strong>Scenario:</strong></h3>
+<p>You are the IT administrator for a mid-sized company with several critical systems. Due to frequent power outages, you’ve been tasked with choosing a UPS system to keep these systems operational for the necessary amount of time.</p>
+<h4 id="critical-systems"><strong>Critical Systems:</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>System</strong></th>
+<th><strong>Power Consumption (Watts)</strong></th>
+<th><strong>Priority Level</strong></th>
+<th><strong>Required Uptime</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Database Server</td>
+<td>800 W</td>
+<td>High</td>
+<td>30 minutes</td>
+</tr>
+<tr>
+<td>Web Server</td>
+<td>600 W</td>
+<td>High</td>
+<td>15 minutes</td>
+</tr>
+<tr>
+<td>Firewall</td>
+<td>100 W</td>
+<td>Medium</td>
+<td>15 minutes</td>
+</tr>
+<tr>
+<td>Network Switch</td>
+<td>80 W</td>
+<td>Medium</td>
+<td>15 minutes</td>
+</tr>
+<tr>
+<td>Workstation (x5)</td>
+<td>200 W each</td>
+<td>Low</td>
+<td>10 minutes</td>
+</tr>
+<tr>
+<td>CCTV System (Cameras &amp; NVR)</td>
+<td>400 W</td>
+<td>Medium</td>
+<td>1 hour</td>
+</tr>
+<tr>
+<td>Backup NAS</td>
+<td>300 W</td>
+<td>Low</td>
+<td>10 minutes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="task"><strong>Task:</strong></h3>
+<p>Your goal is to choose the appropriate UPS model(s) that can handle the power consumption and ensure that each system has the required runtime. You should also consider redundancy for high-priority systems and address cybersecurity concerns regarding UPS management.</p>
+<h3 id="steps-and-hints"><strong>Steps and Hints:</strong></h3>
+<hr />
+<h4 id="step-1-calculate-total-power-consumption"><strong>Step 1: Calculate Total Power Consumption</strong></h4>
+<p><strong>Hint:</strong><br />
+The total power consumption is the sum of the power draw from all systems. Make sure to include all systems in your calculation. The power consumption is given in watts.</p>
+<p>\$
+\text{Total Power Consumption (Watts)} = 800 \, (\text{DB Server}) + 600 \, (\text{Web Server}) + \dots
+\$</p>
+<hr />
+<h4 id="step-2-convert-power-consumption-to-ups-capacity-va"><strong>Step 2: Convert Power Consumption to UPS Capacity (VA)</strong></h4>
+<p><strong>Hint:</strong><br />
+UPS systems are typically rated in <strong>Volt-Amps (VA)</strong>. To convert the total power in <strong>Watts</strong> to <strong>VA</strong>, use the following formula:</p>
+<p>[
+\text{UPS Capacity (VA)} = \frac{\text{Total Power (Watts)}}{\text{Power Factor}}
+]</p>
+<p>Where the <strong>Power Factor</strong> is generally 0.8 for most UPS units. This conversion is necessary because UPS systems account for reactive power, which is why VA and watts differ.</p>
+<p>For example, if you calculate the total power to be 3280 W, the VA requirement would be:</p>
+<p>[
+\text{UPS Capacity (VA)} = \frac{3280}{0.8} = 4100 \, \text{VA}
+]</p>
+<hr />
+<h4 id="step-3-calculate-ups-runtime-for-each-system"><strong>Step 3: Calculate UPS Runtime for Each System</strong></h4>
+<p><strong>Hint:</strong><br />
+Most UPS datasheets provide <strong>runtime curves or tables</strong> showing how long the UPS can support a specific load. If you know the power load in watts and the UPS capacity, use these resources to determine how long the UPS will provide backup power.</p>
+<p>For example, if a UPS can handle a 2400 W load and the runtime at full load is 9 minutes, and your system only uses 1200 W (50% of the capacity), the runtime will be longer—around <strong>27 minutes</strong> according to the data.</p>
+<p>You can also use the simplified formula to approximate runtime:</p>
+<p>[
+\text{UPS Runtime (minutes)} = \frac{\text{UPS Capacity (Wh)}}{\text{System Load (Watts)}}
+]</p>
+<hr />
+<h4 id="step-4-divide-systems-by-priority"><strong>Step 4: Divide Systems by Priority</strong></h4>
+<p><strong>Hint:</strong><br />
+Not all systems need the same uptime. Group systems by <strong>priority level</strong> to better allocate UPS resources. Critical systems like the <strong>Database Server</strong> and <strong>Web Server</strong> should have longer runtimes and possibly redundancy, while lower-priority systems can have shorter runtimes.</p>
 <ul>
-<li>Dos contenedores <em>víctimas</em></li>
-<li>Un <em>atacante</em></li>
-<li>Un <em>observador</em> <strong>TcpDumper</strong> cuya única función es escuchar el tráfico de la red</li>
+<li><strong>High-Priority Systems</strong> (Database Server, Web Server): Need 15–30 minutes of uptime.</li>
+<li><strong>Medium-Priority Systems</strong> (Firewall, Network Switch, CCTV): Need 15 minutes to 1 hour of uptime.</li>
+<li><strong>Low-Priority Systems</strong> (Workstations, Backup NAS): Need only 10 minutes for safe shutdown.</li>
 </ul>
-<p>Pasemos a construir las imágenes que más tarde darán lugar a los contenedores del <em>atacante</em> y del <em>TcpDumper</em> que vamos a ejecutar. Para este cometido no tenéis más que ejecutar el <code>script build.sh</code>.
-Los contenedores víctimas son simplemente imágenes de <a href="https://unpocodejava.com/2021/11/18/queesbusybox/"><strong>busybox</strong></a> sin modificar, directamente del "registry" de Docker.</p>
-<p>Ahora ejecutaremos los 4 contenedores, cada uno en una pestaña distinta del terminal:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>box1<span class="w"> </span>busybox
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>box2<span class="w"> </span>busybox
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>arpspoofer<span class="w"> </span>arpspoofer
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w">  </span>--net<span class="o">=</span>container:arpspoofer<span class="w"> </span>--name<span class="w"> </span>tcpdumper<span class="w"> </span>tcpdumper
-</span></code></pre></div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 1</p>
+<hr />
+<h4 id="step-5-select-appropriate-ups-models"><strong>Step 5: Select Appropriate UPS Models</strong></h4>
+<p><strong>Hint:</strong><br />
+Use the table below to help you choose the right UPS for each group of systems based on their power requirements and runtime needs. Consider whether you need to purchase multiple UPS units or a larger one to cover all systems.</p>
+<table>
+<thead>
+<tr>
+<th><strong>UPS Model</strong></th>
+<th><strong>Capacity (VA)</strong></th>
+<th><strong>Power Factor</strong></th>
+<th><strong>Max Load (Watts)</strong></th>
+<th><strong>Runtime at Full Load (Minutes)</strong></th>
+<th><strong>Runtime at 50% Load (Minutes)</strong></th>
+<th><strong>Price</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APC Smart-UPS 1500VA</td>
+<td>1500</td>
+<td>0.8</td>
+<td>1200</td>
+<td>4</td>
+<td>14</td>
+<td>$500</td>
+</tr>
+<tr>
+<td>Eaton 5P 2200VA</td>
+<td>2200</td>
+<td>0.9</td>
+<td>1980</td>
+<td>7</td>
+<td>18</td>
+<td>$900</td>
+</tr>
+<tr>
+<td>CyberPower 3000VA</td>
+<td>3000</td>
+<td>0.8</td>
+<td>2400</td>
+<td>9</td>
+<td>27</td>
+<td>$1,200</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>Comprueba las IPs y las MAC de <em>box1</em>, <em>box2</em> y <em>arpspoofer</em> con <code>ip a</code></li>
-<li>Comprueba la tabla ARP de <em>box1</em> con <code>watch ip neigh</code></li>
-<li>Realiza un ping de <em>box2</em> a <em>box1</em> y mantenlo</li>
-<li>En el contenedor del <code>arpspoofer</code> comienza el <em>spoofeo</em>: <code>/usr/sbin/arpspoof -r -i eth0 -t x.x.x.x y.y.y.y</code> (IPs de box1 y 2)</li>
+<li><strong>Hint 1:</strong> Start by checking if a single UPS can handle the entire power load. For example, if the total power is 3280 W, a <strong>4100 VA UPS</strong> would be required.</li>
+<li><strong>Hint 2:</strong> If no single UPS can provide the required runtime for all systems, split the load into multiple UPS systems, grouping by priority level.</li>
+<li><strong>Hint 3:</strong> Look at <strong>runtime curves</strong> in datasheets to check how long each UPS will support the systems at full and partial loads.</li>
 </ul>
-</div>
-<p>Tras los pasos anteriores deberias empezar a ver el tráfico capturado por el contenedor <em>TcpDumper</em>.</p>
-<div class="admonition task">
-<p class="admonition-title">Tarea 2</p>
-<p>Además del tcpdump del contenedor <em>TcpDumper</em> pon a capturar tráfico con Wireshark en la interfaz <code>Docker0</code> de la máquina anfitrión.</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 3</p>
-<p>Describe detalladamente qué observas que está ocurriendo en la captura del contenedor <code>TcpDumper</code></p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 4</p>
-<p>¿Cómo podemos tener una pista de lo que está ocurriendo mirando sólamente el <code>ping</code> que hemos lanzado al principio?</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 5</p>
-<p>En la captura de TCPDump, indica y explica <u>detalladamente</u>:
-    + Mensajes ARP donde se ve <strong>claramente</strong> qué está ocurriendo y cuál es el ataque, indíca explícitamente los mensajes.
-    + Mensajes ICMP donde se ve la secuencia de los acontecimienntos.</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 6</p>
-<p>En la captura de Wireshark filtra por el protocolo ICMP y repite las explicaciones de la Tarea 5.</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 7<p>Realiza un diagrama en <a href="https://www.drawio.com/">https://www.drawio.com/</a> donde expliques claramente de forma gráfica el proceso que has llevado a acabo.</p>
-</p>
-</div>
+<hr />
+<h4 id="step-6-consider-redundancy-and-cybersecurity"><strong>Step 6: Consider Redundancy and Cybersecurity</strong></h4>
+<p><strong>Hint:</strong><br />
+For <strong>high-priority systems</strong> (e.g., Database Server, Web Server), consider implementing <strong>redundancy</strong> by using two UPS units. Redundancy ensures that if one UPS fails, the second unit can take over, keeping the system operational.</p>
+<p>Also, ensure that the UPS supports <strong>remote monitoring</strong> (via SNMP or web-based interfaces) so you can receive alerts and monitor battery health. Make sure these management features are <strong>secured</strong>, including using strong passwords, disabling unnecessary services, and encrypting communication between the UPS and monitoring systems.</p>
+<hr />
+<h3 id="questions-to-answer-in-your-report"><strong>Questions to Answer in Your Report:</strong></h3>
+<ol>
+<li><strong>Total Power Consumption:</strong> What is the total power consumption for all systems?</li>
+<li>
+<p><strong>Hint:</strong> Sum up the power (in watts) of all the systems.</p>
+</li>
+<li>
+<p><strong>UPS Capacity:</strong> What is the total UPS capacity (in VA) required for all systems?</p>
+</li>
+<li>
+<p><strong>Hint:</strong> Use the formula and a power factor of 0.8 to convert watts to VA.</p>
+</li>
+<li>
+<p><strong>UPS Selection:</strong> Which UPS model(s) did you choose, and why?</p>
+</li>
+<li>
+<p><strong>Hint:</strong> Consider runtime, load, and price when selecting the UPS.</p>
+</li>
+<li>
+<p><strong>Redundancy:</strong> Did you include any redundancy for high-priority systems? Why or why not?</p>
+</li>
+<li>
+<p><strong>Hint:</strong> Redundancy can prevent downtime in case of UPS failure.</p>
+</li>
+<li>
+<p><strong>Cybersecurity Considerations:</strong> What security measures will you take to ensure the UPS management interface is secured?</p>
+</li>
+</ol>
+<hr />
+<h3 id="solution-outline"><strong>Solution Outline:</strong></h3>
+<p>Here’s how you would approach the solution based on the steps and hints provided:</p>
+<ol>
+<li><strong>Total Power Consumption:</strong></li>
+<li>
+<p>Add up the power consumption of all systems:
+   [
+   800 + 600 + 100 + 80 + 1000 + 400 + 300 = 3280 \, \text{W}
+   ]</p>
+</li>
+<li>
+<p><strong>Convert to VA:</strong></p>
+</li>
+<li>
+<p>Using a power factor of 0.8:
+   [
+   \text{UPS Capacity (VA)} = \frac{3280}{0.8} = 4100 \, \text{VA}
+   ]</p>
+</li>
+<li>
+<p><strong>Select UPS Models:</strong></p>
+</li>
+<li>You need a total of 4100 VA to support all systems.</li>
+<li>For <strong>high-priority systems</strong> (1400 W), use two <strong>CyberPower 3000VA</strong> units to ensure 30 minutes of uptime with redundancy.</li>
+<li>For <strong>medium-priority systems</strong> (580 W), use an <strong>Eaton 5P 2200VA</strong> unit, which provides more than 1 hour of runtime at 30% load.</li>
+<li>
+<p>For <strong>low-priority systems</strong> (1300 W), two <strong>APC Smart-UPS 1500VA</strong> units will handle the load and provide around 10–15 minutes of runtime.</p>
+</li>
+<li>
+<p><strong>Redundancy:</strong></p>
+</li>
+<li>
+<p>Redundancy is provided for <strong>high-priority systems</strong> by using two <strong>CyberPower 3000VA</strong> UPS units. If one fails, the other can continue to support the systems.</p>
+</li>
+<li>
+<p><strong>Cybersecurity Considerations:</strong></p>
+</li>
+<li>Ensure <strong>remote monitoring</strong> is enabled for the UPS, secure the management interfaces with strong passwords, and restrict network access to the UPS.</li>
+<li>Use <strong>encryption</strong> for communications (e.g., SNMPv3 or HTTPS) between the UPS and monitoring software.</li>
+</ol>
+<hr />
+<h3 id="final-deliverable"><strong>Final Deliverable:</strong></h3>
+<ul>
+<li>A report that includes:
+  1.</li>
+</ul>
+<p>Esquema de la solució:
+A continuació s'explica com s'aproximarà a la solució en funció dels passos i consells proporcionats:</p>
+<p>Consum total d'energia:</p>
+<p>Sumeu el consum d'energia de tots els sistemes: [ 800 + 600 + 100 + 80 + 1000 + 400 + 300 = 3280 , \text{W} ]
+Convertir a VA:</p>
+<p>Utilitzant un factor de potència de 0,8: [ \text{Capacitat del SAI (VA)} = \frac{3280}{0,8} = 4100 , \text{VA} ]
+Seleccioneu els models de SAI:</p>
+<p>Necessites un total de 4100 VA per donar suport a tots els sistemes.
+Per als sistemes d'alta prioritat (1400 W), utilitzeu dues unitats CyberPower 3000VA per garantir 30 minuts de temps d'activitat amb redundància.
+Per als sistemes de prioritat mitjana (580 W), utilitzeu una unitat Eaton 5P 2200VA, que proporciona més d'1 hora de temps d'execució amb una càrrega del 30%.
+Per als sistemes de baixa prioritat (1300 W), dues unitats APC Smart-UPS 1500VA manejaran la càrrega i proporcionaran uns 10-15 minuts de temps d'execució.
+Redundància:</p>
+<p>La redundància es proporciona per als sistemes d'alta prioritat mitjançant l'ús de dues unitats UPS CyberPower 3000VA. Si un falla, l'altre pot continuar donant suport als sistemes.
+Consideracions de ciberseguretat:</p>
+<p>Assegureu-vos que la supervisió remota estigui habilitat per al SAI, assegureu les interfícies de gestió amb contrasenyes fortes i restringiu l'accés a la xarxa al SAI.
+Utilitzeu l'encriptació per a les comunicacions (p. ex., SNMPv3 o HTTPS) entre el SAI i el programari de supervisió.</p>
 
 
   

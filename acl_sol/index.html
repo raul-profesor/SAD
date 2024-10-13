@@ -6,24 +6,22 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apuntes y prácticas Seguridad y Alta disponibilidad (SAD - ASIR).En esta práctica vamos a simular, mediante un entorno con contenedores Docker, un escenario donde se produce un ARP spoofing. En primer lugar estudiaremos el funcionamiento del protocolo ARP, incluyendo los mensajes utilizados. Tras ello y mediante un sniffing de tráfico con tcpdump y wireshark, veremos qué está pasando en un escenario con esta clase de envenenamiento.">
       
       
-      
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/ARP_Spoofing/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/acl_sol/">
       
       
         <link rel="prev" href="../acl/">
       
       
-        <link rel="next" href="../idps/">
+        <link rel="next" href="../fw-ics/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Escenari d'ARP Spoofing amb Docker - Seguridad y alta disponibilidad</title>
+        <title>Acl sol - Seguridad y alta disponibilidad</title>
       
     
     
@@ -90,11 +88,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#arp-spoofing" class="md-skip">
-          Saltar a contenido
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -126,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Escenari d'ARP Spoofing amb Docker
+              Acl sol
             
           </span>
         </div>
@@ -462,16 +455,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
       
       
       
@@ -480,7 +471,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Spoofing
@@ -491,73 +482,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          ARP Spoofing
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../ARP_Spoofing/" class="md-nav__link">
         ARP Spoofing
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    Docker
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arp" class="md-nav__link">
-    ARP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arp-spoofing_1" class="md-nav__link">
-    ARP Spoofing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#realizacion-de-la-practica" class="md-nav__link">
-    Realización de la práctica
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -822,82 +751,99 @@
                   
 
 
-<h1 id="arp-spoofing">ARP Spoofing</h1>
-<h2 id="docker">Docker</h2>
-<p><a href="https://raul-profesor.github.io/DEAW/introduction/">https://raul-profesor.github.io/DEAW/introduction/</a></p>
-<p><a href="https://kinsta.com/es/base-de-conocimiento/que-es-docker/">https://kinsta.com/es/base-de-conocimiento/que-es-docker/</a></p>
-<p><a href="https://datascientest.com/es/docker-todo-que-saber">https://datascientest.com/es/docker-todo-que-saber</a></p>
-<p><a href="https://www.ibm.com/topics/docker">https://www.ibm.com/topics/docker</a></p>
-<div class="admonition task">
-<p class="admonition-title">Tarea 0<p>Debéis instalar Docker en <strong>Kali</strong> o <strong>Ubuntu</strong>. Podéis ayudaros del material que consideréis, como por ejemplo <a href="https://cabrajeta.com/2020/09/como-instalar-docker-en-kali-linux-2020/">este</a> o cualquier otro.</p>
-</p>
-</div>
-<h2 id="arp">ARP</h2>
-<p>Cuando una máquina necesita comunicarse con otra en una red, necesita conocer en primera instancia su IP para poder enviar el paquete a su destino, pero en capa 2 de OSI, utiliza direcciones MAC. El protocolo ARP entra en juego en este momento, dado que envía los mensajes pertinentes para averiguar la dirección MAC asociada a una IP concreta.</p>
-<p><img alt="" src="../img/arp.gif" /></p>
-<p>Cuando un dispositivo desea enviar paquetes a otro, lanza un mensaje broadcast ARP preguntando en la red qué disposito posee esa IP concreta y esperando una respuesta únicamente de ese dispositivo identificándose y, además, enviando su MAC.</p>
-<p><img alt="" src="../img/arp2.gif" /></p>
-<p>De esta forma, los dispositivos en la red van construyendo sus tablas ARP, donde cada entrada hace corresponder una IP con su MAC, de tal forma que si tuvieran que volver a enviar mensajes a esas máquinas, ya no necesitan pasar por el proceso de averigüación de direcciones MAC.</p>
-<p><img alt="" src="../img/ip-neighbor-show.png" /></p>
-<h2 id="arp-spoofing_1">ARP Spoofing</h2>
-<p>Este ataque es de los conocidos como tipo <strong>Man in the Middle</strong>, llamados así porque consisten en que un atacante o actor malicioso se interpone entre la comnicación de dos víctimas, actuando de intermediario sin que ellas se den cuenta. Esto le permite interceptar toda la comunicación, pudiendo espiarla o incluso modificarla, si así lo desea.</p>
-<p>En el caso de un ARP Spoofing, el atacant envía falsos mensajes de respuesta ARP, indicando que su MAC se corresponde con otra IP, la de la víctima y así recibir los mensajes que van destinados a ella.</p>
-<p><img alt="" src="../img/spoofing.png" /></p>
-<h2 id="realizacion-de-la-practica">Realización de la práctica</h2>
-<p>Debéis clonar el repositorio: <a href="https://github.com/raul-profesor/spoofing">https://github.com/raul-profesor/spoofing</a></p>
-<p>Esta práctica está ubicada dentro de la carpeta <code>Lab1-ArpSpoofing</code>.</p>
-<p>Vamos a crear la siguiente infraestructura:</p>
-<p><img alt="" src="../img/arp_spoofing.png" /> </p>
-<p>Que consiste en:</p>
-<ul>
-<li>Dos contenedores <em>víctimas</em></li>
-<li>Un <em>atacante</em></li>
-<li>Un <em>observador</em> <strong>TcpDumper</strong> cuya única función es escuchar el tráfico de la red</li>
-</ul>
-<p>Pasemos a construir las imágenes que más tarde darán lugar a los contenedores del <em>atacante</em> y del <em>TcpDumper</em> que vamos a ejecutar. Para este cometido no tenéis más que ejecutar el <code>script build.sh</code>.
-Los contenedores víctimas son simplemente imágenes de <a href="https://unpocodejava.com/2021/11/18/queesbusybox/"><strong>busybox</strong></a> sin modificar, directamente del "registry" de Docker.</p>
-<p>Ahora ejecutaremos los 4 contenedores, cada uno en una pestaña distinta del terminal:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>box1<span class="w"> </span>busybox
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>box2<span class="w"> </span>busybox
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>arpspoofer<span class="w"> </span>arpspoofer
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w">  </span>--net<span class="o">=</span>container:arpspoofer<span class="w"> </span>--name<span class="w"> </span>tcpdumper<span class="w"> </span>tcpdumper
-</span></code></pre></div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 1</p>
-<ul>
-<li>Comprueba las IPs y las MAC de <em>box1</em>, <em>box2</em> y <em>arpspoofer</em> con <code>ip a</code></li>
-<li>Comprueba la tabla ARP de <em>box1</em> con <code>watch ip neigh</code></li>
-<li>Realiza un ping de <em>box2</em> a <em>box1</em> y mantenlo</li>
-<li>En el contenedor del <code>arpspoofer</code> comienza el <em>spoofeo</em>: <code>/usr/sbin/arpspoof -r -i eth0 -t x.x.x.x y.y.y.y</code> (IPs de box1 y 2)</li>
-</ul>
-</div>
-<p>Tras los pasos anteriores deberias empezar a ver el tráfico capturado por el contenedor <em>TcpDumper</em>.</p>
-<div class="admonition task">
-<p class="admonition-title">Tarea 2</p>
-<p>Además del tcpdump del contenedor <em>TcpDumper</em> pon a capturar tráfico con Wireshark en la interfaz <code>Docker0</code> de la máquina anfitrión.</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 3</p>
-<p>Describe detalladamente qué observas que está ocurriendo en la captura del contenedor <code>TcpDumper</code></p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 4</p>
-<p>¿Cómo podemos tener una pista de lo que está ocurriendo mirando sólamente el <code>ping</code> que hemos lanzado al principio?</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 5</p>
-<p>En la captura de TCPDump, indica y explica <u>detalladamente</u>:
-    + Mensajes ARP donde se ve <strong>claramente</strong> qué está ocurriendo y cuál es el ataque, indíca explícitamente los mensajes.
-    + Mensajes ICMP donde se ve la secuencia de los acontecimienntos.</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 6</p>
-<p>En la captura de Wireshark filtra por el protocolo ICMP y repite las explicaciones de la Tarea 5.</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Tarea 7<p>Realiza un diagrama en <a href="https://www.drawio.com/">https://www.drawio.com/</a> donde expliques claramente de forma gráfica el proceso que has llevado a acabo.</p>
-</p>
-</div>
+  <h1>Acl sol</h1>
+
+<p>Parte 1: Configuración de ACLs en Linux
+Soluciones técnicas:</p>
+<div class="language-text highlight"><pre><span></span><code>Instalación y verificación de ACLs: Comando para instalar el soporte de ACLs (si no está instalado):
+
+bash
+</code></pre></div>
+<p>sudo apt-get install acl</p>
+<p>Verificación de que la partición tenga soporte ACL:</p>
+<p>bash</p>
+<p>mount | grep acl</p>
+<p>Si no está habilitado, debes añadir la opción acl en el archivo /etc/fstab para la partición correspondiente y volver a montar la partición.</p>
+<p>Configuración de permisos iniciales del directorio: Crear la carpeta y establecer permisos:</p>
+<p>bash</p>
+<p>sudo mkdir -p /data/proyectos
+sudo chown root:root /data/proyectos
+sudo chmod 770 /data/proyectos</p>
+<p>ACLs para los usuarios del departamento de Ventas (solo lectura): Se asignan permisos de solo lectura a ventas1 y ventas2:</p>
+<p>bash</p>
+<p>sudo setfacl -m u:ventas1:r /data/proyectos
+sudo setfacl -m u:ventas2:r /data/proyectos</p>
+<p>ACLs para los usuarios del departamento de Desarrollo (lectura y escritura): Se otorgan permisos de lectura y escritura a dev1 y dev2:</p>
+<p>bash</p>
+<p>sudo setfacl -m u:dev1:rw /data/proyectos
+sudo setfacl -m u:dev2:rw /data/proyectos</p>
+<p>ACLs para el administrador (todos los permisos): El usuario admin recibe control total sobre el directorio:</p>
+<p>bash</p>
+<p>sudo setfacl -m u:admin:rwx /data/proyectos</p>
+<p>Verificación de las ACLs configuradas: Para ver las ACLs actuales del directorio:</p>
+<p>bash</p>
+<p>getfacl /data/proyectos</p>
+<p>Salida esperada:</p>
+<p>text</p>
+<div class="language-text highlight"><pre><span></span><code># file: data/proyectos
+# owner: root
+# group: root
+user::rwx
+user:ventas1:r--
+user:ventas2:r--
+user:dev1:rw-
+user:dev2:rw-
+user:admin:rwx
+group::---
+mask::rwx
+other::---
+</code></pre></div>
+<p>Pruebas:</p>
+<div class="language-text highlight"><pre><span></span><code>Ventas (ventas1 y ventas2) deberían poder leer archivos en /data/proyectos pero no modificarlos.
+Desarrollo (dev1 y dev2) deberían poder leer y escribir archivos en /data/proyectos.
+Admin (admin) debería tener todos los permisos sobre los archivos y el directorio.
+</code></pre></div>
+<p>Parte 2: Configuración de ACLs en Windows
+Soluciones técnicas:</p>
+<div class="language-text highlight"><pre><span></span><code>Crear la carpeta C:\Proyectos: Si la carpeta no existe, simplemente créala mediante el explorador de archivos o usando el comando:
+
+cmd
+
+mkdir C:\Proyectos
+
+Permisos para los usuarios de Marketing (solo lectura): En la pestaña de Seguridad:
+    Selecciona Editar.
+    Añade marketing1 y marketing2.
+    Otorga permisos de solo lectura (Lectura y ejecución, Mostrar carpeta, Lectura).
+
+Permisos para los usuarios de IT (lectura y modificación):
+    Añade it1 y it2.
+    Otórgales permisos de lectura y modificación (Lectura y ejecución, Mostrar carpeta, Lectura, Modificar).
+
+Control total para el Administrador:
+    Asegúrate de que el usuario Administrator tenga control total sobre la carpeta.
+
+Verificación de permisos avanzados: Revisa las opciones avanzadas en la pestaña de Seguridad para confirmar que los permisos no sean heredados incorrectamente y que las ACLs sean correctas.
+</code></pre></div>
+<p>Pruebas:</p>
+<div class="language-text highlight"><pre><span></span><code>Marketing (marketing1 y marketing2) solo deben poder leer los archivos en C:\Proyectos, pero no modificarlos.
+IT (it1 y it2) deben poder leer y modificar los archivos.
+Administrador debe tener control total sobre la carpeta y su contenido.
+</code></pre></div>
+<p>Preguntas para Reflexión:</p>
+<div class="language-text highlight"><pre><span></span><code>¿Qué ventajas ofrece la configuración de ACLs en lugar de usar solo los permisos tradicionales (rwx en Linux o NTFS en Windows)?
+    Las ACLs ofrecen un control más granular sobre los permisos de archivos y directorios. En lugar de limitarse a los tres grupos (propietario, grupo, otros) en Linux o los permisos básicos en Windows, con ACLs puedes asignar permisos específicos a cualquier usuario o grupo, adaptando mejor los accesos a las necesidades reales de seguridad y operación.
+    ACLs permiten excepciones a las reglas generales de permisos, lo que es útil en situaciones complejas donde se requiere una mayor flexibilidad.
+
+¿Qué problemas podrían surgir si un sistema no tuviera soporte para ACLs?
+    Sin ACLs, las empresas se ven limitadas a los permisos tradicionales, lo que puede ser insuficiente en entornos donde diferentes usuarios necesitan acceder a los mismos archivos con diferentes permisos. Esto podría llevar a riesgos de seguridad (demasiados permisos otorgados) o ineficiencia (la necesidad de crear muchas estructuras de directorios o usuarios adicionales).
+    También se complica la administración, ya que se pierde la capacidad de definir excepciones específicas para usuarios o grupos.
+
+¿Cómo cambiaría la configuración de ACLs si los permisos de acceso cambiaran dinámicamente?
+    Si los permisos cambian frecuentemente, se debería considerar la creación de grupos dinámicos basados en roles, en lugar de gestionar cada usuario individualmente en las ACLs. Esto facilita el mantenimiento y permite un manejo más eficiente de los cambios.
+    Además, podría ser necesario implementar herramientas automatizadas o políticas que ajusten dinámicamente las ACLs según las necesidades de acceso (por ejemplo, scripts de automatización o herramientas de gestión centralizada como Active Directory en Windows o Ansible en Linux).
+</code></pre></div>
+<p>Este ejercicio completo, con soluciones, cubre tanto la parte técnica como la reflexión teórica, permitiendo que tus estudiantes aprendan los fundamentos y las ventajas del uso de ACLs en sistemas operativos comunes.</p>
 
 
   

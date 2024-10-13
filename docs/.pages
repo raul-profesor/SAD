@@ -7,6 +7,8 @@ nav:
         - SAI: SAI.md
     - Normativa:
         - RGPD, LOPDGDD y LSSI: normativa.md
+    - Seguretat lògica:
+        - Llistes d'accés (ACL): acl.md
     - Spoofing: 
         - ARP Spoofing: ARP_Spoofing.md
     - IDS/IPS:

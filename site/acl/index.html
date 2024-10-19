@@ -934,26 +934,35 @@
 <li>Fes que el propietari de la carpeta siga <strong>root</strong> i el grup <strong>root</strong></li>
 <li>Els permisos bàsics inicials de la carpeta han de ser 770 (rwxrwx---)</li>
 <li>Crea en el sistema els usuaris que farem servir: <em>admin</em>, <em>vendes1</em>, <em>vendes2</em>, <em>dev1</em> i <em>dev2</em></li>
+<li>A més, hauràs de crear un grup que es cride <em>devs</em> i ficar els usuaris <em>dev1</em> i <em>dev2</em> dins</li>
 </ul>
 <h3 id="configuracio-de-les-acl">Configuració de les ACL</h3>
 <p>Sobre la carpeta anterior, afegir ACL als usuaris del departament de Vendes:</p>
 <ul>
-<li>Els usuaris vendes1 i vendes2 han de tenir només permisos de lectura</li>
+<li>Els usuaris <em>vendes1</em> i <em>vendes2</em> han de tenir només permisos de escriptura </li>
 </ul>
 <p>Afegeix ACL als usuaris del departament de Desenvolupament</p>
 <ul>
-<li>Els usuaris dev1 i dev2 han de tenir permisos de lectura i escriptura:</li>
+<li>Els grup <em>devs</em> han de tenir permisos de lectura</li>
 </ul>
 <p>Atorgar permisos complets a l'usuari admin:</p>
 <ul>
-<li>L'usuari admin ha de tenir tots els permisos (lectura, escriptura i execució)</li>
+<li>L'usuari <em>admin</em> ha de tenir tots els permisos (lectura, escriptura i execució)</li>
 </ul>
-<p>Verificar les ACLs configurades amb el comando adequat.</p>
+<div class="admonition warning">
+<p class="admonition-title">Atenció</p>
+<p>Recorda que sense les ACL per defecte, els fitxers creats no heretaran els permisos configurats.</p>
+</div>
+<p>Verificar les ACLs configurades amb el comandament i les captures de pantalla adequades.</p>
 <h4 id="proves">Proves</h4>
 <ul>
-<li>Verifica que els usuaris de <strong>Vendes</strong> no puguin modificar fitxers a <code>/data/projectes</code>, però puguin llegir-los.</li>
-<li>Verifica que els usuaris de <strong>Desenvolupament</strong> puguin llegir i escriure.</li>
-<li>Verifiqueu que l'usuari <strong>admin</strong> tingui control total.</li>
+<li>Crea un arxiu amb un dels usuaris de vendes i prova a llegir-lo. Pots fer-lo? Per què?</li>
+<li>Prova de llegir l'arxiu amb l'altre usuari de vendes. Pots fer-lo? Per què?</li>
+<li>Prova de modificar l'arxiu amb eixe segon usuari. Has tingut èxit? Per què?</li>
+<li>Prova de modificar l'arxiu amb un dels usuaris del grup <em>devs</em></li>
+<li>Mostra el contingut del arxiu amb eixe usuari del grup <em>devs</em></li>
+<li>Prova de crear un arxiu nou amb eixe usuari</li>
+<li>Verifiqueu que l'usuari <strong>admin</strong> tingui control total creant un nou arxiu, mostrant el contingut dels ja existents i modificant-los tots.</li>
 </ul>
 <h2 id="part-2-configuracio-dacls-a-windows">Part 2: Configuració d'ACLs a Windows</h2>
 <h3 id="escenari_1">Escenari</h3>
@@ -962,11 +971,12 @@
 <ul>
 <li>Crear la carpeta <code>C:\Projectes</code></li>
 <li>Crear els usuaris <em>marketing1, marketing2, it1, it2</em> i <em>admin</em></li>
+<li>Crea un grup amb el nom <strong>it</strong> i fica dins als usuaris <em>it1</em> i <em>it2</em></li>
 </ul>
 <h3 id="tasques_1">Tasques</h3>
 <ul>
 <li>Usuaris de l'equip de màrqueting (marketing1, marketing2) necessiten tenir permisos de només lectura sobre la carpeta.</li>
-<li>Usuaris de l'equip d'IT (it1, it2) necessiten tenir permisos de lectura i de modificació.</li>
+<li>Usuaris de l'equip d'IT (it1, it2) necessiten tenir permisos de lectura i de escriptura.</li>
 <li>L'administrador (administrador) ha de tenir control total sobre la carpeta.</li>
 </ul>
 <h3 id="verificar-permisos-de-seguretat-avancats">Verificar permisos de seguretat avançats</h3>
@@ -977,7 +987,10 @@
 <h3 id="proves_1">Proves:</h3>
 <ul>
 <li>Verifica que els usuaris de Màrqueting no puguin modificar fitxers a C:\Projectes, però puguin llegir-los.</li>
+<li>Verifica que els usuaris de Màrqueting no puguin crear arxius o directoris.</li>
 <li>Verifica que els usuaris d'IT puguin llegir i modificar fitxers.</li>
+<li>Intenta crear amb un usuari del grup <strong>it</strong> un arxiu dins del directori amb el botó dret. Detalla què observes.</li>
+<li>Intenta crear amb un usuari del grup <strong>it</strong> un arxiu dins del directori des del mateix bloc de notes. Detalla què observes.</li>
 <li>Verifiqueu que l'administrador té control total sobre la carpeta.</li>
 </ul>
 <h2 id="preguntes-per-a-la-reflexio">Preguntes per a la reflexió</h2>

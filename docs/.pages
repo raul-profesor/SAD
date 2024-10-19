@@ -9,6 +9,8 @@ nav:
         - RGPD, LOPDGDD y LSSI: normativa.md
     - Seguretat lògica:
         - Llistes d'accés (ACL): acl.md
+    - Seguretat activa:
+        - Exemple de ransomware: malware.md
     - Spoofing: 
         - ARP Spoofing: ARP_Spoofing.md
     - IDS/IPS:

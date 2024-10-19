@@ -8,7 +8,7 @@ nav:
     - Normativa:
         - RGPD, LOPDGDD y LSSI: normativa.md
     - Seguretat lògica:
-        - Llistes d'accés (ACL): acl.md
+        - Llistes de control d'accés (ACL): acl.md
     - Seguretat activa:
         - Exemple de ransomware: malware.md
     - Spoofing: 

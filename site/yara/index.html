@@ -6,24 +6,22 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="En este ejercicio se simula un escenario real donde el alumna ha de elegir el SAI que mejor cubra los requerimientos de seguridad que son necesarios en la empresa">
       
       
-      
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/SAI/">
-      
-      
-        <link rel="prev" href="../intconfdis3/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/yara/">
       
       
-        <link rel="next" href="../normativa/">
+        <link rel="prev" href="../malware/">
+      
+      
+        <link rel="next" href="../ARP_Spoofing/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Elecció de SAI - Seguridad y alta disponibilidad</title>
+        <title>Regles Yara - Seguridad y alta disponibilidad</title>
       
     
     
@@ -91,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#exercici-guiat-triant-el-sai-adequat-per-a-sistemes-critics" class="md-skip">
+        <a href="#estructura-basica-duna-regla-yara" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -126,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Elecció de SAI
+              Regles Yara
             
           </span>
         </div>
@@ -315,16 +313,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
       
       
       
@@ -333,7 +329,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Seguretat física
@@ -344,150 +340,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          SAI
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../SAI/" class="md-nav__link">
         SAI
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#exercici-guiat-triant-el-sai-adequat-per-a-sistemes-critics" class="md-nav__link">
-    Exercici guiat: Triant el SAI adequat per a sistemes crítics
-  </a>
-  
-    <nav class="md-nav" aria-label="Exercici guiat: Triant el SAI adequat per a sistemes crítics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#objectiu" class="md-nav__link">
-    Objectiu
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#escenari" class="md-nav__link">
-    Escenari
-  </a>
-  
-    <nav class="md-nav" aria-label="Escenari">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sistemes-critics" class="md-nav__link">
-    Sistemes crítics
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#passos-i-consells" class="md-nav__link">
-    Passos i consells
-  </a>
-  
-    <nav class="md-nav" aria-label="Passos i consells">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pas-1-calculeu-el-consum-total-denergia-del-sistema" class="md-nav__link">
-    Pas 1:  Calculeu el consum total d'energia del sistema
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-2-converteix-el-consum-denergia-a-la-capacitat-del-sai-va-per-a-tot-el-sistema" class="md-nav__link">
-    Pas 2: Converteix el consum d'energia a la capacitat del SAI (VA) per a tot el sistema
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-3-calculeu-el-temps-dexecucio-del-sai-per-a-tot-el-sistema" class="md-nav__link">
-    Pas 3: Calculeu el temps d'execució del SAI per a tot el sistema
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-4-dividiu-els-sistemes-per-prioritat" class="md-nav__link">
-    Pas 4: Dividiu els sistemes per prioritat
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-5-seleccioneu-els-models-de-sai-adequats" class="md-nav__link">
-    Pas 5: Seleccioneu els models de SAI adequats
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-6-considereu-la-redundancia-i-la-ciberseguretat" class="md-nav__link">
-    Pas 6: Considereu la redundància i la ciberseguretat
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preguntes-per-respondre-al-vostre-informe" class="md-nav__link">
-    Preguntes per respondre al vostre informe:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#entrega-final" class="md-nav__link">
-    Entrega final:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -603,14 +460,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
       
       
       
@@ -619,7 +478,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Seguretat activa
@@ -644,11 +503,102 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../yara/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Regles Yara
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Regles Yara
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-basica-duna-regla-yara" class="md-nav__link">
+    Estructura bàsica d'una regla YARA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemple-duna-regla-yara" class="md-nav__link">
+    Exemple d'una regla YARA:
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemple d'una regla YARA:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicacio-de-lexemple" class="md-nav__link">
+    Explicació de l'exemple:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristiques-principals" class="md-nav__link">
+    Característiques principals:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#casos-dus" class="md-nav__link">
+    Casos d'ús:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasca" class="md-nav__link">
+    Tasca
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasca">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio-de-yara" class="md-nav__link">
+    Instal·lació de Yara
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -962,225 +912,77 @@
                   
 
 
-  <h1>SAI</h1>
+  <h1>Regles Yara</h1>
 
-<h2 id="exercici-guiat-triant-el-sai-adequat-per-a-sistemes-critics">Exercici guiat: Triant el SAI adequat per a sistemes crítics</h2>
-<h3 id="objectiu">Objectiu</h3>
-<p>Els estudiants avaluaran els requisits d'alimentació i seleccionaran el SAI adequat per als sistemes crítics en un escenari. Se'ls proporcionarà consells per guiar-los a l'hora de triar els models de SAI correctes, calcular el temps d'execució i considerar mesures de redundància i ciberseguretat.</p>
-<hr />
-<h3 id="escenari">Escenari</h3>
-<p>Sou l'administrador informàtic d'una empresa mitjana amb diversos sistemes crítics. A causa dels freqüents talls elèctrics, se vos ha encarregat d'escollir un sistema SAI per mantenir aquests sistemes operatius durant el temps necessari.</p>
-<hr />
-<h4 id="sistemes-critics">Sistemes crítics</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Sistema</strong></th>
-<th><strong>Consum d'energía (Watts)</strong></th>
-<th><strong>Nivell de prioritat</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Servidor base de dades</td>
-<td>800 W</td>
-<td>High</td>
-</tr>
-<tr>
-<td>Servidor Web</td>
-<td>600 W</td>
-<td>High</td>
-</tr>
-<tr>
-<td>Firewall</td>
-<td>100 W</td>
-<td>Medium</td>
-</tr>
-<tr>
-<td>Network Switch</td>
-<td>80 W</td>
-<td>Medium</td>
-</tr>
-<tr>
-<td>Workstation (x5)</td>
-<td>200 W cadascuna</td>
-<td>Low</td>
-</tr>
-<tr>
-<td>CCTV System (Cameras &amp; NVR)</td>
-<td>400 W</td>
-<td>Medium</td>
-</tr>
-<tr>
-<td>Backup NAS</td>
-<td>300 W</td>
-<td>Low</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<div class="admonition question">
-<p class="admonition-title">Tasca</p>
-<p>El vostre objectiu és triar els models de SAI adequats que puguin gestionar el consum d'energia i assegurar-vos que cada sistema tingui el temps d'execució requerit. També hauríeu de considerar la redundància per als sistemes d'alta prioritat i abordar els problemes de ciberseguretat pel que fa a la gestió d'SAI.</p>
-</div>
-<hr />
-<h3 id="passos-i-consells">Passos i consells</h3>
-<h4 id="pas-1-calculeu-el-consum-total-denergia-del-sistema">Pas 1:  Calculeu el consum total d'energia del sistema</h4>
-<div class="admonition tip">
-<p class="admonition-title">Pista<p>El consum total d'energia és la suma de la potència absorbida de tots els sistemes. Assegureu-vos d'incloure tots els sistemes al vostre càlcul. El consum d'energia es dóna en watts.</p>
-</p>
-</div>
-<hr />
-<h4 id="pas-2-converteix-el-consum-denergia-a-la-capacitat-del-sai-va-per-a-tot-el-sistema">Pas 2: Converteix el consum d'energia a la capacitat del SAI (VA) per a tot el sistema</h4>
-<div class="admonition tip">
-<p class="admonition-title">Pista<p>Els sistemes SAI solen estar classificats en Volt-Amps (VA). Per convertir la potència total en watts a VA, utilitzeu la fórmula següent:</p>
-<p>$$ 
-\text{Capacitat del SAI (VA)} = \frac{\text{Potència total (watts)}}{\text{Factor de potència}} 
-$$</p>
-<p>On el factor de potència és generalment de 0,8 per a la majoria de les unitats SAI. Aquesta conversió és necessària perquè els sistemes SAI tenen en compte la potència reactiva, per això VA i watts difereixen.</p>
-</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Tasca</p>
-<p>Busca, troba i indica un SAI adequat que puga cobrir tota la potència del sistema.</p>
-</div>
-<hr />
-<h4 id="pas-3-calculeu-el-temps-dexecucio-del-sai-per-a-tot-el-sistema">Pas 3: Calculeu el temps d'execució del SAI per a tot el sistema</h4>
-<div class="admonition tip">
-<p class="admonition-title">Pista</p>
-<p>La majoria de fulls de dades del SAI proporcionen corbes o taules de temps d'execució que mostren quant de temps el SAI pot suportar una càrrega específica. Si coneixeu la càrrega de potència en watts i la capacitat del SAI, utilitzeu aquests recursos per determinar quant de temps el SAI proporcionarà energia de reserva.</p>
-<p>També podeu utilitzar la fórmula simplificada per aproximar el temps d'execució:
-$$
-\text{Temps d'execució del SAI (minuts)} = \frac{\text{Capacitat del SAI (Wh)}}{\text{Càrrega del sistema (Watts)}}
-$$</p>
-</div>
-<hr />
-<h4 id="pas-4-dividiu-els-sistemes-per-prioritat">Pas 4: Dividiu els sistemes per prioritat</h4>
-<p>No tots els sistemes necessiten el mateix temps de funcionament. Agrupeu els sistemes per nivell de prioritat per assignar millor els recursos del SAI. Els sistemes crítics com el servidor de bases de dades i el servidor web haurien de tenir temps d'execució més llargs i possiblement redundància, mentre que els sistemes de prioritat més baixa poden tenir temps d'execució més curts.</p>
-<ul>
-<li>
-<p><strong>Sistemes d'alta prioritat (servidor de bases de dades, servidor web):</strong> necessiten entre 20 i 40 minuts de temps d'activitat.</p>
-</li>
-<li>
-<p><strong>Sistemes de prioritat mitjana (tallafoc, commutador de xarxa, CCTV):</strong> necessiten entre 20 minuts i 30 minuts de funcionament.</p>
-</li>
-<li>
-<p><strong>Sistemes de baixa prioritat (estacions de treball, NAS de còpia de seguretat):</strong> només necessiten 8 minuts per a un apagat segur.</p>
-</li>
-</ul>
-<hr />
-<h4 id="pas-5-seleccioneu-els-models-de-sai-adequats">Pas 5: Seleccioneu els models de SAI adequats</h4>
-<p>Utilitzeu la taula següent per ajudar-vos a triar el SAI adequat per a cada grup de sistemes en funció dels seus requisits d'alimentació i necessitats de temps d'execució.
-Penseu si necessiteu comprar diverses unitats SAI o una de més gran per cobrir tots els sistemes.</p>
-<div class="admonition tip">
-<p class="admonition-title">Pista</p>
-<p>Busqueu les especificacions de cadascún dels SAI i consulteu les gràfiques de <em>runtime</em> per tal de completar la taula</p>
-</div>
-<table>
-<thead>
-<tr>
-<th><strong>Model SAI</strong></th>
-<th><strong>Capacitat (VA)</strong></th>
-<th><strong>Factor potència</strong></th>
-<th><strong>Càrrega màxima (Watts)</strong></th>
-<th><strong>Temps d'execució en càrrega màxima (Minuts)</strong></th>
-<th><strong>Temps d'execució amb 50% de càrrega (Minuts)</strong></th>
-<th><strong>Preu (€)</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>APC SAI Smart UPS SRT 1500VA (SRT1500XLA)</td>
-<td>1500</td>
-<td>0.9</td>
-<td></td>
-<td></td>
-<td></td>
-<td>800€</td>
-</tr>
-<tr>
-<td>Eaton 5P 2200VA (9PX2200GRT-L)</td>
-<td>2200</td>
-<td>0.9091</td>
-<td></td>
-<td></td>
-<td></td>
-<td>1715€</td>
-</tr>
-<tr>
-<td>CyberPower 3000VA  (OL3000RTXL2U)</td>
-<td>3000</td>
-<td>0.9</td>
-<td></td>
-<td></td>
-<td></td>
-<td>2600€</td>
-</tr>
-<tr>
-<td>CyberPower 5000VA  (PR5000LCDRTXL5U)</td>
-<td>5000</td>
-<td>0.9</td>
-<td></td>
-<td></td>
-<td></td>
-<td>3800€</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h4 id="pas-6-considereu-la-redundancia-i-la-ciberseguretat">Pas 6: Considereu la redundància i la ciberseguretat</h4>
-<div class="admonition tip">
-<p class="admonition-title">Pista</p>
-<p>Per als sistemes d'alta prioritat (p. ex., servidor de bases de dades, servidor web), considereu la possibilitat d'implementar la redundància utilitzant dues unitats SAI si fera falta. La redundància garanteix que si falla un SAI, la segona unitat pot fer-se càrrec, mantenint el sistema operatiu.</p>
-<p>A més, assegureu-vos que el SAI admet la supervisió remota (mitjançant SNMP o interfícies basades en web) perquè pugueu rebre alertes i controlar l'estat de la bateria. </p>
-</div>
-<h3 id="preguntes-per-respondre-al-vostre-informe">Preguntes per respondre al vostre informe:</h3>
+<p>Les <strong>regles YARA</strong> són un conjunt de patrons utilitzats per identificar i classificar arxius maliciosos, codi maliciós o comportaments sospitosos en sistemes informàtics. Van ser desenvolupades per <strong>Víctor Álvarez</strong>, un investigador de seguretat, amb l'objectiu de facilitar la identificació de codi maliciós en investigacions de seguretat i anàlisi forense.</p>
+<p><img alt="" height="30%" src="../img/yara2.png" width="30%" /></p>
+<p><strong>YARA</strong> (Yet Another Ridiculous Acronym) permet definir regles que descriuen les característiques de fitxers o processos sospitosos mitjançant patrons de text o seqüències de bytes. Aquestes regles són especialment útils en la recerca de codi maliciós, ja que ajuden a detectar famílies de codi maliciós basades en similituds, fins i tot si el codi maliciós ha estat modificat lleugerament per evitar ser detectat per mètodes tradicionals.</p>
+<p><img alt="" height="30%" src="../img/yara1.webp" width="30%" /></p>
+<p>És un estàndard de factor àmpliament utilitzat a la comunitat de la ciberseguretat i de gran implementació i integració amb altres eines.</p>
+<h3 id="estructura-basica-duna-regla-yara">Estructura bàsica d'una regla YARA</h3>
+<p>Cada regla YARA té tres seccions principals:</p>
 <ol>
-<li>
-<p>Consum total d'energia: quin és el consum total d'energia de tots els sistemes?</p>
-<div class="admonition tip">
-<p class="admonition-title">Pista</p>
-<p>Suma la potència (en watts) de tots els sistemes.</p>
-</div>
-</li>
-<li>
-<p>Capacitat del SAI: Quina és la capacitat total del SAI (en VA) necessària per a tots els sistemes?</p>
-<div class="admonition tip">
-<p class="admonition-title">Consell</p>
-<p>Utilitzeu la fórmula que se vos indica i un factor de potència de 0,8 per convertir watts a VA.</p>
-</div>
-</li>
-<li>
-<p>Selecció de SAI: quins models de SAI heu triat i per què?</p>
-<div class="admonition tip">
-<p class="admonition-title">Consell</p>
-<p>Tingueu en compte el temps d'execució, la càrrega i el preu quan seleccioneu el SAI. Procureu economitzar al màxim la vostra elecció.</p>
-</div>
-</li>
-<li>
-<p>Redundància: heu inclòs alguna redundància per a sistemes d'alta prioritat? Per què o per què no?</p>
-<div class="admonition tip">
-<p class="admonition-title">Suggeriment</p>
-<p>La redundància pot evitar temps d'inactivitat en cas d'avaria del SAI.</p>
-</div>
-</li>
-<li>
-<p>Consideracions de ciberseguretat: quines mesures de seguretat prendràs per garantir que la interfície de gestió de l'SAI estigui segura?</p>
-<div class="admonition tip">
-<p class="admonition-title">Pista</p>
-<p>Si tenim una eina de monitorització del SAI a la que s'accedix mitjantçant un accés web, què faríes per a tindre un accés segur?</p>
-</div>
-</li>
+<li><strong>Identificador (nom de la regla)</strong>: El nom de la regla que s'utilitzarà per referir-s'hi.</li>
+<li><strong>Metadades (opcional)</strong>: Informació addicional com a descripcions, autor, data, etc.</li>
+<li><strong>Condicions</strong>: Defineixen quines característiques o patrons ha de complir un fitxer per ser considerat com una coincidència.</li>
 </ol>
-<h3 id="entrega-final">Entrega final:</h3>
-<p>Un informe que inclou:</p>
+<h3 id="exemple-duna-regla-yara">Exemple d'una regla YARA:</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>rule<span class="w"> </span>DetectaMalwareExemmple
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>meta:
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nv">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Investigador&quot;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nv">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Regla per a detectar malware&quot;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nv">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2024-10-24&quot;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span>strings:
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="nv">$cadena1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;malware&quot;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="nv">$cadena2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>6A<span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">68</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span>6A<span class="w"> </span><span class="m">14</span><span class="w"> </span>8D<span class="w"> </span><span class="m">91</span><span class="o">}</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span>condition:
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="nv">$cadena1</span><span class="w"> </span>or<span class="w"> </span><span class="nv">$cadena2</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="o">}</span>
+</span></code></pre></div>
+<h4 id="explicacio-de-lexemple">Explicació de l'exemple:</h4>
 <ul>
-<li>Càlculs de potència i temps d'execució.</li>
-<li>Selecció i justificació del model de SAI.</li>
-<li>Planificació de redundància per a sistemes d'alta prioritat.</li>
-<li>Mesures de ciberseguretat per assegurar la gestió de SAI.</li>
-<li>Cost total de la implementació amb tots els SAI.</li>
+<li><strong>meta</strong>: Conté informació addicional sobre la regla, com l'autor i una descripció.</li>
+<li><strong>strings</strong>: Conté els patrons que es buscaran, com ara cadenes de text o seqüències hexadecimals.</li>
+<li><strong>condition</strong>: És la part que especifica quan s'activarà la regla. En aquest cas, la regla s'activarà si es troba <strong>"malware"</strong> o la seqüència de bytes hexadecimal.</li>
 </ul>
+<h3 id="caracteristiques-principals">Característiques principals:</h3>
+<ul>
+<li><strong>Simplicitat</strong>: El llenguatge YARA és senzill d'aprendre i entendre, però és extremadament potent per detectar patrons complexos.</li>
+<li><strong>Eficiència</strong>: YARA pot analitzar grans volums de dades de manera eficient, cosa que és essencial en anàlisi forense o detecció d'amenaces en temps real.</li>
+<li><strong>Extensibilitat</strong>: Permet afegir múltiples patrons (cadenes de text, expressions regulars, seqüències de bytes) i condicions lògiques.</li>
+</ul>
+<h3 id="casos-dus">Casos d'ús:</h3>
+<ul>
+<li><strong>Detecció de codi maliciós</strong>: Identificació de variants de codi maliciós basades en patrons coneguts.</li>
+<li><strong>Anàlisi forense</strong>: Durant una investigació de ciberseguretat, es poden fer servir les regles YARA per escanejar sistemes i arxius a la recerca d'indicadors de compromís (IoC).</li>
+<li><strong>Protecció proactiva</strong>: Algunes solucions de seguretat integren regles YARA per detectar amenaces emergents de manera proactiva.</li>
+</ul>
+<p>En resum, les regles YARA són una eina fonamental en la ciberseguretat per a la identificació i l'anàlisi d'amenaces, gràcies a la seva flexibilitat i potència per detectar patrons en fitxers o en la memòria del sistema.</p>
+<h2 id="tasca">Tasca</h2>
+<p>En el nostre cas tindrem una presa de contacte amb les regles Yara d'una manera força senzilla. Ens crearem una regla que pugui detectar un malware real, en aquest cas el conegut com a <a href="https://www.checkpoint.com/es/cyber-hub/threat-prevention/what -is-malware/what-is-vidar-malware/"><strong><em>Vidar</em></strong></a>.</p>
+<p>Puja primer la mostra a Virustotal i comprova com efectivament multitud de motors d'antivirus la detecten com a codi maliciós (malware).</p>
+<p>Per continuar, l'estructura de la regla serà la que es mostra més amunt, feu una cerca a Internet si així ho necessiteu per al vostre cas concret. Es pretén que la regla Yara elaborada inclogui:</p>
+<ul>
+<li>Metadades</li>
+<li>Com a autor el vostre nom i cognom</li>
+<li>Com a descripció el vostre curs i l'any acadèmic (ex. 4C - 98/99)</li>
+<li>Data</li>
+<li>Que es detectin dues cadenes</li>
+<li>Sobre la mostra de malware proporcionada i fent ús de l'ordre <code>strings</code>, intenteu localitzar dues cadenes que semblin úniques i relatives a aquest malware (IPs, comunicacions mitjançant canals de Telegram, dominis, ubicacions de disc...)</li>
+<li>Utilitzeu dues d'aquestes informacions com les cadenes a detectar</li>
+<li>La condició és que s'hagin de complir ambdues cadenes obligatòriament</li>
+</ul>
+<h3 id="installacio-de-yara">Instal·lació de Yara</h3>
+<p>Per instal·lar Yara a Rocky no teniu més que:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>suo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>yara
+</span></code></pre></div>
+<p>i arreglat. Per provar la regla contra la mostra de codi maliciós la sintaxi serà:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>yara<span class="w"> </span>ruta/a/la/regla_yara.yara<span class="w"> </span>ruta/a/la/mostra_malware
+</span></code></pre></div>
+Si la detecció és exitosa, veureu que se us repeteix el nom de la regla per pantalla, en cas contrari no obtindrem cap sortida.</p>
 
 
   

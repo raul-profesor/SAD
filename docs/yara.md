@@ -78,7 +78,7 @@ Per continuar, l'estructura de la regla serà la que es mostra més amunt, feu u
 Per instal·lar Yara a Rocky no teniu més que:
 
 ```bash
-suo dnf install yara
+sudo dnf install yara
 ```
 
 i arreglat. Per provar la regla contra la mostra de codi maliciós la sintaxi serà:

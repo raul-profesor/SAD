@@ -11,6 +11,7 @@ nav:
         - Llistes de control d'accés (ACL): acl.md
     - Seguretat activa:
         - Exemple de ransomware: malware.md
+        - Regles Yara: yara.md
     - Spoofing: 
         - ARP Spoofing: ARP_Spoofing.md
     - IDS/IPS:

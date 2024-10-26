@@ -9,7 +9,8 @@ Shellshock és una vulnerabilitat de seguretat que afecta Bash, un intèrpret de
 Com funciona Shellshock?
 
 La vulnerabilitat de Shellshock permet a un atacant injectar codi maliciós a variables d'entorn. Bash, quan trobeu una variable d'entorn que conté codi, podeu executar aquest codi, la qual cosa obre una porta perquè un atacant controli remotament el sistema. Aquesta execució remota d'ordres passa quan el sistema utilitza Bash per interpretar variables d'entorn, com ara aplicacions web, scripts CGI o qualsevol altre sistema que passi informació a través de variables.
-Impacte i abast de Shellshock
+
+### Impacte i abast de Shellshock
 
 ![](img/shellshock_logo.jpg)
 

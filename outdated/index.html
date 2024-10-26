@@ -6,27 +6,31 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-      
-      
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/">
+        <meta name="description" content="Apuntes y prácticas Seguridad y Alta disponibilidad (SAD - ASIR). Ejercicio donde hacemos un estudio del peligro de tener nuestros sistemas desactualizados, Shellshock, Docker.">
       
       
       
-        <link rel="next" href="ARP_Spoofing/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/outdated/">
       
-      <link rel="icon" href="assets/images/favicon.png">
+      
+        <link rel="prev" href="../yara/">
+      
+      
+        <link rel="next" href="../ARP_Spoofing/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Seguridad y alta disponibilidad</title>
+        <title>Comprovació dels perills de tindre sistemes desactualitzats - Seguridad y alta disponibilidad</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ded33207.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ded33207.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.a0c5b2b5.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
 
@@ -42,11 +46,11 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -84,6 +88,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#que-es-shellshock" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -96,7 +105,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="." title="Seguridad y alta disponibilidad" class="md-header__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
+    <a href=".." title="Seguridad y alta disponibilidad" class="md-header__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -115,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Comprovació dels perills de tindre sistemes desactualitzats
             
           </span>
         </div>
@@ -210,7 +219,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Seguridad y alta disponibilidad" class="md-nav__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
+    <a href=".." title="Seguridad y alta disponibilidad" class="md-nav__button md-logo" aria-label="Seguridad y alta disponibilidad" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -256,7 +265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="intconfdis/" class="md-nav__link">
+      <a href="../intconfdis/" class="md-nav__link">
         Integritat amb AIDE
       </a>
     </li>
@@ -270,7 +279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="intconfdis2/" class="md-nav__link">
+      <a href="../intconfdis2/" class="md-nav__link">
         Confidencialitat amb Veracrypt
       </a>
     </li>
@@ -284,7 +293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="intconfdis3/" class="md-nav__link">
+      <a href="../intconfdis3/" class="md-nav__link">
         Disponibilitat de serveis amb Nmap
       </a>
     </li>
@@ -333,7 +342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="SAI/" class="md-nav__link">
+      <a href="../SAI/" class="md-nav__link">
         SAI
       </a>
     </li>
@@ -382,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="normativa/" class="md-nav__link">
+      <a href="../normativa/" class="md-nav__link">
         RGPD, LOPDGDD y LSSI
       </a>
     </li>
@@ -431,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="acl/" class="md-nav__link">
+      <a href="../acl/" class="md-nav__link">
         Llistes de control d'accés (ACL)
       </a>
     </li>
@@ -451,14 +460,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
       
       
       
@@ -467,7 +478,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Seguretat activa
@@ -480,7 +491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="malware/" class="md-nav__link">
+      <a href="../malware/" class="md-nav__link">
         Exemple de ransomware
       </a>
     </li>
@@ -494,7 +505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="yara/" class="md-nav__link">
+      <a href="../yara/" class="md-nav__link">
         Regles Yara
       </a>
     </li>
@@ -506,11 +517,68 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="outdated/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Sistemes desactualitzats
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Sistemes desactualitzats
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-shellshock" class="md-nav__link">
+    Què és Shellshock?
+  </a>
+  
+    <nav class="md-nav" aria-label="Què és Shellshock?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#com-es-va-mitigar-shellshock" class="md-nav__link">
+    Com es va mitigar Shellshock
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#realitzacio-de-la-practica" class="md-nav__link">
+    Realització de la pràctica
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -557,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ARP_Spoofing/" class="md-nav__link">
+      <a href="../ARP_Spoofing/" class="md-nav__link">
         ARP Spoofing
       </a>
     </li>
@@ -606,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="idps/" class="md-nav__link">
+      <a href="../idps/" class="md-nav__link">
         Monitorización mediante sistemas detectores de intrusos (IDS) y sistemas de prevención de intrusos (IPS)
       </a>
     </li>
@@ -655,7 +723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="iptables/" class="md-nav__link">
+      <a href="../iptables/" class="md-nav__link">
         Administració senzilla de regles d'iptables fent servir Docker
       </a>
     </li>
@@ -669,7 +737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="fw-ics/" class="md-nav__link">
+      <a href="../fw-ics/" class="md-nav__link">
         Administració de regles d'iptables en un entorn industrial
       </a>
     </li>
@@ -718,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="vpn/" class="md-nav__link">
+      <a href="../vpn/" class="md-nav__link">
         Servidor de VPN amb wireguard en un escenari muntat amb Docker
       </a>
     </li>
@@ -767,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="proxy/" class="md-nav__link">
+      <a href="../proxy/" class="md-nav__link">
         Servidor proxy Squid amb autenticació Radius amb Docker
       </a>
     </li>
@@ -781,7 +849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="proxy-traefik/" class="md-nav__link">
+      <a href="../proxy-traefik/" class="md-nav__link">
         Proxy inverso para Docker con Traefik
       </a>
     </li>
@@ -795,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="proxy-caddy/" class="md-nav__link">
+      <a href="../proxy-caddy/" class="md-nav__link">
         Proxy inverso con Caddy para contenedores Docker
       </a>
     </li>
@@ -824,10 +892,94 @@
                   
 
 
-  <h1>Home</h1>
+  <h1>Sistemes desactualitzats</h1>
 
-<p>Col·lecció d'algunes pràctiques del mòdul de seguretat i alta disponibilitat (SAD), de 2n d'ASIX.</p>
-<p>Colección de algunas prácticas y apuntes del módulo de seguridad y alta disponibilidad (SAD), de 2º de ASIR.</p>
+<h2 id="que-es-shellshock">Què és Shellshock?</h2>
+<p>Shellshock és una vulnerabilitat de seguretat que afecta Bash, un intèrpret de comandes molt utilitzat en sistemes Unix i Linux, encara que també en alguns sistemes macOS. Aquesta vulnerabilitat, descoberta el 2014, permet que un atacant executi ordres no autoritzades en un sistema afectat, comprometent-ne la seguretat.
+Com funciona Shellshock?</p>
+<p>La vulnerabilitat de Shellshock permet a un atacant injectar codi maliciós a variables d'entorn. Bash, quan trobeu una variable d'entorn que conté codi, podeu executar aquest codi, la qual cosa obre una porta perquè un atacant controli remotament el sistema. Aquesta execució remota d'ordres passa quan el sistema utilitza Bash per interpretar variables d'entorn, com ara aplicacions web, scripts CGI o qualsevol altre sistema que passi informació a través de variables.
+Impacte i abast de Shellshock</p>
+<p><img alt="" src="../img/shellshock_logo.jpg" /></p>
+<p>Shellshock és una vulnerabilitat crítica perquè:</p>
+<ul>
+<li><strong>És fàcil d'explotar:</strong> Amb unes quantes ordres, un atacant pot executar codi maliciós.</li>
+<li><strong>És difícil de detectar:</strong> Molts sistemes antics o mal mantinguts encara utilitzen versions de Bash vulnerables, per la qual cosa és un blanc fàcil per a atacs.
+Podeu atorgar accés complet: Un atacant podria comprometre servidors complets, accedir a bases de dades, robar informació o instal·lar codi maliciós.</li>
+</ul>
+<h3 id="com-es-va-mitigar-shellshock">Com es va mitigar Shellshock</h3>
+<p>Quan Shellshock va ser descobert, els desenvolupadors i administradors de sistemes van treballar per actualitzar Bash, i la comunitat de seguretat va emetre pegats per tancar aquesta vulnerabilitat. Aplicar aquests pegats i actualitzar a versions de Bash corregides és fonamental per prevenir atacs que aprofitin aquesta vulnerabilitat.</p>
+<h2 id="realitzacio-de-la-practica">Realització de la pràctica</h2>
+<p>Per a aquesta pràctica farem servir una imatge Docker d'una versió antiga d'Ubuntu, on instal·larem una versió vulnerable de Bash. Això simularà d'alguna manera un cas real d'una empresa on encara es conservin sistemes antics desactualitzats i ens farà prendre consciència del perill.</p>
+<p>El primer que necessitem sens dubte és tenir Docker instal·lat al nostre sistema Rocky. Per això podem seguir qualsevol guia, com ara la <a href="https://docs.rockylinux.org/gemstones/containers/docker/">documentació oficial de Rocky</a>. </p>
+<div class="admonition warning">
+<p class="admonition-title">Atenció</p>
+<p><strong>Assegureu-vos, seguint la guía d'instal·lació, de que podeu executar Docker sense <code>sudo</code></strong>.</p>
+</div>
+<p>Haureu de crear un directori i dins d'ell, els dos arxius que es detallen a continuació. El Dockerfile a partir del qual es crearà la imatge és el següent:</p>
+<div class="language-Dockerfile highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c"># Versió desactualitzada d&#39;Ubuntu</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:14.04</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c"># Instal·lar dependències per instal·lar després una versió vulnerable de Bash</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>apt-get<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="se">\</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>wget
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">RUN</span><span class="w"> </span>wget<span class="w"> </span>https://snapshot.debian.org/archive/debian/20140304T040604Z/pool/main/b/bash/bash_4.1-3_amd64.deb
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">RUN</span><span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>bash_4.1-3_amd64.deb
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c"># Copiem un petit script al directori adequat perquè sigui servit per Apache</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/usr/lib/cgi-bin
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">COPY</span><span class="w"> </span>prova_shellshock.sh<span class="w"> </span>/usr/lib/cgi-bin/prova_shellshock.sh
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">RUN</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/lib/cgi-bin/prova_shellshock.sh
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c"># Instal·lem Apache i el mòdul adequat per a scripts CGI</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>apache2<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span>a2enmod<span class="w"> </span>cgi<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span>service<span class="w"> </span>apache2<span class="w"> </span>restart
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="c"># Iniciem Apache</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;apachectl&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-D&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;FOREGROUND&quot;</span><span class="p">]</span>
+</span></code></pre></div>
+<p>El contingun de l'script que servirà Apache és:</p>
+<div class="language-bash highlight"><span class="filename">prova_shellshock.sh</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Content-type: text/html&quot;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Shellshock Script de prova&quot;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;pre&gt;&quot;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Data: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Temps en funcionament: </span><span class="k">$(</span>uptime<span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;/pre&gt;&quot;</span>
+</span></code></pre></div>
+<p>Construïm la imatge Docker a partir del Dockerfile situant-nos en el directori a on està ubicat el fitxer:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>prova_shellshock<span class="w"> </span>.
+</span></code></pre></div>
+I si tot ha anat bé, apareixerà llistada:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>images
+</span></code></pre></div>
+<p>Ara pasem a executar el contenidor a partir de la imatge:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span>--name<span class="w"> </span>practica_desactualitzat_shellshock<span class="w"> </span>prova_shellshock
+</span></code></pre></div>
+<p>I es quedarà executant-se en background, podeu comprovar-lo amb:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>ps
+</span></code></pre></div>
+<p>Ara si en el vostre navegador accediu a <code>http://IP-Rocky:8080/cgi-bin/prova_shellshock.sh</code>hauria d'executar-se l'script i vore algo com:</p>
+<p><img alt="" src="../img/shellshock1.png" /></p>
+<p>I ja tindríem el nostre escenari preparat. Ara es el vostre torn:</p>
+<ol>
+<li>Investiga com pots comprovar que el sistema es vulnerable a Shellshock:<ol>
+<li>Fes-lo primer amb el comandament <code>curl</code></li>
+<li>Fes-lo després amb <code>nmap</code>i l'script <code>.nse</code>adequat</li>
+</ol>
+</li>
+<li>Quan ja hem certificat per duplicat que el sistema és vulnerable, investiga com aplicar el parxe al sistema</li>
+<li>Torna a comprovar si el sistema és vulnerable i certifica l'éxit del parxe</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Ajuda</p>
+<p>Per poder ficar-nos dins del contenidor Ubuntu que hem creat i utilitzar la seua línia de comandaments, podem fer servir el comandament:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>practica_desactualitzat_shellshock<span class="w"> </span>/bin/bash
+</span></code></pre></div>
+</div>
 
 
   
@@ -872,12 +1024,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.51198bba.min.js"></script>
+      <script src="../assets/javascripts/bundle.51198bba.min.js"></script>
       
-        <script src="javascripts/katex.js"></script>
+        <script src="../javascripts/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       

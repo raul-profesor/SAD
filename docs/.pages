@@ -12,6 +12,7 @@ nav:
     - Seguretat activa:
         - Exemple de ransomware: malware.md
         - Regles Yara: yara.md
+        - Sistemes desactualitzats: outdated.md
     - Spoofing: 
         - ARP Spoofing: ARP_Spoofing.md
     - IDS/IPS:

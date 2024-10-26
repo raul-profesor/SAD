@@ -29,6 +29,7 @@ theme:
     - toc.integrate
     - search.highlight
     - content.code.annotate
+    - content.code.copy
   icon:
     annotation: material/arrow-right-circle
 markdown_extensions:
@@ -71,4 +72,3 @@ extra_javascript:
 extra:
   analytics: 
       provider: google 
-      property: G-3NX5MD5C8H

@@ -64,12 +64,15 @@ Que consiste en:
 + Un *atacante*
 + Un *observador* **TcpDumper** cuya única función es escuchar el tráfico de la red
 
-Pasemos a construir las imágenes que más tarde darán lugar a los contenedores del *atacante* y del *TcpDumper* que vamos a ejecutar. Para este cometido no tenéis más que ejecutar el `script build.sh`.
-Los contenedores víctimas son simplemente imágenes de [**busybox**](https://unpocodejava.com/2021/11/18/queesbusybox/) sin modificar, directamente del "registry" de Docker.
+Pasemos a construir las imágenes que más tarde darán lugar a los contenedores del *atacante* y del *TcpDumper* que vamos a ejecutar. Para este cometido no tenéis más que ejecutar el script `build.sh`.
+Los contenedores víctimas son simplemente imágenes de [**busybox**](https://unpocodejava.com/2021/11/18/queesbusybox/) sin modificar, directamente del *"registry"* de Docker.
+
+!!!warning "Atención"
+    Si este `build.sh` no te funcion y te da algún tipo de error puede pasar que hayas guardado el estado de la máquina virtual en lugar de apagarla. Esto podría llevar a una situación donde la hora no esté sincronizada y de problemas al comunicarse con los repositorios, **reinicia tu máquina virtual para que actualice la hora**.
 
 Ahora ejecutaremos los 4 contenedores, cada uno en una pestaña distinta del terminal:
 
-```bash
+```shell-session
 docker run -it --rm --name box1 busybox
 docker run -it --rm --name box2 busybox
 docker run -it --rm --name arpspoofer arpspoofer
@@ -85,7 +88,9 @@ docker run -it --rm  --net=container:arpspoofer --name tcpdumper tcpdumper
 Tras los pasos anteriores deberias empezar a ver el tráfico capturado por el contenedor *TcpDumper*.
 
 !!!task "Tarea 2"
-    Además del tcpdump del contenedor *TcpDumper* pon a capturar tráfico con Wireshark en la interfaz `Docker0` de la máquina anfitrión.
+    Además del tcpdump del contenedor *TcpDumper* pon a capturar tráfico con Wireshark en la interfaz `Docker0` de la máquina anfitrión. 
+    
+    Si, como debe ser la situación actual, no tienes entorno gráfico en Rocky, haz la captura de tráfico con **Tcpdump**.
 
 !!!task "Tarea 3"
     Describe detalladamente qué observas que está ocurriendo en la captura del contenedor `TcpDumper`
@@ -95,11 +100,15 @@ Tras los pasos anteriores deberias empezar a ver el tráfico capturado por el co
 
 !!!task "Tarea 5"
     En la captura de TCPDump, indica y explica <u>detalladamente</u>:
-        + Mensajes ARP donde se ve **claramente** qué está ocurriendo y cuál es el ataque, indíca explícitamente los mensajes.
-        + Mensajes ICMP donde se ve la secuencia de los acontecimienntos.
+
+    + Mensajes ARP donde se ve **claramente** qué está ocurriendo y cuál es el ataque, indíca explícitamente los mensajes.
+
+    + Mensajes ICMP donde se ve la secuencia de los acontecimientos.
 
 !!!task "Tarea 6"
-    En la captura de Wireshark filtra por el protocolo ICMP y repite las explicaciones de la Tarea 5.
+    Transfiérete la captura de tráfico de la *Tarea 2* a una máquina donde cuentes con Wireshark. Ya vimos formas de realizar esta transferencia en la práctica de Veracrypt.
+
+    Abre esta captura con Wireshark, filtra por el protocolo ICMP y repite las explicaciones de la Tarea 5.
 
 !!!task "Tarea 7"
         Realiza un diagrama en [https://www.drawio.com/](https://www.drawio.com/) donde expliques claramente de forma gráfica el proceso que has llevado a acabo.

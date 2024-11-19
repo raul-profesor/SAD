@@ -92,3 +92,7 @@ L'administrador té un usuari propi:
     + **contrasenya**: iessevero
 
 Per a que no torne a pasar, l'administrador decideix establir una nova política de contrasenyes amb els següents requisits:
+
+https://hostadvice.com/how-to/web-hosting/ubuntu/how-to-enable-and-enforce-secure-password-policies-on-ubuntu/
+
+https://www.linuxtechi.com/lock-user-account-incorrect-login-attempts-linux/

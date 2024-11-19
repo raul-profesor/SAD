@@ -17,6 +17,8 @@ nav:
         - ARP Spoofing: ARP_Spoofing.md
     - IDS/IPS:
         - Monitorización mediante sistemas detectores de intrusos (IDS) y sistemas de prevención de intrusos (IPS): idps.md
+    - Examen pràctic:
+        - Examen pràctic 1er trimestre: examen_practic.md
     - Firewall:
         - Administració senzilla de regles d'iptables fent servir Docker: iptables.md 
         - Administració de regles d'iptables en un entorn industrial: fw-ics.md

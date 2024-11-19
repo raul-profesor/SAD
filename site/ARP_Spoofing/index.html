@@ -929,13 +929,17 @@
 <li>Un <em>atacante</em></li>
 <li>Un <em>observador</em> <strong>TcpDumper</strong> cuya única función es escuchar el tráfico de la red</li>
 </ul>
-<p>Pasemos a construir las imágenes que más tarde darán lugar a los contenedores del <em>atacante</em> y del <em>TcpDumper</em> que vamos a ejecutar. Para este cometido no tenéis más que ejecutar el <code>script build.sh</code>.
-Los contenedores víctimas son simplemente imágenes de <a href="https://unpocodejava.com/2021/11/18/queesbusybox/"><strong>busybox</strong></a> sin modificar, directamente del "registry" de Docker.</p>
+<p>Pasemos a construir las imágenes que más tarde darán lugar a los contenedores del <em>atacante</em> y del <em>TcpDumper</em> que vamos a ejecutar. Para este cometido no tenéis más que ejecutar el script <code>build.sh</code>.
+Los contenedores víctimas son simplemente imágenes de <a href="https://unpocodejava.com/2021/11/18/queesbusybox/"><strong>busybox</strong></a> sin modificar, directamente del <em>"registry"</em> de Docker.</p>
+<div class="admonition warning">
+<p class="admonition-title">Atención</p>
+<p>Si este <code>build.sh</code> no te funcion y te da algún tipo de error puede pasar que hayas guardado el estado de la máquina virtual en lugar de apagarla. Esto podría llevar a una situación donde la hora no esté sincronizada y de problemas al comunicarse con los repositorios, <strong>reinicia tu máquina virtual para que actualice la hora</strong>.</p>
+</div>
 <p>Ahora ejecutaremos los 4 contenedores, cada uno en una pestaña distinta del terminal:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>box1<span class="w"> </span>busybox
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>box2<span class="w"> </span>busybox
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>arpspoofer<span class="w"> </span>arpspoofer
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w">  </span>--net<span class="o">=</span>container:arpspoofer<span class="w"> </span>--name<span class="w"> </span>tcpdumper<span class="w"> </span>tcpdumper
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">docker run -it --rm --name box1 busybox</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="go">docker run -it --rm --name box2 busybox</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="go">docker run -it --rm --name arpspoofer arpspoofer</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="go">docker run -it --rm  --net=container:arpspoofer --name tcpdumper tcpdumper</span>
 </span></code></pre></div>
 <div class="admonition task">
 <p class="admonition-title">Tarea 1</p>
@@ -949,7 +953,8 @@ Los contenedores víctimas son simplemente imágenes de <a href="https://unpocod
 <p>Tras los pasos anteriores deberias empezar a ver el tráfico capturado por el contenedor <em>TcpDumper</em>.</p>
 <div class="admonition task">
 <p class="admonition-title">Tarea 2</p>
-<p>Además del tcpdump del contenedor <em>TcpDumper</em> pon a capturar tráfico con Wireshark en la interfaz <code>Docker0</code> de la máquina anfitrión.</p>
+<p>Además del tcpdump del contenedor <em>TcpDumper</em> pon a capturar tráfico con Wireshark en la interfaz <code>Docker0</code> de la máquina anfitrión. </p>
+<p>Si, como debe ser la situación actual, no tienes entorno gráfico en Rocky, haz la captura de tráfico con <strong>Tcpdump</strong>.</p>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Tarea 3</p>
@@ -961,13 +966,20 @@ Los contenedores víctimas son simplemente imágenes de <a href="https://unpocod
 </div>
 <div class="admonition task">
 <p class="admonition-title">Tarea 5</p>
-<p>En la captura de TCPDump, indica y explica <u>detalladamente</u>:
-    + Mensajes ARP donde se ve <strong>claramente</strong> qué está ocurriendo y cuál es el ataque, indíca explícitamente los mensajes.
-    + Mensajes ICMP donde se ve la secuencia de los acontecimienntos.</p>
+<p>En la captura de TCPDump, indica y explica <u>detalladamente</u>:</p>
+<ul>
+<li>
+<p>Mensajes ARP donde se ve <strong>claramente</strong> qué está ocurriendo y cuál es el ataque, indíca explícitamente los mensajes.</p>
+</li>
+<li>
+<p>Mensajes ICMP donde se ve la secuencia de los acontecimientos.</p>
+</li>
+</ul>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Tarea 6</p>
-<p>En la captura de Wireshark filtra por el protocolo ICMP y repite las explicaciones de la Tarea 5.</p>
+<p>Transfiérete la captura de tráfico de la <em>Tarea 2</em> a una máquina donde cuentes con Wireshark. Ya vimos formas de realizar esta transferencia en la práctica de Veracrypt.</p>
+<p>Abre esta captura con Wireshark, filtra por el protocolo ICMP y repite las explicaciones de la Tarea 5.</p>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Tarea 7<p>Realiza un diagrama en <a href="https://www.drawio.com/">https://www.drawio.com/</a> donde expliques claramente de forma gráfica el proceso que has llevado a acabo.</p>

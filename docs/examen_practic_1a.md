@@ -144,9 +144,3 @@ Per últim, l'administrador configurarà que cada 3 intents erronis de login per
     + Un amic de l'*admin* li ha parlat de la eina ***tally2*** per a poder configurar estos bloquejos ja que està utilitzant una versió molt antiga d'Ubuntu
     + Per tal de provar primer i no bloquejar usuaris a *tutiplen*, ha decidit configurar que als **3 intents de login erronis**, es bloqueje el compte durant **15 segons**
     + Per a demostrar que està funcionant, mostra la part del log  `/var/log/auth`on es puga vore, una cosa a continuació d'una altra, com tally bloqueja el compte i 15 i no deixa fer login però 15 segons més tard sí que deixa. Indica cadascuna de les accions en la captura de pantalla.
-  
-
-
-https://hostadvice.com/how-to/web-hosting/ubuntu/how-to-enable-and-enforce-secure-password-policies-on-ubuntu/
-
-https://www.linuxtechi.com/lock-user-account-incorrect-login-attempts-linux/

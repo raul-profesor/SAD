@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/ex_practic_primer/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/examen_practic_1a/">
       
       
         <link rel="prev" href="../acl_sol/">
@@ -21,7 +21,7 @@
     
     
       
-        <title>Ex practic primer - Seguridad y alta disponibilidad</title>
+        <title>Examen practic 1a - Seguridad y alta disponibilidad</title>
       
     
     
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ex practic primer
+              Examen practic 1a
             
           </span>
         </div>
@@ -910,14 +910,18 @@
 <p>En primer lloc, l'atacant vol facilitar-se la vida a l'hora de fer servir las credencials i conectar-se a la màquina d'una forma més còmoda.</p>
 <div class="admonition task">
 <p class="admonition-title">Tasca 1 - Conexió SSH amb claus</p>
-<p>Crea un parell de claus i copia-les al server per a conectarte mitjançant clau pública. Comprova que funciona correctament.</p>
+<p>Crea un parell de claus de 2048 bits amb l'algorisme RSA i copia-les al server per a conectarte mitjançant clau pública. Comprova que funciona correctament.</p>
 </div>
 <p>Després d'una intensa auditoria, el ciberdelincuent ha descobert que la màquina té una vulnerabilitat del paquet <u>pkexec</u> molt crítica anomenada <em>Pwnkit</em> que permet a un usuari escalar privilegis i convertir-se en root.</p>
 <div class="admonition task">
 <p class="admonition-title">Tasca 2 - Explotació de la vulnerabilitat</p>
-<p>Busca un exploit <u>en python</u> per a <strong>pwnkit</strong> i fes-lo servir a la màquina per a convertir-te en root.</p>
+<p>Busca un exploit <u>en python</u> per a <strong>pwnkit</strong> i fes-lo servir a la màquina per a convertir-te en root. Després d'executar-lo introdueix el comandament <code>id</code> com a prova.</p>
 </div>
 <p>El ciberdelincuent, aprofitant els seus poders de root, vol cobrir les seues empremtes i per tant, procurarà esborrar dels logs les línies que facin referència al login amb claus (el login original estava amb usuari/contrasenya i una altra cosa alçaría sospites). Per a fer això utilitzarà l'eina <strong>vi</strong> i <u>no</u> <strong>nano</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Consell</p>
+<p>Una vegada aconseguida una <em>shell</em> de root pots obtenir una shell més amigable amb el comadament  <code>/bin/bash</code></p>
+</div>
 <div class="admonition task">
 <p class="admonition-title">Tasca 3 - Ocultació d'evidències</p>
 <p>Busca entre els arxius del directori a on s'ubiquen tots els logs del sistema totes les línies que facin referència a l'usuari <em>examen_practic</em>. Entre eixes línies hi haurà algunes que facin referència al login <em>ssh</em> amb clau pública, que també pots filtrar si vols.</p>
@@ -959,6 +963,10 @@
 <li>Hash SHA256 de l'exida del comandament <code>date</code></li>
 </ul>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Atenció!</p>
+<p>Recorda que <em>rsync</em> ha d'estar instal·lat tant en la màquina origen com en la de destí.</p>
+</div>
 <h2 id="administrador-de-sistemes">Administrador de sistemes</h2>
 <p>Després d'una àrdua tasca d'investigació, el administrador de sistemes ha descobert quina es la vulnerabilitat que ha fet servir l'atacant i ha de procedir a solucionar-la.</p>
 <p>L'administrador té un usuari propi:</p>
@@ -975,8 +983,11 @@
 </div>
 <div class="admonition task">
 <p class="admonition-title">Tasca 6 - Mitigació</p>
-<p>Busca informació de com <strong><u>mitigar</u></strong> la vulnerabilitat i posa-lo en pràctica.</p>
-<p>Busca informació sobre com <strong>solucionar-lo</strong> i indica el comandament que sería necessari introduïr per a fer-lo.</p>
+<ol>
+<li>Busca informació de com <strong><u>mitigar</u></strong> la vulnerabilitat i posa-lo en pràctica.</li>
+<li>Busca informació sobre com <strong>solucionar-lo</strong> i indica el comandament que sería necessari introduïr per a fer-lo.</li>
+<li>Comprova que l'exploit ja no funciona</li>
+</ol>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Atenció!</p>
@@ -1012,14 +1023,14 @@
 <ul>
 <li>Configura la política demanada</li>
 <li>Mostra com cada 3 intents infructuosos, et dona un error.</li>
-<li>Mostra en els logs</li>
+<li>Mostra en els logs on es puguen vore els intents i l'éxit final, utilitzant el comandament: <code>sudo journalctl | grep passwd</code></li>
 </ul>
 </div>
 <p>Per últim, l'administrador configurarà que cada 3 intents erronis de login per SSH a la màquina, eixe compte quedarà bloquejat un temps abans de poder tornar a fer login.</p>
 <div class="admonition task">
 <p class="admonition-title">Tasca 8 - Bloqueig de comptes amb logins erronis</p>
 <ul>
-<li>Un amic de l'<em>admin</em> li ha parlat de la eina <strong><em>tally2</em></strong> per a poder configurar estos bloquejos</li>
+<li>Un amic de l'<em>admin</em> li ha parlat de la eina <strong><em>tally2</em></strong> per a poder configurar estos bloquejos ja que està utilitzant una versió molt antiga d'Ubuntu</li>
 <li>Per tal de provar primer i no bloquejar usuaris a <em>tutiplen</em>, ha decidit configurar que als <strong>3 intents de login erronis</strong>, es bloqueje el compte durant <strong>15 segons</strong></li>
 <li>Per a demostrar que està funcionant, mostra la part del log  <code>/var/log/auth</code>on es puga vore, una cosa a continuació d'una altra, com tally bloqueja el compte i 15 i no deixa fer login però 15 segons més tard sí que deixa. Indica cadascuna de les accions en la captura de pantalla.</li>
 </ul>

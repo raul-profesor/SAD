@@ -34,15 +34,18 @@ ssh examen_practic@localhost -p8888
 En primer lloc, l'atacant vol facilitar-se la vida a l'hora de fer servir las credencials i conectar-se a la màquina d'una forma més còmoda.
 
 !!!task "Tasca 1 - Conexió SSH amb claus"
-    Crea un parell de claus i copia-les al server per a conectarte mitjançant clau pública. Comprova que funciona correctament.
+    Crea un parell de claus de 2048 bits amb l'algorisme RSA i copia-les al server per a conectarte mitjançant clau pública. Comprova que funciona correctament.
 
 
 Després d'una intensa auditoria, el ciberdelincuent ha descobert que la màquina té una vulnerabilitat del paquet <u>pkexec</u> molt crítica anomenada *Pwnkit* que permet a un usuari escalar privilegis i convertir-se en root.
 
 !!!task "Tasca 2 - Explotació de la vulnerabilitat"
-    Busca un exploit <u>en python</u> per a **pwnkit** i fes-lo servir a la màquina per a convertir-te en root.
+    Busca un exploit <u>en python</u> per a **pwnkit** i fes-lo servir a la màquina per a convertir-te en root. Després d'executar-lo introdueix el comandament `id` com a prova.
 
 El ciberdelincuent, aprofitant els seus poders de root, vol cobrir les seues empremtes i per tant, procurarà esborrar dels logs les línies que facin referència al login amb claus (el login original estava amb usuari/contrasenya i una altra cosa alçaría sospites). Per a fer això utilitzarà l'eina **vi** i <u>no</u> **nano**.
+
+!!!tip "Consell"
+    Una vegada aconseguida una *shell* de root pots obtenir una shell més amigable amb el comadament  `/bin/bash`
 
 !!!task "Tasca 3 - Ocultació d'evidències"
     Busca entre els arxius del directori a on s'ubiquen tots els logs del sistema totes les línies que facin referència a l'usuari *examen_practic*. Entre eixes línies hi haurà algunes que facin referència al login *ssh* amb clau pública, que també pots filtrar si vols.
@@ -77,6 +80,9 @@ Una vegada l'atacant ha fet login amb el nou usuari pren vol procedir a exfiltra
      + Hash SHA256 de la contrasenya de l'usuari
      + Hash SHA256 de l'exida del comandament `date`
   
+!!!warning  "Atenció!"
+    Recorda que *rsync* ha d'estar instal·lat tant en la màquina origen com en la de destí.
+
 ## Administrador de sistemes
 
 Després d'una àrdua tasca d'investigació, el administrador de sistemes ha descobert quina es la vulnerabilitat que ha fet servir l'atacant i ha de procedir a solucionar-la.
@@ -90,9 +96,10 @@ L'administrador té un usuari propi:
 
 
 !!!task "Tasca 6 - Mitigació"
-    Busca informació de com **<u>mitigar</u>** la vulnerabilitat i posa-lo en pràctica.
+    1. Busca informació de com **<u>mitigar</u>** la vulnerabilitat i posa-lo en pràctica.
+    2. Busca informació sobre com **solucionar-lo** i indica el comandament que sería necessari introduïr per a fer-lo.
+    3. Comprova que l'exploit ja no funciona
 
-    Busca informació sobre com **solucionar-lo** i indica el comandament que sería necessari introduïr per a fer-lo.
 
 
 !!!warning "Atenció!"
@@ -128,13 +135,13 @@ Per a comprovar la política, des-de l'usuari **ubuntu** per a canviar la contra
 !!!Task "Tasca 7 - Política de contrasenyes"
     + Configura la política demanada
     + Mostra com cada 3 intents infructuosos, et dona un error.
-    + Mostra en els logs
+    + Mostra en els logs on es puguen vore els intents i l'éxit final, utilitzant el comandament: `sudo journalctl | grep passwd`
 
 
 Per últim, l'administrador configurarà que cada 3 intents erronis de login per SSH a la màquina, eixe compte quedarà bloquejat un temps abans de poder tornar a fer login.
 
 !!!task "Tasca 8 - Bloqueig de comptes amb logins erronis"
-    + Un amic de l'*admin* li ha parlat de la eina ***tally2*** per a poder configurar estos bloquejos
+    + Un amic de l'*admin* li ha parlat de la eina ***tally2*** per a poder configurar estos bloquejos ja que està utilitzant una versió molt antiga d'Ubuntu
     + Per tal de provar primer i no bloquejar usuaris a *tutiplen*, ha decidit configurar que als **3 intents de login erronis**, es bloqueje el compte durant **15 segons**
     + Per a demostrar que està funcionant, mostra la part del log  `/var/log/auth`on es puga vore, una cosa a continuació d'una altra, com tally bloqueja el compte i 15 i no deixa fer login però 15 segons més tard sí que deixa. Indica cadascuna de les accions en la captura de pantalla.
   

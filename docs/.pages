@@ -19,6 +19,8 @@ nav:
         - Monitorización mediante sistemas detectores de intrusos (IDS) y sistemas de prevención de intrusos (IPS): idps.md
     - Examen pràctic:
         - Examen pràctic 1er trimestre: no.md
+    - Seguretat perimetral:
+        - Disseny del perímetre: perimetral.md
     - Firewall:
         - Administració senzilla de regles d'iptables fent servir Docker: iptables.md 
         - Administració de regles d'iptables en un entorn industrial: fw-ics.md

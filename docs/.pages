@@ -22,8 +22,7 @@ nav:
     - Seguretat perimetral:
         - Disseny del perímetre: perimetral.md
     - Firewall:
-        - Administració senzilla de regles d'iptables fent servir Docker: iptables.md 
-        - Administració de regles d'iptables en un entorn industrial: fw-ics.md
+        - Teoría de firewalls: firewall.md
     - VPN:
         - Servidor de VPN amb wireguard en un escenari muntat amb Docker: vpn.md
     - Proxy:

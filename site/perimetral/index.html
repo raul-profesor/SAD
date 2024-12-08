@@ -6,24 +6,22 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apuntes y prácticas Seguridad y Alta disponibilidad (SAD - ASIR). Ejercicio para practicar y consolidar la configuración de ACL tanto en Windows como en Linux.">
       
       
-      
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/acl/">
-      
-      
-        <link rel="prev" href="../normativa/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/perimetral/">
       
       
-        <link rel="next" href="../malware/">
+        <link rel="prev" href="../idps/">
+      
+      
+        <link rel="next" href="../iptables/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Configuración de ACLs en Linux y Windows - Seguridad y alta disponibilidad</title>
+        <title>Disseny del perímetre - Seguridad y alta disponibilidad</title>
       
     
     
@@ -89,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#context" class="md-skip">
+        <a href="#disseny-dun-perimetre-segur-per-a-una-petita-empresa" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -124,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configuración de ACLs en Linux y Windows
+              Disseny del perímetre
             
           </span>
         </div>
@@ -411,16 +409,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
       
       
       
@@ -429,7 +425,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Seguretat lògica
@@ -440,157 +436,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Llistes de control d'accés (ACL)
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../acl/" class="md-nav__link">
         Llistes de control d'accés (ACL)
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#context" class="md-nav__link">
-    Context:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#part-1-configuracio-dacl-a-linux" class="md-nav__link">
-    Part 1: Configuració d'ACL a Linux
-  </a>
-  
-    <nav class="md-nav" aria-label="Part 1: Configuració d'ACL a Linux">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#escenari" class="md-nav__link">
-    Escenari
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tasques" class="md-nav__link">
-    Tasques
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-inicial" class="md-nav__link">
-    Configuració inicial
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-de-les-acl" class="md-nav__link">
-    Configuració de les ACL
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuració de les ACL">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proves" class="md-nav__link">
-    Proves
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#part-2-configuracio-dacls-a-windows" class="md-nav__link">
-    Part 2: Configuració d'ACLs a Windows
-  </a>
-  
-    <nav class="md-nav" aria-label="Part 2: Configuració d'ACLs a Windows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#escenari_1" class="md-nav__link">
-    Escenari
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-inicial_1" class="md-nav__link">
-    Configuració inicial
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tasques_1" class="md-nav__link">
-    Tasques
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verificar-permisos-de-seguretat-avancats" class="md-nav__link">
-    Verificar permisos de seguretat avançats
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#proves_1" class="md-nav__link">
-    Proves:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preguntes-per-a-la-reflexio" class="md-nav__link">
-    Preguntes per a la reflexió
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -832,14 +682,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
       
       
       
@@ -848,7 +700,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           Seguretat perimetral
@@ -859,11 +711,96 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../perimetral/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Disseny del perímetre
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Disseny del perímetre
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disseny-dun-perimetre-segur-per-a-una-petita-empresa" class="md-nav__link">
+    Disseny d'un perímetre segur per a una petita empresa
+  </a>
+  
+    <nav class="md-nav" aria-label="Disseny d'un perímetre segur per a una petita empresa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectiu" class="md-nav__link">
+    Objectiu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escenari" class="md-nav__link">
+    Escenari
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-1-investigar-i-planificar" class="md-nav__link">
+    Pas 1: Investigar i planificar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pas-2-tasques" class="md-nav__link">
+    Pas 2: Tasques
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    Entregables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repte-addicional-i-dampliacio-opcional" class="md-nav__link">
+    Repte addicional i d'ampliació (opcional)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1079,106 +1016,91 @@
                   
 
 
-  <h1>Llistes de control d'accés (ACL)</h1>
+  <h1>Disseny del perímetre</h1>
 
-<h2 id="context">Context:</h2>
-<p>Ets un administrador de sistemes en una petita empresa que gestiona fitxers crítics de diversos departaments. Necessites assegurar-te que els permisos sobre certs directoris i fitxers estiguin configurats correctament, atorgant o denegant accés segons sigui necessari. Per això utilitzaràs ACLs a Linux i Windows per donar un control més granular sobre els permisos.</p>
-<p><u><strong>Objectiu:</strong></u> Configurar ACLs per garantir que només certs usuaris i grups tinguin els permisos adequats sobre fitxers i directoris a Linux i Windows.</p>
-<h2 id="part-1-configuracio-dacl-a-linux">Part 1: Configuració d'ACL a Linux</h2>
-<h3 id="escenari">Escenari</h3>
-<p>En un servidor Linux (Rocky p.ex.), tens una carpeta anomenada <code>/data/projectes</code> que conté fitxers de diferents projectes. Els empleats dels departaments de <strong>Vendes</strong> i <strong>Desenvolupament</strong> necessiten accedir als arxius de diferents maneres.</p>
+<h2 id="disseny-dun-perimetre-segur-per-a-una-petita-empresa"><strong>Disseny d'un perímetre segur per a una petita empresa</strong></h2>
+<h4 id="objectiu"><strong>Objectiu</strong></h4>
+<p>Haureu de dissenyar un perímetre de xarxa segur per a una petita empresa, tenint en compte les possibles amenaces, les necessitats de l'empresa i la ubicació dels dispositius.</p>
+<hr />
+<h4 id="escenari"><strong>Escenari</strong></h4>
+<p>Una petita empresa vos ha contractat per millorar la seguretat de la seva xarxa. L'empresa té:</p>
 <ul>
-<li>Usuaris del departament de <strong>Vendes</strong> (vendes1, vendes2) necessiten tenir només permisos de lectura sobre el directori <code>/data/projectes</code>.</li>
-<li>Usuaris del departament de <strong>Desenvolupament</strong> (dev1, dev2) necessiten tenir permisos de lectura i escriptura.</li>
-<li>L'usuari <strong>admin</strong> ha de tenir tots els permisos (lectura, escriptura, execució).</li>
+<li>50 empleats.</li>
+<li>Un servidor web públic.</li>
+<li>Una VPN per a treballadors remots.</li>
+<li>Un servidor de fitxers intern amb dades confidencials dels clients.</li>
+<li>Un pressupost modest per a dispositius de seguretat.</li>
 </ul>
-<h3 id="tasques">Tasques</h3>
-<h3 id="configuracio-inicial">Configuració inicial</h3>
-<div class="admonition task">
-<p class="admonition-title">Verificació d'ACLs</p>
-<p>Rocky Linux utilitza com a sistema d'arxius <em>XFS</em>, que soporta l'ús d'ACL per defecte. Encara i això, comproveu que es així fent ús del comandament: <code>cat /boot/config* | grep _ACL</code></p>
-<p>En la exidida del comandament anterior haurieu de vore algo paregut a:</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">CONFIG_EXT4_FS_POSIX_ACL=y</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="go">CONFIG_XFS_POSIX_ACL=y</span>
-</span></code></pre></div>
-</div>
+<p>L'empresa ha experimentat incidents menors, com intents de phising i accés no autoritzat al servidor web. La vostra tasca és dissenyar un perímetre segur i recomanar dispositius per protegir la xarxa.</p>
+<hr />
+<h4 id="pas-1-investigar-i-planificar"><strong>Pas 1: Investigar i planificar</strong></h4>
+<p><strong>Amenaces a tenir en compte:</strong></p>
 <ul>
-<li>Crea la carpeta <code>/data/projectes</code></li>
-<li>Fes que el propietari de la carpeta siga <strong>root</strong> i el grup <strong>root</strong></li>
-<li>Els permisos bàsics inicials de la carpeta han de ser 770 (rwxrwx---)</li>
-<li>Crea en el sistema els usuaris que farem servir: <em>admin</em>, <em>vendes1</em>, <em>vendes2</em>, <em>dev1</em> i <em>dev2</em></li>
-<li>A més, hauràs de crear un grup que es cride <em>devs</em> i ficar els usuaris <em>dev1</em> i <em>dev2</em> dins</li>
+<li>Atacs externs (p. ex., DDoS, escaneig de ports i intents d'explotació).</li>
+<li>Amenaces internes.</li>
+<li>Malware/ransomware que ingressa a través del correu electrònic o el trànsit web.</li>
+<li>Accés remot no segur.</li>
 </ul>
-<h3 id="configuracio-de-les-acl">Configuració de les ACL</h3>
-<p>Sobre la carpeta anterior, afegir ACL als usuaris del departament de Vendes:</p>
+<p><strong>Dispositius/tecnologies a utilitzar:</strong></p>
 <ul>
-<li>Els usuaris <em>vendes1</em> i <em>vendes2</em> han de tenir només permisos de escriptura </li>
+<li>Tallafocs (amb estat, reconeixement d'aplicacions, etc.).</li>
+<li>Sistemes de detecció i prevenció d'intrusions (IDS/IPS).</li>
+<li>Tallafocs d'aplicacions web (WAF).</li>
+<li>Porta d'enllaç VPN.</li>
+<li>Eines de protecció i monitorització de punts finals.</li>
+<li>Zona desmilitaritzada (DMZ) per a serveis públics.</li>
 </ul>
-<p>Afegeix ACL als usuaris del departament de Desenvolupament</p>
+<hr />
+<h4 id="pas-2-tasques"><strong>Pas 2: Tasques</strong></h4>
+<ol>
+<li>
+<p><strong>Dibuixar l'arquitectura del perímetre:</strong></p>
 <ul>
-<li>Els grup <em>devs</em> han de tenir permisos de lectura</li>
+<li>Haureu de crear un diagrama de xarxa amb zones clarament diferenciades: pública, DMZ i xarxes internes.</li>
+<li>Incloure la ubicació dels dispositius, com firewalls, IDS/IPS i balancejadors de càrrega.</li>
 </ul>
-<p>Atorgar permisos complets a l'usuari admin:</p>
+</li>
+<li>
+<p><strong>Elegir i justificar els dispositius:</strong></p>
 <ul>
-<li>L'usuari <em>admin</em> ha de tenir tots els permisos (lectura, escriptura i execució)</li>
+<li>Els estudiants han de seleccionar almenys tres dispositius de seguretat per incloure al disseny. Exemples:<ul>
+<li>Un tallafocs d'última generació (p. ex., Palo Alto, Fortinet).</li>
+<li>Un WAF per al servidor web (p. ex., ModSecurity, AWS WAF).</li>
+<li>Un IDS/IPS (p. ex., Suricata, Snort).</li>
+<li>Una solució VPN per a accés remot segur (p. ex., OpenVPN, Cisco AnyConnect).</li>
+<li>Han d'explicar per què es van triar aquests dispositius i com mitiguen amenaces específiques.</li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Atenció</p>
-<p>Recorda que sense les ACL per defecte, els fitxers creats no heretaran els permisos configurats.</p>
-</div>
-<p>Verificar les ACLs configurades amb el comandament i les captures de pantalla adequades.</p>
-<h4 id="proves">Proves</h4>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Abordar les limitacions pressupostàries:</strong></p>
 <ul>
-<li>Crea un arxiu amb un dels usuaris de vendes i prova a llegir-lo. Pots fer-lo? Per què?</li>
-<li>Prova de llegir l'arxiu amb l'altre usuari de vendes. Pots fer-lo? Per què?</li>
-<li>Prova de modificar l'arxiu amb eixe segon usuari. Has tingut èxit? Per què?</li>
-<li>Prova de modificar l'arxiu amb un dels usuaris del grup <em>devs</em></li>
-<li>Mostra el contingut del arxiu amb eixe usuari del grup <em>devs</em></li>
-<li>Prova de crear un arxiu nou amb eixe usuari</li>
-<li>Verifiqueu que l'usuari <strong>admin</strong> tingui control total creant un nou arxiu, mostrant el contingut dels ja existents i modificant-los tots.</li>
+<li>L'empresa vos a posat com a lími pressupostari total uns 20.000€. Així les coses, potser haureu de considerar software de codi obert o basat en el núvol, entre altres solucions.</li>
 </ul>
-<h2 id="part-2-configuracio-dacls-a-windows">Part 2: Configuració d'ACLs a Windows</h2>
-<h3 id="escenari_1">Escenari</h3>
-<p>En un servidor Windows, hi ha una carpeta anomenada <code>C:\Projectes</code> amb fitxers sensibles de l'empresa. Diferents usuaris necessiten diferents nivells d'accés.</p>
-<h3 id="configuracio-inicial_1">Configuració inicial</h3>
-<ul>
-<li>Crear la carpeta <code>C:\Projectes</code></li>
-<li>Crear els usuaris <em>marketing1, marketing2, it1, it2</em> i <em>admin</em></li>
-<li>Crea un grup amb el nom <strong>it</strong> i fica dins als usuaris <em>it1</em> i <em>it2</em></li>
-</ul>
-<h3 id="tasques_1">Tasques</h3>
-<ul>
-<li>Usuaris de l'equip de màrqueting (marketing1, marketing2) necessiten tenir permisos de només lectura sobre la carpeta.</li>
-<li>Usuaris de l'equip d'IT (it1, it2) necessiten tenir permisos de lectura i de escriptura.</li>
-<li>L'administrador (administrador) ha de tenir control total sobre la carpeta.</li>
-</ul>
-<h3 id="verificar-permisos-de-seguretat-avancats">Verificar permisos de seguretat avançats</h3>
-<ul>
-<li>Feu clic al botó Opcions avançades a la pestanya Seguretat per revisar els permisos heretats i les entrades ACL detallades.</li>
-<li>Assegureu-vos que els permisos aplicats als usuaris no s'heretin d'altres carpetes si no és necessari.</li>
-</ul>
-<h3 id="proves_1">Proves:</h3>
-<ul>
-<li>Verifica que els usuaris de Màrqueting no puguin modificar fitxers a C:\Projectes, però puguin llegir-los.</li>
-<li>Verifica que els usuaris de Màrqueting no puguin crear arxius o directoris.</li>
-<li>Verifica que els usuaris d'IT puguin llegir i modificar fitxers.</li>
-<li>Intenta crear amb un usuari del grup <strong>it</strong> un arxiu dins del directori amb el botó dret. Detalla què observes.</li>
-<li>Intenta crear amb un usuari del grup <strong>it</strong> un arxiu dins del directori des del mateix bloc de notes. Detalla què observes.</li>
-<li>Verifiqueu que l'administrador té control total sobre la carpeta.</li>
-</ul>
-<h2 id="preguntes-per-a-la-reflexio">Preguntes per a la reflexió</h2>
-<div class="admonition question">
-<p class="admonition-title">Pregunta 1</p>
-<p>Quins avantatges ofereix la configuració d'ACL en comptes d'utilitzar només els permisos tradicionals (rwx a Linux o NTFS a Windows)?</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Pregunta 2</p>
-<p>Quins problemes podrien sorgir si un sistema no tingués suport per a ACL?</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Pregunta 3</p>
-<p>Com canviaria la configuració d'ACL si els permisos d'accés canviessin dinàmicament?</p>
-</div>
+</li>
+</ol>
+<hr />
+<h4 id="entregables"><strong>Entregables</strong></h4>
+<ol>
+<li>
+<p><strong>Diagrama de xarxa:</strong>
+    Una representació visual del perímetre de la xarxa, que mostra les zones i la ubicació dels dispositius.</p>
+</li>
+<li>
+<p><strong>Recomanacions de dispositius:</strong>
+    Una llista de dispositius o eines recomanats amb justificació per a cada opció, així com el preu.</p>
+</li>
+<li>
+<p><strong>Pla de mitigació de riscos:</strong>
+    Una breu explicació de com el disseny proposat aborda les amenaces identificades.</p>
+</li>
+</ol>
+<hr />
+<h4 id="repte-addicional-i-dampliacio-opcional"><strong>Repte addicional i d'ampliació (opcional)</strong></h4>
+<p>En un segon escenari, l'empresa s'expandeix per incloure una sucursal. Haureu d'ajustar el disseny del seu perímetre per incorporar una connexió segura de site-to-site.</p>
+<hr />
+<p>Aquest exercici emfatitza la <strong>planificació i el pensament crític</strong>, que són habilitats essencials per dissenyar perímetres segurs. </p>
 
 
   

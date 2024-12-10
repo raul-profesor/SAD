@@ -1,0 +1,1 @@
+![](img/firewall-nftables.png)

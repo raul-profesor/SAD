@@ -23,6 +23,7 @@ nav:
         - Disseny del perímetre: perimetral.md
     - Firewall:
         - Teoría de firewalls: firewall.md
+        - Pràctica de configuració nftables: nftables.md
     - VPN:
         - Servidor de VPN amb wireguard en un escenari muntat amb Docker: vpn.md
     - Proxy:

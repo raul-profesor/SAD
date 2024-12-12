@@ -23,7 +23,7 @@ Los pasos para ejecutar el escenario y comenzar a trabajar son:
 1. Clonar [este repositorio](https://github.com/raul-profesor/nftables).
 2. Tenemos dos archivos docker-compose, uno se encarga de crear las redes necesarias y otro para crear los contenedores mismos. Tenemos dos opciones para ejecutar:
    
-     1. El següent comandament:
+     1. Este comando:
             ```bash
             docker-compose up -f docker-compose-networks.yml -f docker-compose.yml up -d
             ```

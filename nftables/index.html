@@ -1019,13 +1019,14 @@
 <li>
 <p>Tenemos dos archivos docker-compose, uno se encarga de crear las redes necesarias y otro para crear los contenedores mismos. Tenemos dos opciones para ejecutar:</p>
 <ol>
-<li><code>bash
-     docker-compose up -f docker-compose-networks.yml -f docker-compose.yml up -d</code></li>
+<li>El següent comandament:
+        <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-f<span class="w"> </span>docker-compose-networks.yml<span class="w"> </span>-f<span class="w"> </span>docker-compose.yml<span class="w"> </span>up<span class="w"> </span>-d
+</span></code></pre></div></li>
 <li>Para no tener que especificar los dos archivos siempre que queremos levantar el escenario, podemos utilizar una variable de entorno:
-        <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">COMPOSE_FILE</span><span class="o">=</span>docker-compose-networks.yml:docker-compose.yml
+        <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">COMPOSE_FILE</span><span class="o">=</span>docker-compose-networks.yml:docker-compose.yml
 </span></code></pre></div>
         Y después ya ejecutar el comando de siempre:
-        <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+        <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
 </span></code></pre></div>
         Y en breves instantes tendremos nuestros 7 contenedores y todas las redes creadas y a punto para empezar a trabajar. Podéis comprobarlo con <code>docker ps</code>.</li>
 </ol>
@@ -1046,9 +1047,9 @@
 </ol>
 <h2 id="configuracion-de-nftables">Configuración de <em>nftables</em></h2>
 <p>Para realizar la configuración, nos crearemos un script en bash para ejecutarlo y que se cargue nuestra configuración. Este script comenzará así:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/usr/sbin/nft -f</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>flush<span class="w"> </span>ruleset
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/usr/sbin/nft -f</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>flush<span class="w"> </span>ruleset
 </span></code></pre></div>
 El shebang de la primera línea indica que será ejecutado por <em>nftables</em> y de esta forma cada línea del script puede omitir el comienzo de la orden (nft). </p>
 <p>La segunda línea borrará la configuración actual de <em>nftables</em> antes de seguir ejecutando las órdenes que hayamos configurado en el mismo.</p>

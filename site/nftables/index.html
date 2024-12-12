@@ -6,24 +6,22 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apuntes y prácticas Seguridad y Alta disponibilidad (SAD - ASIR). Ejercicio para practicar y consolidar la configuración de ACL tanto en Windows como en Linux.">
       
       
-      
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/acl/">
-      
-      
-        <link rel="prev" href="../normativa/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/nftables/">
       
       
-        <link rel="next" href="../malware/">
+        <link rel="prev" href="../firewall/">
+      
+      
+        <link rel="next" href="../vpn/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Configuración de ACLs en Linux y Windows - Seguridad y alta disponibilidad</title>
+        <title>Configuración de nftables en un entorno de red en Docker - Seguridad y alta disponibilidad</title>
       
     
     
@@ -89,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#context" class="md-skip">
+        <a href="#descripcion-del-escenario" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -124,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configuración de ACLs en Linux y Windows
+              Configuración de nftables en un entorno de red en Docker
             
           </span>
         </div>
@@ -411,16 +409,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
       
       
       
@@ -429,7 +425,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Seguretat lògica
@@ -440,157 +436,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Llistes de control d'accés (ACL)
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../acl/" class="md-nav__link">
         Llistes de control d'accés (ACL)
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#context" class="md-nav__link">
-    Context:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#part-1-configuracio-dacl-a-linux" class="md-nav__link">
-    Part 1: Configuració d'ACL a Linux
-  </a>
-  
-    <nav class="md-nav" aria-label="Part 1: Configuració d'ACL a Linux">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#escenari" class="md-nav__link">
-    Escenari
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tasques" class="md-nav__link">
-    Tasques
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-inicial" class="md-nav__link">
-    Configuració inicial
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-de-les-acl" class="md-nav__link">
-    Configuració de les ACL
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuració de les ACL">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proves" class="md-nav__link">
-    Proves
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#part-2-configuracio-dacls-a-windows" class="md-nav__link">
-    Part 2: Configuració d'ACLs a Windows
-  </a>
-  
-    <nav class="md-nav" aria-label="Part 2: Configuració d'ACLs a Windows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#escenari_1" class="md-nav__link">
-    Escenari
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-inicial_1" class="md-nav__link">
-    Configuració inicial
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tasques_1" class="md-nav__link">
-    Tasques
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verificar-permisos-de-seguretat-avancats" class="md-nav__link">
-    Verificar permisos de seguretat avançats
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#proves_1" class="md-nav__link">
-    Proves:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preguntes-per-a-la-reflexio" class="md-nav__link">
-    Preguntes per a la reflexió
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -881,14 +731,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
       
       
       
@@ -897,7 +749,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_10">
           <span class="md-nav__icon md-icon"></span>
           Firewall
@@ -922,11 +774,69 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../nftables/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Configuración de nftables en un entorno de red en Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Configuración de nftables en un entorno de red en Docker
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descripcion-del-escenario" class="md-nav__link">
+    Descripción del escenario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-levantar-el-escenario" class="md-nav__link">
+    Cómo levantar el escenario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condiciones-que-se-deben-cumplir-en-el-escenario" class="md-nav__link">
+    Condiciones que se deben cumplir en el escenario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-nftables" class="md-nav__link">
+    Configuración de nftables
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1079,105 +989,116 @@
                   
 
 
-  <h1>Llistes de control d'accés (ACL)</h1>
+  <h1>Configuración de nftables en un entorno de red en Docker</h1>
 
-<h2 id="context">Context:</h2>
-<p>Ets un administrador de sistemes en una petita empresa que gestiona fitxers crítics de diversos departaments. Necessites assegurar-te que els permisos sobre certs directoris i fitxers estiguin configurats correctament, atorgant o denegant accés segons sigui necessari. Per això utilitzaràs ACLs a Linux i Windows per donar un control més granular sobre els permisos.</p>
-<p><u><strong>Objectiu:</strong></u> Configurar ACLs per garantir que només certs usuaris i grups tinguin els permisos adequats sobre fitxers i directoris a Linux i Windows.</p>
-<h2 id="part-1-configuracio-dacl-a-linux">Part 1: Configuració d'ACL a Linux</h2>
-<h3 id="escenari">Escenari</h3>
-<p>En un servidor Linux (Rocky p.ex.), tens una carpeta anomenada <code>/data/projectes</code> que conté fitxers de diferents projectes. Els empleats dels departaments de <strong>Vendes</strong> i <strong>Desenvolupament</strong> necessiten accedir als arxius de diferents maneres.</p>
+<h2 id="descripcion-del-escenario">Descripción del escenario</h2>
+<p>Para esta práctica vamos a suponer un escenario que bien podría tratarse de un escenario real. La infraestructura de red que nos encontraremos es la siguiente:</p>
+<p><img alt="" src="../img/firewall-nftables.png" /></p>
+<ol>
+<li>
+<p>En la <strong>DMZ</strong> encontramos un servidor web y otro servidor DNS.</p>
 <ul>
-<li>Usuaris del departament de <strong>Vendes</strong> (vendes1, vendes2) necessiten tenir només permisos de lectura sobre el directori <code>/data/projectes</code>.</li>
-<li>Usuaris del departament de <strong>Desenvolupament</strong> (dev1, dev2) necessiten tenir permisos de lectura i escriptura.</li>
-<li>L'usuari <strong>admin</strong> ha de tenir tots els permisos (lectura, escriptura, execució).</li>
+<li>El servidor web es para uso externo e interno, es decir, debe ser accesible tanto desde internet (WAN) como desde los usuarios internos de nuestra empresa. Se trata de un e-comerce en php que hace uso de una base de datos MYSQL, a partir de la cual muestra los productos en el portal. </li>
+<li>El servidor DNS es para uso exclusivamente interno, esto es, por parte de nuestros empleados. Se trata de un forwarder, esto quiere decir que su función será recibir las peticiones DNS y redirigirlas a otro servidor, por lo que debe tener salida al exterior.</li>
 </ul>
-<h3 id="tasques">Tasques</h3>
-<h3 id="configuracio-inicial">Configuració inicial</h3>
-<div class="admonition task">
-<p class="admonition-title">Verificació d'ACLs</p>
-<p>Rocky Linux utilitza com a sistema d'arxius <em>XFS</em>, que soporta l'ús d'ACL per defecte. Encara i això, comproveu que es així fent ús del comandament: <code>cat /boot/config* | grep _ACL</code></p>
-<p>En la exidida del comandament anterior haurieu de vore algo paregut a:</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">CONFIG_EXT4_FS_POSIX_ACL=y</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="go">CONFIG_XFS_POSIX_ACL=y</span>
-</span></code></pre></div>
-</div>
-<ul>
-<li>Crea la carpeta <code>/data/projectes</code></li>
-<li>Fes que el propietari de la carpeta siga <strong>root</strong> i el grup <strong>root</strong></li>
-<li>Els permisos bàsics inicials de la carpeta han de ser 770 (rwxrwx---)</li>
-<li>Crea en el sistema els usuaris que farem servir: <em>admin</em>, <em>vendes1</em>, <em>vendes2</em>, <em>dev1</em> i <em>dev2</em></li>
-<li>A més, hauràs de crear un grup que es cride <em>devs</em> i ficar els usuaris <em>dev1</em> i <em>dev2</em> dins</li>
-</ul>
-<h3 id="configuracio-de-les-acl">Configuració de les ACL</h3>
-<p>Sobre la carpeta anterior, afegir ACL als usuaris del departament de Vendes:</p>
-<ul>
-<li>Els usuaris <em>vendes1</em> i <em>vendes2</em> han de tenir només permisos de escriptura </li>
-</ul>
-<p>Afegeix ACL als usuaris del departament de Desenvolupament</p>
-<ul>
-<li>Els grup <em>devs</em> han de tenir permisos de lectura</li>
-</ul>
-<p>Atorgar permisos complets a l'usuari admin:</p>
-<ul>
-<li>L'usuari <em>admin</em> ha de tenir tots els permisos (lectura, escriptura i execució)</li>
-</ul>
+</li>
+<li>
+<p>En la <strong>VLAN1</strong> encontramos la base de datos MySQL de la que hace uso el servidor web. Está en otra subred por temas de seguridad.</p>
+</li>
+<li>La <strong>VLAN2</strong> es la subred donde se hallan nuestros empleados de la empresa. Entre ellos también se sencuentra el administrador de sistemas.</li>
+<li>La <strong>WAN</strong> es la interfaz externa de nuestra empresa, o lo que es lo mismo, Internet. Hay ubicado un usuario <em>client</em> para realizar nuestras pruebas. Este usuario únicamente debe poder consultar el servidor web.</li>
+</ol>
+<h2 id="como-levantar-el-escenario">Cómo levantar el escenario</h2>
 <div class="admonition warning">
-<p class="admonition-title">Atenció</p>
-<p>Recorda que sense les ACL per defecte, els fitxers creats no heretaran els permisos configurats.</p>
+<p class="admonition-title"> </p>
+<p>Debéis tener instaladas las últimas versiones tanto de Docker como de Docker Compose.</p>
 </div>
-<p>Verificar les ACLs configurades amb el comandament i les captures de pantalla adequades.</p>
-<h4 id="proves">Proves</h4>
-<ul>
-<li>Crea un arxiu amb un dels usuaris de vendes i prova a llegir-lo. Pots fer-lo? Per què?</li>
-<li>Prova de llegir l'arxiu amb l'altre usuari de vendes. Pots fer-lo? Per què?</li>
-<li>Prova de modificar l'arxiu amb eixe segon usuari. Has tingut èxit? Per què?</li>
-<li>Prova de modificar l'arxiu amb un dels usuaris del grup <em>devs</em></li>
-<li>Mostra el contingut del arxiu amb eixe usuari del grup <em>devs</em></li>
-<li>Prova de crear un arxiu nou amb eixe usuari</li>
-<li>Verifiqueu que l'usuari <strong>admin</strong> tingui control total creant un nou arxiu, mostrant el contingut dels ja existents i modificant-los tots.</li>
-</ul>
-<h2 id="part-2-configuracio-dacls-a-windows">Part 2: Configuració d'ACLs a Windows</h2>
-<h3 id="escenari_1">Escenari</h3>
-<p>En un servidor Windows, hi ha una carpeta anomenada <code>C:\Projectes</code> amb fitxers sensibles de l'empresa. Diferents usuaris necessiten diferents nivells d'accés.</p>
-<h3 id="configuracio-inicial_1">Configuració inicial</h3>
-<ul>
-<li>Crear la carpeta <code>C:\Projectes</code></li>
-<li>Crear els usuaris <em>marketing1, marketing2, it1, it2</em> i <em>admin</em></li>
-<li>Crea un grup amb el nom <strong>it</strong> i fica dins als usuaris <em>it1</em> i <em>it2</em></li>
-</ul>
-<h3 id="tasques_1">Tasques</h3>
-<ul>
-<li>Usuaris de l'equip de màrqueting (marketing1, marketing2) necessiten tenir permisos de només lectura sobre la carpeta.</li>
-<li>Usuaris de l'equip d'IT (it1, it2) necessiten tenir permisos de lectura i de escriptura.</li>
-<li>L'administrador (administrador) ha de tenir control total sobre la carpeta.</li>
-</ul>
-<h3 id="verificar-permisos-de-seguretat-avancats">Verificar permisos de seguretat avançats</h3>
-<ul>
-<li>Feu clic al botó Opcions avançades a la pestanya Seguretat per revisar els permisos heretats i les entrades ACL detallades.</li>
-<li>Assegureu-vos que els permisos aplicats als usuaris no s'heretin d'altres carpetes si no és necessari.</li>
-</ul>
-<h3 id="proves_1">Proves:</h3>
-<ul>
-<li>Verifica que els usuaris de Màrqueting no puguin modificar fitxers a C:\Projectes, però puguin llegir-los.</li>
-<li>Verifica que els usuaris de Màrqueting no puguin crear arxius o directoris.</li>
-<li>Verifica que els usuaris d'IT puguin llegir i modificar fitxers.</li>
-<li>Intenta crear amb un usuari del grup <strong>it</strong> un arxiu dins del directori amb el botó dret. Detalla què observes.</li>
-<li>Intenta crear amb un usuari del grup <strong>it</strong> un arxiu dins del directori des del mateix bloc de notes. Detalla què observes.</li>
-<li>Verifiqueu que l'administrador té control total sobre la carpeta.</li>
-</ul>
-<h2 id="preguntes-per-a-la-reflexio">Preguntes per a la reflexió</h2>
-<div class="admonition question">
-<p class="admonition-title">Pregunta 1</p>
-<p>Quins avantatges ofereix la configuració d'ACL en comptes d'utilitzar només els permisos tradicionals (rwx a Linux o NTFS a Windows)?</p>
+<p>Los pasos para ejecutar el escenario y comenzar a trabajar son:</p>
+<ol>
+<li>Clonar <a href="https://github.com/raul-profesor/nftables">este repositorio</a>.</li>
+<li>
+<p>Tenemos dos archivos docker-compose, uno se encarga de crear las redes necesarias y otro para crear los contenedores mismos. Tenemos dos opciones para ejecutar:</p>
+<ol>
+<li><code>bash
+     docker-compose up -f docker-compose-networks.yml -f docker-compose.yml up -d</code></li>
+<li>Para no tener que especificar los dos archivos siempre que queremos levantar el escenario, podemos utilizar una variable de entorno:
+        <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">COMPOSE_FILE</span><span class="o">=</span>docker-compose-networks.yml:docker-compose.yml
+</span></code></pre></div>
+        Y después ya ejecutar el comando de siempre:
+        <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</span></code></pre></div>
+        Y en breves instantes tendremos nuestros 7 contenedores y todas las redes creadas y a punto para empezar a trabajar. Podéis comprobarlo con <code>docker ps</code>.</li>
+</ol>
+</li>
+<li>
+<p>Los contenedores contienen todas las herramientas necesarias para la práctica.</p>
+</li>
+</ol>
+<h2 id="condiciones-que-se-deben-cumplir-en-el-escenario">Condiciones que se deben cumplir en el escenario</h2>
+<ol>
+<li><strong>Sólo</strong> el admin debe tener acceso por SSH al firewall</li>
+<li>Todos los usuarios de VLAN2 deben tener acceso al servidor web y al dns.</li>
+<li><strong>Sólo</strong> el admin y el servidor web deben tener acceso a la base de datos por el puerto por defecto de MySQL.</li>
+<li>Los usuarios que entren por la interfaz WAN sólo deben tener acceso al servidor web</li>
+<li>El servidor debe tener acceso al exterior para hacer <em>forwarding</em> de las peticiones</li>
+<li>Todos los usuarios de la VLAN2 deben poder hacer ping los servidores de la DMZ</li>
+<li><strong>Sólo</strong> el admin debe poder hacer ping al servidor de base de datos</li>
+</ol>
+<h2 id="configuracion-de-nftables">Configuración de <em>nftables</em></h2>
+<p>Para realizar la configuración, nos crearemos un script en bash para ejecutarlo y que se cargue nuestra configuración. Este script comenzará así:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/usr/sbin/nft -f</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>flush<span class="w"> </span>ruleset
+</span></code></pre></div>
+El shebang de la primera línea indica que será ejecutado por <em>nftables</em> y de esta forma cada línea del script puede omitir el comienzo de la orden (nft). </p>
+<p>La segunda línea borrará la configuración actual de <em>nftables</em> antes de seguir ejecutando las órdenes que hayamos configurado en el mismo.</p>
+<p>Después continuaremos elaborando nuestro script por pasos:</p>
+<ol>
+<li>Crearemos dos tablas, una llamada <em>filtrat</em> y otra <em>nat</em>. Como es obvio, la primera se encargará del filtrado de paquetes y la segunda de realizar las traducciones nat. 
+    Para esto os podéis ayudar de <a href="http://raul-profesor.github.io/SAD/firewall/#implementacion-practica-con-nftables">los apuntes</a></li>
+<li>Crearemos tres cadenas para la tabla <strong>filtrat</strong> (input, output y forward) con política por defecto <em>drop</em> y una cadena para la tabla <strong>nat</strong> (prerouting) sin indicarle política por deffecto.
+    Para esto también os podéis ayudar de los apuntes del punto anterior.</li>
+<li>
+<p>Debemos crear una regla que vigile el estado de las conexiones para permitir los paquetes que pasen a través del firewall y que pertenezcan a una conexión previamente establecida o estén relacionados con ella.
+    Consultad información sobre el seguimiento del estado de la conexión o <a href="https://wiki.nftables.org/wiki-nftables/index.php/Matching_connection_tracking_stateful_metainformation"><em>connection tracking state</em></a> en nftables.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pista</p>
+<p>Para las siguientes reglas, podéis consultar su sintaxis en <a href="https://wiki.nftables.org/wiki-nftables/index.php/Quick_reference-nftables_in_10_minutes">la wiki de nftables</a></p>
 </div>
-<div class="admonition question">
-<p class="admonition-title">Pregunta 2</p>
-<p>Quins problemes podrien sorgir si un sistema no tingués suport per a ACL?</p>
+</li>
+<li>
+<p>Crear una regla que permita los paquetes que pasen a través del firewall, que entren desde la interfaz de la VLAN2, con dirección origen la de red de VLAN2, dirección destino la dirección de red de la DMZ, protocolo icmp (para el ping) y tipo de mensaje icmp <code>echo-request</code>y <code>echo-reply</code>.</p>
+</li>
+<li>Crear una regla que permita los paquetes que pasen a través del firewall, que entren por las interfaces WAN y VLAN1, con ip destino la del servidor web, puerto destino el 80 TCP.</li>
+<li>Crear una regla que permita los paquetes que pasen a través del firewall, que entren por la interfaz de la VLAN2, ip destino la del servidor DNS, puerto destino el 53 UDP.</li>
+<li>Crear una regla que permita los paquetes que pasen a través del firewall, que entren por la interfaz de la DMZ,, interfaz de salida la de la DMZ, ip origen la del servidor DNS, puerto destino el 53 UDP.</li>
+<li>Crear una regla que permita los paquetes que pasen a través del firewall, con interfaz de entrada la DMZ, interfaz de salida la de VLAN1, ip origen del servidor web, ip destino la de la base de datos y puerto destino el 3306 TCP.</li>
+<li>Crear una regla que permita los paquetes que pasen a través del firewall, con interfaz de entrada la VLAN2, interfaz de salida la de VLAN1, ip origen la del <em>admin</em>, ip destino la de la base de datos y puerto destino el 3306 TCP.</li>
+<li>Crear una regla que permita las conexiones de entrada al firewall en la interfaz de entrada de la VLAN2, con ip origen la del admin e ip destino la del firewall en esa interfaz, puerto destino el correspodiente a SSH y tcp.</li>
+<li>Crear una regla de salida del tipo <em>connection tracking state</em> para permitir la salida de paquetes de conexiones previamente establecidas o relacionadas.</li>
+<li>Por último, crear una regla de nat, de tipo prerouting cuyo cometido será realizar una traducción nat de todo lo que entre por la interfaz WAN con puerto destino 8080, hacia la dirección del servidor web y puerto 80.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Todas las reglas deben configurarse con contadores.</p>
+<p>Estos contadores mostrarán la cantidad de paquetes que han hecho <em>match</em> de cada regla cuando listemos la configuración.</p>
 </div>
-<div class="admonition question">
-<p class="admonition-title">Pregunta 3</p>
-<p>Com canviaria la configuració d'ACL si els permisos d'accés canviessin dinàmicament?</p>
+<div class="admonition tip">
+<p class="admonition-title">Consejos</p>
+<ul>
+<li>Todas las IPs las tenéis en el archivo de variables de entorno para docker-compose.</li>
+<li>Para un mayor orden y facilidad a la hora de crear las reglas en el script os recomiendo después del <em>flush</em> inicial definir variables para cada IP y nombre de interfaz que vayáis a utilizar.</li>
+<li>Para saber el nombre de qué interfaz del firewall está conectada a qué red, haced uso del comando <code>ip a</code>. Las interfaces tienen este formato <code>ethx@ifxx</code>. Para cualquer cosa para la que necesitéis el nombre de la interfaz, debéis utilizar únicamente el <code>ethx</code>.</li>
+<li>
+<p>Puesto que configuraréis reglas que consideraréis infalibles y fallarán, para saber exactamente que está pasando <strong>ser recomienda encarecidamente el uso de tcpdump</strong>:</p>
+<p><code>tcpdump -nvi &lt;nombre interfaz&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>Realiza las comprobaciones para comprobar que se cumplen <a href="http://localhost:8000/SAD/nftables/#condiciones-que-se-deben-cumplir-en-el-escenario">las premisas</a> que hemos establecido a la hora de configurar las reglas.</p>
+<p>Si las comprobaciones están bien, las conexiones necesarias se establecerán sin problemas y las que no, se cortarán. Muestra una captura donde se vean cómo se produce la conexión o el <em>drop</em>. También adjunta una captura del listado de las reglas donde se vea que todas tienen los contadores mayor que 0.</p>
 </div>
 
 

@@ -97,6 +97,6 @@ Después continuaremos elaborando nuestro script por pasos:
         `tcpdump -nvi <nombre interfaz>`
 
 !!!task "Tarea"
-    Realiza las comprobaciones para comprobar que se cumplen [las premisas](http://localhost:8000/SAD/nftables/#condiciones-que-se-deben-cumplir-en-el-escenario) que hemos establecido a la hora de configurar las reglas.
+    Realiza las comprobaciones para comprobar que se cumplen [las premisas](http://raul-profesor.github.io/SAD/nftables/#condiciones-que-se-deben-cumplir-en-el-escenario) que hemos establecido a la hora de configurar las reglas.
 
     Si las comprobaciones están bien, las conexiones necesarias se establecerán sin problemas y las que no, se cortarán. Muestra una captura donde se vean cómo se produce la conexión o el *drop*. También adjunta una captura del listado de las reglas donde se vea que todas tienen los contadores mayor que 0.

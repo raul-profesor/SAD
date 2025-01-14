@@ -189,7 +189,7 @@ La vostra tasca serà completar les variables d'entorn de les línies resaltades
 
 Quan s'inicie l'escenari correctamente, podreu trobar les configuracions de la VPN autogenerades a partir de les variables d'ambient d'aquest **docker-compose.yaml** en el contenidor de *wireguard*, en el directori `/config`. 
 
-La configuració del client està dins del directori `/config/wg_configs` i la dels clients dins de `/config/peerX`, on la `X` és el número de client. Esta configuració haureu de copiar-la als respectius clients, dins del directori `/etc/wireguard` amb el nom de `wg0.conf`.
+La configuració del servidor està dins del directori `/config/wg_confs` i la dels clients dins de `/config/peerX`, on la `X` és el número de client. Esta configuració haureu de copiar-la als respectius clients, dins del directori `/etc/wireguard` amb el nom de `wg0.conf`.
 
 
 !!!task "Enllaç al repositori"

@@ -75,14 +75,14 @@ Después continuaremos elaborando nuestro script por pasos:
         Para las siguientes reglas, podéis consultar su sintaxis en [la wiki de nftables](https://wiki.nftables.org/wiki-nftables/index.php/Quick_reference-nftables_in_10_minutes)
 
 4. Crear una regla que permita los paquetes que pasen a través del firewall, que entren desde la interfaz de la VLAN2, con dirección origen la de red de VLAN2, dirección destino la dirección de red de la DMZ, protocolo icmp (para el ping) y tipo de mensaje icmp `echo-request`y `echo-reply`.
-5. Crear una regla que permita los paquetes que pasen a través del firewall, que entren por las interfaces WAN y VLAN1, con ip destino la del servidor web, puerto destino el 80 TCP.
+5. Crear una regla que permita los paquetes que pasen a través del firewall, que entren por la interfaz VLAN1, con ip destino la del servidor web, puerto destino el 80 TCP.
 6. Crear una regla que permita los paquetes que pasen a través del firewall, que entren por la interfaz de la VLAN2, ip destino la del servidor DNS, puerto destino el 53 UDP.
-7. Crear una regla que permita los paquetes que pasen a través del firewall, que entren por la interfaz de la DMZ,, interfaz de salida la de la DMZ, ip origen la del servidor DNS, puerto destino el 53 UDP.
+7. Crear una regla que permita los paquetes que pasen a través del firewall, que entren por la interfaz de la DMZ, interfaz de salida la de la DMZ, ip origen la del servidor DNS, puerto destino el 53 UDP.
 8. Crear una regla que permita los paquetes que pasen a través del firewall, con interfaz de entrada la DMZ, interfaz de salida la de VLAN1, ip origen del servidor web, ip destino la de la base de datos y puerto destino el 3306 TCP.
 9. Crear una regla que permita los paquetes que pasen a través del firewall, con interfaz de entrada la VLAN2, interfaz de salida la de VLAN1, ip origen la del *admin*, ip destino la de la base de datos y puerto destino el 3306 TCP.
-10. Crear una regla que permita las conexiones de entrada al firewall en la interfaz de entrada de la VLAN2, con ip origen la del admin e ip destino la del firewall en esa interfaz, puerto destino el correspodiente a SSH y tcp.
+10. Crear una regla que permita las conexiones de entrada al firewall en la interfaz de entrada de la VLAN2, con ip origen la del admin e ip destino la del firewall en esa interfaz, puerto destino el correspodiente a SSH y TCP.
 11. Crear una regla de salida del tipo *connection tracking state* para permitir la salida de paquetes de conexiones previamente establecidas o relacionadas.
-12. Por último, crear una regla de nat, de tipo prerouting cuyo cometido será realizar una traducción nat de todo lo que entre por la interfaz WAN con puerto destino 8080, hacia la dirección del servidor web y puerto 80.
+12. Por último, crear una regla de NAT, de tipo prerouting cuyo cometido será realizar una traducción NAT de todo lo que entre por la interfaz WAN a la ip destino la del firewall, con puerto destino 8080, hacia la dirección del servidor web y puerto 80.
 
 !!!note "Nota"
     Todas las reglas deben configurarse con contadores.

@@ -1342,7 +1342,7 @@
 </span></code></pre></div></td></tr></table></div>
 <p>La vostra tasca serà completar les variables d'entorn de les línies resaltades del docker-compose.</p>
 <p>Quan s'inicie l'escenari correctamente, podreu trobar les configuracions de la VPN autogenerades a partir de les variables d'ambient d'aquest <strong>docker-compose.yaml</strong> en el contenidor de <em>wireguard</em>, en el directori <code>/config</code>. </p>
-<p>La configuració del client està dins del directori <code>/config/wg_configs</code> i la dels clients dins de <code>/config/peerX</code>, on la <code>X</code> és el número de client. Esta configuració haureu de copiar-la als respectius clients, dins del directori <code>/etc/wireguard</code> amb el nom de <code>wg0.conf</code>.</p>
+<p>La configuració del servidor està dins del directori <code>/config/wg_confs</code> i la dels clients dins de <code>/config/peerX</code>, on la <code>X</code> és el número de client. Esta configuració haureu de copiar-la als respectius clients, dins del directori <code>/etc/wireguard</code> amb el nom de <code>wg0.conf</code>.</p>
 <div class="admonition task">
 <p class="admonition-title">Enllaç al repositori</p>
 <p>Trobareu tot el necessari per a construir l'escenari ací: <a href="https://github.com/raul-profesor/practica-wireguard-vpn">https://github.com/raul-profesor/practica-wireguard-vpn</a></p>

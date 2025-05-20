@@ -11,17 +11,17 @@
         <link rel="canonical" href="https://raul-profesor.github.io/SAD/examen_practic_extraordinaria/">
       
       
-        <link rel="prev" href="../examen_practic_1a/">
+        <link rel="prev" href="../idps/">
       
       
-        <link rel="next" href="../firewall/">
+        <link rel="next" href="../perimetral/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Examen practic extraordinaria - Seguridad y alta disponibilidad</title>
+        <title>Examen pràctic convocatòria extraordinària - Seguridad y alta disponibilidad</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#examen-practic-del-primer-trimestre-ra1-i-ra2" class="md-skip">
+        <a href="#primer-exercici" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Examen practic extraordinaria
+              Examen pràctic convocatòria extraordinària
             
           </span>
         </div>
@@ -633,14 +633,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
       
       
       
@@ -649,7 +651,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           Examen pràctic
@@ -660,11 +662,82 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../no.md" class="md-nav__link">
-        Examen pràctic 1er trimestre
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Examen pràctic convocatòria extraordinària
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Examen pràctic convocatòria extraordinària
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#primer-exercici" class="md-nav__link">
+    Primer exercici
+  </a>
+  
+    <nav class="md-nav" aria-label="Primer exercici">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#historia-de-dos-ciutats" class="md-nav__link">
+    Història de dos ciutats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atacant" class="md-nav__link">
+    Atacant
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#administrador-de-sistemes" class="md-nav__link">
+    Administrador de sistemes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segon-exercici" class="md-nav__link">
+    Segon exercici
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -929,7 +1002,9 @@
                   
 
 
-<h2 id="examen-practic-del-primer-trimestre-ra1-i-ra2">Examen pràctic del primer trimestre (RA1 i RA2)</h2>
+  <h1>Examen pràctic convocatòria extraordinària</h1>
+
+<h2 id="primer-exercici">Primer exercici</h2>
 <p>En primer lloc, baixem la imatge Docker que utilitzarem per a l'examen:</p>
 <div class="language-console highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">docker pull br3baj3/examen_practic_1er:latest</span>
 </span></code></pre></div>
@@ -938,9 +1013,9 @@
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="go">docker ps</span>
 </span></code></pre></div>
-<h1 id="historia-de-dos-ciutats"><a href="https://www.filmaffinity.com/es/film229121.html">Història de dos ciutats</a></h1>
+<h3 id="historia-de-dos-ciutats"><a href="https://www.filmaffinity.com/es/film229121.html">Història de dos ciutats</a></h3>
 <p>Per a esta pràctica/examen, assumirem primer el paper d'un atacant/ciberdelincuent i despŕes el de l'administrador de sistemes que vol solucionar el problema.</p>
-<h2 id="atacant">Atacant</h2>
+<h3 id="atacant">Atacant</h3>
 <p>Suposem que el atacant ha aconseguit unes credencials d'alguna forma no molt ética i les fa servir.</p>
 <p>Haurem d'esperar 1 ó 2 minuts per a que finalitze la provisió del contenidor. Passat este temps podrem conectar-nos per SSH: </p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ssh<span class="w"> </span>examen_practic@localhost<span class="w"> </span>-p8888
@@ -998,25 +1073,14 @@
 <p class="admonition-title">Tasca 4 - Desxifrat de contrasenya</p>
 <ol>
 <li>Treu la línia que et fa falta de l'arxiu <code>/etc/shadow</code>    </li>
-<li>En la teua màquina fes servir <code>johntheripper</code>per a desxifrar la contrasenya. Utilitza el diccionari que trobaràs en Aules.</li>
+<li>Instal·la johntheripper dins del contenidor i fes-lo servir per a desxifrar la contrasenya<ul>
+<li>Com a usuari root pots fer <code>apt install john</code></li>
+</ul>
+</li>
 <li>Comprova que, efectivament, pots conectar-te per SSH amb el nou usuari</li>
 </ol>
 </div>
-<p>Una vegada l'atacant ha fet login amb el nou usuari pren vol procedir a exfiltrar certa informació en un arxiu de text. L'atacant ha decidit aprofitar-se de que la màquina té instal·lada la utilitat <strong><em>rsync</em></strong>.</p>
-<div class="admonition task">
-<p class="admonition-title">Tasca 5 - Exfiltració amb rsync</p>
-<p>Fes servir <em>rsync</em> per a enviar l'arxiu <strong>dades_interessants.txt</strong> a la teua màquina amfitriona. Recorda que has de poder conectar-te per SSH a la teua màquina amfitrió.</p>
-<p>L'arxiu ha de contindre dos dades:</p>
-<ul>
-<li>Hash SHA256 de la contrasenya de l'usuari</li>
-<li>Hash SHA256 de l'exida del comandament <code>date</code></li>
-</ul>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Atenció!</p>
-<p>Recorda que <em>rsync</em> ha d'estar instal·lat tant en la màquina origen com en la de destí.</p>
-</div>
-<h2 id="administrador-de-sistemes">Administrador de sistemes</h2>
+<h3 id="administrador-de-sistemes">Administrador de sistemes</h3>
 <p>Després d'una àrdua tasca d'investigació, el administrador de sistemes ha descobert quina es la vulnerabilitat que ha fet servir l'atacant i ha de procedir a solucionar-la.</p>
 <p>L'administrador té un usuari propi:</p>
 <div class="admonition info">
@@ -1031,7 +1095,7 @@
 </ul>
 </div>
 <div class="admonition task">
-<p class="admonition-title">Tasca 6 - Mitigació</p>
+<p class="admonition-title">Tasca 5 - Mitigació</p>
 <ol>
 <li>Busca informació de com <strong><u>mitigar</u></strong> la vulnerabilitat i posa-lo en pràctica.</li>
 <li>Busca informació sobre com <strong>solucionar-lo</strong> i indica el comandament que sería necessari introduïr per a fer-lo.</li>
@@ -1068,20 +1132,59 @@
 <li>examenSAD2024</li>
 </ol>
 <div class="admonition task">
-<p class="admonition-title">Tasca 7 - Política de contrasenyes</p>
+<p class="admonition-title">Tasca 6 - Política de contrasenyes</p>
 <ul>
 <li>Configura la política demanada</li>
 <li>Mostra com cada 3 intents infructuosos, et dona un error.</li>
 <li>Mostra en els logs on es puguen vore els intents i l'éxit final, utilitzant el comandament: <code>sudo journalctl | grep passwd</code></li>
 </ul>
 </div>
-<p>Per últim, l'administrador configurarà que cada 3 intents erronis de login per SSH a la màquina, eixe compte quedarà bloquejat un temps abans de poder tornar a fer login.</p>
+<h2 id="segon-exercici">Segon exercici</h2>
+<p>Donat el següent escenari:</p>
+<p><img alt="" src="../img/fw_extra.webp" /></p>
+<ol>
+<li>El client pot fer <code>curl</code> al webserver</li>
+<li>El client pot fer consultes DNS al servidor DNS amb <code>nslookup domini dnsserver</code> o per ip <code>nslookup domini $IP_DNS_SERVER</code></li>
+<li>El client pot fer ping a tots els servidors</li>
+<li>Podràs conectar-te a la VPN</li>
+</ol>
+<p>Si conectes a la VPN (<code>wg-quick up wg0</code>), podràs vore que:</p>
+<ol>
+<li>Continues podent fer consultes DNS al servidor DNS</li>
+<li>No pots fer <code>curl</code> al webserver</li>
+</ol>
+<p>Desconecta't de la VPN (<code>wg-quick down wg0</code>)</p>
+<p>Ara, dins del contenidor del firewall, aplica l'arxiu de regles que trobaràs en <code>/usr/local/bin</code>.</p>
+<ol>
+<li>Ara podràs fer ping als servidors</li>
+<li>Però no podràs fer consultes DNS al servidor DNS però sí <code>curl</code> al webserver</li>
+<li>No podràs conectar-te a la VPN</li>
+</ol>
 <div class="admonition task">
-<p class="admonition-title">Tasca 8 - Bloqueig de comptes amb logins erronis</p>
+<p class="admonition-title">Tasca</p>
+<p>Afegix les regles necessàries a l'arxiu de regles de <strong>nftables</strong> per tal de que:</p>
 <ul>
-<li>Un amic de l'<em>admin</em> li ha parlat de la eina <strong><em>tally2</em></strong> per a poder configurar estos bloquejos ja que està utilitzant una versió molt antiga d'Ubuntu</li>
-<li>Per tal de provar primer i no bloquejar usuaris a <em>tutiplen</em>, ha decidit configurar que als <strong>3 intents de login erronis</strong>, es bloqueje el compte durant <strong>15 segons</strong></li>
-<li>Per a demostrar que està funcionant, mostra la part del log  <code>/var/log/auth</code>on es puga vore, una cosa a continuació d'una altra, com tally bloqueja el compte i 15 i no deixa fer login però 15 segons més tard sí que deixa. Indica cadascuna de les accions en la captura de pantalla.</li>
+<li>Pugues conectar-te a la VPN</li>
+<li><strong><em>Una vegada conectat a la VPN</em></strong>, pugues fer curl al webserver</li>
+<li><strong><em>Una vegada conectat a la VPN</em></strong>, pugues fer consultes DNS al servidor DNS</li>
+<li>Col·loca contadors en totes les regles</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Atenció!</p>
+<ul>
+<li>Recorda que és possible que hagis de fer canvis en la configuració de la VPN també</li>
+<li>Pots regenerar la configuració amb <code>docker compose up -d wireguard</code></li>
+<li>Recorda copiar-la al <code>client1</code></li>
+<li>Fes les comprovacions oportunes i mostra totes les regles amb contadors &gt; 0</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul>
+<li>Per facilitat, fixa't si pots canviar els arxius que necessites des d'el teu ordinador fent servir els volums de Docker.</li>
+<li>Per a conectar-te als contenidors: <code>docker exec -it nom /bin/bash</code></li>
+<li>Els contenidors tenen <code>tcpdump</code> instal·lat per a fer comprovacions</li>
 </ul>
 </div>
 

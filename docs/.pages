@@ -18,7 +18,7 @@ nav:
     - IDS/IPS:
         - Monitorización mediante sistemas detectores de intrusos (IDS) y sistemas de prevención de intrusos (IPS): idps.md
     - Examen pràctic:
-        - Examen pràctic convocatòria extraordinària: examen_practic_extraordinaria.md
+        - Examen pràctic convocatòria extraordinària: nop.md
     - Seguretat perimetral:
         - Disseny del perímetre: perimetral.md
     - Firewall:

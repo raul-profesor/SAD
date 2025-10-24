@@ -137,12 +137,12 @@ Donat el següent escenari:
 3. El client pot fer ping a tots els servidors
 4. Podràs conectar-te a la VPN
 
-Si conectes a la VPN, podrás vore que:
+Si conectes a la VPN (`wg-quick up wg0`), podràs vore que:
 
-1. No pots fer consultes DNS al servidor DNS
+1. Continues podent fer consultes DNS al servidor DNS
 2. No pots fer `curl` al webserver
 
-Desconecta't de la VPN.
+Desconecta't de la VPN (`wg-quick down wg0`)
 
 Ara, dins del contenidor del firewall, aplica l'arxiu de regles que trobaràs en `/usr/local/bin`.
 
@@ -166,3 +166,5 @@ Ara, dins del contenidor del firewall, aplica l'arxiu de regles que trobaràs en
 
 !!!tip "Tip"
     + Per facilitat, fixa't si pots canviar els arxius que necessites des d'el teu ordinador fent servir els volums de Docker.
+    + Per a conectar-te als contenidors: `docker exec -it nom /bin/bash`
+    + Els contenidors tenen `tcpdump` instal·lat per a fer comprovacions

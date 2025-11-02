@@ -1465,7 +1465,11 @@
 <p>Un altre cas típic:</p>
 <p><img alt="" src="../img/split_tunneling.png" /></p>
 <p>Aleshores, en les línees del <code>docker-compose.yml</code> que heu d'emplenar, haureu d'indicar-le a la VPN que voleu encaminar pel túnel xifrat la pròpia subsarxa de la VPN i també la LAN, per a que puguen comunicar-se entre elles. </p>
-<p>És molt important, <u><strong>principalment per a configurar les regles del firewall</strong></u>, que tingau en compte que el tràfic de la VPN segueix el seguent itinerari: client --&gt; túnel xifrat des dels clients fins al servidor VPN --&gt; servidor VPN fins al destí en la LAN. I la tornada del tràfic fa exactament el camí invers.</p>
+<p>És molt important, <u><strong>principalment per a configurar les regles del firewall</strong></u>, que tingau en compte que el tràfic de la VPN segueix el seguent itinerari:</p>
+<pre class="mermaid"><code>graph LR;
+client --&gt; túnel_xifrat --&gt; servidor_VPN;
+</code></pre>
+<p>client --&gt; túnel xifrat des dels clients fins al servidor VPN --&gt; servidor VPN fins al destí en la LAN. I la tornada del tràfic fa exactament el camí invers.</p>
 <h2 id="realitzacio-de-la-practica">Realització de la pràctica</h2>
 <p>Així les coses, recordem les tasques a realitzar:</p>
 <div class="admonition task">

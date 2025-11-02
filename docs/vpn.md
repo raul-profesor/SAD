@@ -226,7 +226,17 @@ Un altre cas típic:
 
 Aleshores, en les línees del `docker-compose.yml` que heu d'emplenar, haureu d'indicar-le a la VPN que voleu encaminar pel túnel xifrat la pròpia subsarxa de la VPN i també la LAN, per a que puguen comunicar-se entre elles. 
 
-És molt important, <u>**principalment per a configurar les regles del firewall**</u>, que tingau en compte que el tràfic de la VPN segueix el seguent itinerari: client --> túnel xifrat des dels clients fins al servidor VPN --> servidor VPN fins al destí en la LAN. I la tornada del tràfic fa exactament el camí invers.
+És molt important, <u>**principalment per a configurar les regles del firewall**</u>, que tingau en compte que el tràfic de la VPN segueix el seguent itinerari:
+
+
+``` mermaid
+graph LR;
+client --> túnel_xifrat --> servidor_VPN;
+
+```
+
+
+ client --> túnel xifrat des dels clients fins al servidor VPN --> servidor VPN fins al destí en la LAN. I la tornada del tràfic fa exactament el camí invers.
 
 ## Realització de la pràctica
 

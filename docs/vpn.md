@@ -232,7 +232,6 @@ Aleshores, en les línees del `docker-compose.yml` que heu d'emplenar, haureu d'
 ``` mermaid
 graph LR;
 client --> túnel_xifrat --> servidor_VPN;
-
 ```
 
 

@@ -156,7 +156,7 @@ En este ejercicio deberéis llevar a cabo las siguientes acciones:
         ```console
         systemctl start suricata.service
 
-        systemctl start suricata.service
+        systemctl status suricata.service
         ```
         ![](./img/idps_13.png)
   
@@ -196,29 +196,48 @@ En este ejercicio deberéis llevar a cabo las siguientes acciones:
 
 4. Configurar Suricata como IPS y comprobar su funcionamiento
    
-    En este caso vamos a ver como trabajar en capa 3 con el modo *inline* de Suricata usando `iptables`. Para ello, necesitamos instalar una dependencia:
+    Lo primero que deberemos hacer será instalar el firewall al que redirigiremos el tráfico para que pueda bloquearlo en caso de hacer `match` con una de las reglas:
 
     ```console
-    apt-get -y install libnetfilter-queue-dev
+    sudp apt install nftables
     ```
 
-    Ahora haremos que Suricata corra en modo NFQ, o lo que es lo mismo, le decimos que acepte los paquetes que le reenvíe `iptables` sin que el firewall siga aplicando sus reglas al paquete (es posible que tarde varios minutos):
+    Y lo habilitamos y activamos:
+
+    ```
+    sudo systemctl enable --now nftables
+    ```
+
+    También dejaremos la configuración del firewall lista para que pueda intercambiarse el tráfico con Suricata. Para ello, debemos editar la configuración de `nftables`:
 
     ```console
-    suricata -c /etc/suricata/suricata.yaml -q 0
-    ```
-    De la misma forma, debemos decirle al firewall que reenvíe todos los paquete que entran y salen de nuestra máquina a Suricata:
-
-    ```console
-    sudo iptables -I INPUT -j NFQUEUE
-    sudo iptables -I OUTPUT -j NFQUEUE
+    sudo nano /etc/nftables.conf
     ```
 
-    Podemos ver las reglas activas del firewall con:
+    Y dejarla tal que así:
 
-    ```console
-    iptables -vnL
-    ```
+    ```linuxconf
+    table inet filter {
+    chain input {
+        type filter hook input priority 0; 
+        counter queue num 0 bypass
+    }
+
+    chain forward {
+        type filter hook forward priority 0; 
+        counter queue num 0 bypass
+    }
+
+    chain output {
+        type filter hook output priority 0; 
+        counter queue num 0 bypass
+    }
+    }
+    ``` 
+
+    !!!note "Explicación"
+          - **`queue num 0`**: Envía los paquetes a la cola `0` de `NFQUEUE`, donde Suricata los inspeccionará.
+          - **`bypass`**: Si Suricata no está en ejecución, los paquetes pasan sin ser bloqueados.
 
     Por defecto Suricata corre en modo IDS así que para activar el IPS haremos:
 
@@ -256,6 +275,14 @@ En este ejercicio deberéis llevar a cabo las siguientes acciones:
     ```
     !!!task "Tarea"
         Modifica la regla que hemos comprobado anteriormente para que en lugar de generar una alerta (alert), descarte (drop) los paquetes que hagan match con esa regla.
+
+    Por último aplicamos la configuración del firewall y comprobamos que las reglas están aplicadas:
+
+    ```console
+    sudo nft -f /etc/nftables.conf
+
+    sudo nft list ruleset
+    ```
     
 5. Escribir una regla para el IPS y comprobar que funciona
     

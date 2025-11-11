@@ -23,10 +23,10 @@ theme:
         name: Cambiar a modo claro
   language: es
   features:
-    - navigation.sections #CEFIRE
-    - navigation.top #CEFIRE
-    #- navigation.expand #CEFIRE
-    #- toc.integrate #CEFIRE
+    #- navigation.sections #CEFIRE
+    #- navigation.top #CEFIRE
+    - navigation.expand #CEFIRE
+    - toc.integrate #CEFIRE
     - search.highlight
     - content.code.annotate
     - content.code.copy
@@ -61,7 +61,7 @@ plugins:
       lang: es
   - awesome-pages:
       collapse_single_pages: true
-  - page-to-pdf:
+  #- page-to-pdf:
 
 extra_css:
   - stylesheets/extra.css

@@ -282,7 +282,7 @@ En este ejercicio deberéis llevar a cabo las siguientes acciones:
     sudo nft -f /etc/nftables.conf
 
     sudo nft list ruleset
-    ```
+    ``` 
     
 5. Escribir una regla para el IPS y comprobar que funciona
     
@@ -291,20 +291,24 @@ En este ejercicio deberéis llevar a cabo las siguientes acciones:
     ![](./img/idps_16.png)
 
     !!!task "Tarea"
-        A partir de la documentación proporcionada o de otra que podáis encontrar por Internet, escribid una regla de Suricata para que cuando se produzca una conexión desde cualquier IP origen a cualquier IP destino y puerto 8000, el tráfico sea bloqueado por `iptables`. 
-        Ponedle SID 9000001 por ejemplo, para que no haya conflicto con otra regla ya existente.
-        Para comprobarla, en la máquina donde está Suricata:
+        A partir de las referencias que se os aportan ([Formato de reglas suricata](https://docs.suricata.io/en/latest/rules/intro.html)), escribid una regla de Suricata que cumpla:
 
-        ```console
-        nc -nvlp 8000
-        ```
+           + La regla debe bloquear el tráfico - [Referencia](https://docs.suricata.io/en/latest/rules/intro.html#action) 
+           + El protocolo a examinar es `http` - [Referencia](https://docs.suricata.io/en/latest/rules/intro.html#protocol)
+           + La regla debe aplicar a todo flujo de tráfico, desde cualquier ip/puerto origen hacia cualquier ip/puerto destino - [Referencia](https://www.maquinasvirtuales.eu/suricata-como-crear-y-testear-reglas-personalizadas/)
+           + El mensaje que debe mostrar el log es ***Tráfico malicioso detectado - Posible malware*** - [Referencia](https://redmine.openinfosecfoundation.org/projects/suricata/wiki/Meta-settings#msg-message)
+           + La regla debe aplicarse hacia el flujo (flow) de tráfico que viaje hacia el servidor en conexiones ya establecidas- [Referencia](https://www.sysadminok.es/blog/ciberseguridad/deteccion-de-intrusiones-en-tiempo-real-con-snort/)
+           + Debe buscar o detectar en la URI el siguiente contenido: `/malicious/path` - [Referencia](https://redmine.openinfosecfoundation.org/projects/suricata/wiki/HTTP-keywords#uricontent)
+           + Debe buscar un *User-agent* entre las cabeceras http con el valor **User-Agent|3a| MaliciousBot** - [Referencia](https://security.stackexchange.com/questions/129997/suricata-signature-explanation)
+           + Debe clasificar el tipo de actividad como relacionada con troyanos (**trojan-activity**) - [Referencia](https://docs.suricata.io/en/latest/rules/meta.html#classtype)
+           + Como **ID** de la regla podéis ponerle el 90000001 - [Referencia](https://docs.suricata.io/en/latest/rules/meta.html#sid-signature-id)
+           + La versión de la regla será la 1 - [Referencia](https://docs.suricata.io/en/latest/rules/meta.html#rev-revision)
+     
+        El formato que tendrá esta regla al final será algo así:
 
-        Y en la máquina anfitriona:
-
-        ```console
-        nc IP_Maq_Virtual 8000
-        ```
-        ![](./img/idps_18.png) 
+         ```yaml
+         acción protocolo ip_origen puerto_origen -> ip_destino puerto_destino (msg:""; flow:; content:""; opción1; content:""; opción2; tipo_de_actividad:; sid:; rev:;)
+         ```
     
     !!!tip "Nota"
         Recordad el comando para recargar las reglas (puede tardar un rato):

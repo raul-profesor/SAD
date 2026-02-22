@@ -1,0 +1,42 @@
+img[alt$=">"] {
+  float: right;
+}
+
+img[alt$="<"] {
+  float: left;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  float: none !important;
+}
+
+
+:root {
+  --md-primary-fg-color: #60102f;
+  --md-primary-fg-color--light: rgb(123, 136, 204);
+  --md-primary-fg-color--dark: #34091a;
+}
+
+.md-content p {
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .md-content p {
+    text-align: justify;
+    hyphens: auto;
+  }
+}
+
+/* Centrar diagramas Mermaid */
+.mermaid {
+  text-align: center;
+}
+
+.mermaid svg {
+  display: inline-block;
+}

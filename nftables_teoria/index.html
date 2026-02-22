@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://raul-profesor.github.io/SAD/firewall/">
+        <link rel="canonical" href="https://raul-profesor.github.io/SAD/nftables_teoria/">
       
       
-        <link rel="prev" href="../perimetral/">
+        <link rel="prev" href="../firewall/">
       
       
-        <link rel="next" href="../nftables_teoria/">
+        <link rel="next" href="../nftables/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Teoría de firewalls - Seguridad y alta disponibilidad</title>
+        <title>Teoría de firewalls 2 - Seguridad y alta disponibilidad</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#firewalls" class="md-skip">
+        <a href="#fundamentos-teoricos-avanzados-de-firewalls-en-linux-y-nftables" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -132,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Teoría de firewalls
+              Teoría de firewalls 2
             
           </span>
         </div>
@@ -1170,6 +1170,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría de firewalls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1179,6 +1207,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -1187,7 +1217,7 @@
   <span class="md-ellipsis">
     
   
-    Teoría de firewalls
+    Teoría de firewalls 2
   
 
     
@@ -1205,7 +1235,7 @@
   <span class="md-ellipsis">
     
   
-    Teoría de firewalls
+    Teoría de firewalls 2
   
 
     
@@ -1221,6 +1251,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1229,22 +1261,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#firewalls" class="md-nav__link">
+  <a href="#1-arquitectura-general-del-firewall-en-linux" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Firewalls
+        1. Arquitectura general del firewall en Linux
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Firewalls">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-recorrido-completo-de-un-paquete-dentro-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Recorrido completo de un paquete dentro del sistema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Recorrido completo de un paquete dentro del sistema">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#que-es-un-firewall" class="md-nav__link">
+  <a href="#21-trafico-entrante-destinado-al-propio-host" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ¿Qué es un Firewall?
+        2.1 Tráfico entrante destinado al propio host
       
     </span>
   </a>
@@ -1252,10 +1295,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tipos-de-firewalls" class="md-nav__link">
+  <a href="#22-trafico-que-atraviesa-el-sistema-modo-router" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tipos de Firewalls
+        2.2 Tráfico que atraviesa el sistema (modo router)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-trafico-generado-localmente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Tráfico generado localmente
       
     </span>
   </a>
@@ -1268,22 +1322,143 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nftables-vs-iptables" class="md-nav__link">
+  <a href="#3-hook-definicion-tecnica-y-funcionamiento" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nftables vs Iptables
+        3. Hook: definición técnica y funcionamiento
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Nftables vs Iptables">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tabla-y-cadena-estructura-jerarquica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tabla y cadena: estructura jerárquica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cadena-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Cadena base
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cadena-regular" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Cadena regular
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-orden-de-evaluacion-de-reglas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Orden de evaluación de reglas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-politica-fundamento-del-modelo-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Política: fundamento del modelo de seguridad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-prioridad-orden-real-cuando-existen-multiples-cadenas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Prioridad: orden real cuando existen múltiples cadenas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-conntrack-firewall-con-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Conntrack: firewall con estado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-nat-transformacion-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. NAT: transformación de paquetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-modelo-mental-que-debe-interiorizar-el-alumno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Modelo mental que debe interiorizar el alumno
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-conclusion-estructural-y-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Conclusión estructural y resumen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-nftables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Nftables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Nftables">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#estat-actual" class="md-nav__link">
+  <a href="#141-reglas-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Estat actual:
+        14.1 Reglas (Rules):
       
     </span>
   </a>
@@ -1291,10 +1466,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1-per-que-iptables-esta-en-desus" class="md-nav__link">
+  <a href="#142-cadenas-chains" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Per què iptables està en desús:
+        14.2 Cadenas (Chains):
       
     </span>
   </a>
@@ -1302,10 +1477,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-avantatges-de-nftables" class="md-nav__link">
+  <a href="#143-tablas-tables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Avantatges de nftables:
+        14.3 Tablas (Tables):
       
     </span>
   </a>
@@ -1313,21 +1488,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#recomanacio" class="md-nav__link">
+  <a href="#144-politicas-predeterminadas-default-policies" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recomanació:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conceptos-clave-en-el-funcionamiento-de-un-firewall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conceptos Clave en el Funcionamiento de un Firewall
+        14.4 Políticas Predeterminadas (Default Policies):
       
     </span>
   </a>
@@ -1340,15 +1504,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementacion-practica-con-nftables" class="md-nav__link">
+  <a href="#15-implementacion-practica-con-nftables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementación Práctica con nftables
+        15 Implementación Práctica con nftables
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Implementación Práctica con nftables">
+    <nav class="md-nav" aria-label="15 Implementación Práctica con nftables">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1361,6 +1525,73 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#151-comprobar-si-nftables-esta-disponible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Comprobar si nftables está disponible:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-crear-una-tabla-de-filtrado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Crear una tabla de filtrado:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-crear-una-cadena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 Crear una cadena:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#154-anadir-reglas-de-filtrado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4 Añadir reglas de filtrado:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#155-ver-las-reglas-configuradas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5 Ver las reglas configuradas:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#156-guardar-las-reglas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.6 Guardar las reglas:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15.6 Guardar las reglas:">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#ejemplo-completo-de-configuracion-de-un-firewall-basico-con-nftables" class="md-nav__link">
@@ -1377,39 +1608,16 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
     </ul>
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../nftables_teoria/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Teoría de firewalls 2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1691,179 +1899,225 @@
 
 
 
-  <h1>Teoría de firewalls</h1>
-
-<h2 id="firewalls">Firewalls</h2>
-<h3 id="que-es-un-firewall"><strong>¿Qué es un Firewall?</strong></h3>
-<p>Un <strong>firewall</strong> (cortafuegos en español) es un dispositivo o software que se utiliza para controlar y monitorear el tráfico de red que entra y sale de un sistema o red, de acuerdo con un conjunto de reglas predefinidas. Los firewalls son una de las principales herramientas de seguridad utilizadas en redes y sistemas informáticos para protegerlos de accesos no autorizados, ataques maliciosos y otros riesgos de seguridad.</p>
-<p><img alt="" src="../img/firewall1.png" /></p>
-<p>El objetivo principal de un firewall es separar las redes internas (seguras) de las externas (potencialmente inseguras), como Internet. Esto se logra filtrando el tráfico de red que atraviesa el sistema, de manera que solo se permita el tráfico autorizado, y se bloquee el tráfico no deseado.</p>
-<h3 id="tipos-de-firewalls"><strong>Tipos de Firewalls</strong></h3>
-<p>Existen varios tipos de firewalls, cada uno con un enfoque diferente para proteger las redes.</p>
-<p><img alt="" src="../img/utm.png" /></p>
+<h1 id="fundamentos-teoricos-avanzados-de-firewalls-en-linux-y-nftables">Fundamentos Teóricos Avanzados de Firewalls en Linux y nftables</h1>
+<h2 id="1-arquitectura-general-del-firewall-en-linux">1. Arquitectura general del firewall en Linux</h2>
+<p>En Linux, el firewall no es una aplicación externa que analiza tráfico desde espacio de usuario. Es un mecanismo integrado en el kernel que intercepta paquetes en puntos concretos del procesamiento del stack de red.</p>
+<p>El componente central es Netfilter, un framework del kernel que introduce puntos de intervención dentro del flujo interno de paquetes. Esos puntos permiten registrar funciones que inspeccionan, modifican, aceptan o descartan tráfico.</p>
+<p>La herramienta <code>nftables</code> no es el firewall en sí. Es la interfaz que permite definir reglas que el kernel almacenará y ejecutará dentro de Netfilter.</p>
+<p>Arquitectura simplificada:</p>
+<ul>
+<li>Kernel Linux</li>
+<li>Stack TCP/IP</li>
+<li>Netfilter (hooks)</li>
+<li>Conntrack (seguimiento de conexiones)</li>
+<li>Espacio de usuario</li>
+<li>Comando <code>nft</code></li>
+</ul>
+<p>Las reglas configuradas mediante <code>nft</code> se traducen en estructuras internas que el kernel evalúa para cada paquete que atraviesa el sistema.</p>
+<p>Comprender esta separación entre espacio de usuario y kernel es esencial para no confundir herramienta con motor.</p>
+<h2 id="2-recorrido-completo-de-un-paquete-dentro-del-sistema">2. Recorrido completo de un paquete dentro del sistema</h2>
+<p>Para entender nftables desde cero es obligatorio entender qué ocurre cuando un paquete entra o sale del sistema.</p>
+<p>Cuando un paquete llega por una interfaz de red:</p>
 <ol>
-<li><strong>Firewalls de Filtrado de Paquetes (Packet Filtering Firewalls)</strong></li>
+<li>El driver de red lo recibe.</li>
+<li>Se entrega al stack IP.</li>
+<li>Se ejecutan funciones internas del kernel.</li>
+<li>En puntos concretos, Netfilter intercepta el paquete.</li>
 </ol>
-<p>Los firewalls de filtrado de paquetes son la forma más básica. Funcionan a nivel de la capa de red (Capa 3 del modelo OSI), y se centran en inspeccionar los encabezados de los paquetes de red. Deciden si un paquete debe ser permitido o bloqueado basándose en reglas predefinidas como:</p>
+<p>Dependiendo del destino, el recorrido cambia.</p>
+<h3 id="21-trafico-entrante-destinado-al-propio-host">2.1 Tráfico entrante destinado al propio host</h3>
+<pre class="mermaid"><code>flowchart TD
+    A[Interfaz de red] --&gt; B[PREROUTING]
+    B --&gt; C[Decisión de enrutamiento]
+    C --&gt; D[INPUT]
+    D --&gt; E[Proceso local]</code></pre>
+<h3 id="22-trafico-que-atraviesa-el-sistema-modo-router">2.2 Tráfico que atraviesa el sistema (modo router)</h3>
+<pre class="mermaid"><code>flowchart TD
+    A[Interfaz de red] --&gt; B[PREROUTING]
+    B --&gt; C[Decisión de enrutamiento]
+    C --&gt; D[FORWARD]
+    D --&gt; E[POSTROUTING]
+    E --&gt; F[Interfaz de salida]</code></pre>
+<h3 id="23-trafico-generado-localmente">2.3 Tráfico generado localmente</h3>
+<pre class="mermaid"><code>flowchart TD
+    A[Proceso local] --&gt; B[OUTPUT]
+    B --&gt; C[POSTROUTING]
+    C --&gt; D[Interfaz de salida]</code></pre>
+<p>Estos puntos PREROUTING, INPUT, FORWARD, OUTPUT y POSTROUTING son los hooks.</p>
+<h2 id="3-hook-definicion-tecnica-y-funcionamiento">3. Hook: definición técnica y funcionamiento</h2>
+<p>Un hook es un punto fijo del código del kernel donde Netfilter permite registrar funciones que serán ejecutadas cuando un paquete alcance ese punto del flujo.</p>
+<p>Los hooks están definidos en el kernel. No se crean dinámicamente.</p>
+<p>Hooks principales:</p>
 <ul>
-<li>
-<p>Dirección IP de origen o destino.</p>
-</li>
-<li>
-<p>Puerto de origen o destino.</p>
-</li>
-<li>
-<p>Protocolo (TCP, UDP, ICMP).</p>
-</li>
-<li>
-<p>Estado de la conexión (en algunos casos).</p>
+<li>PREROUTING</li>
+<li>INPUT</li>
+<li>FORWARD</li>
+<li>OUTPUT</li>
+<li>POSTROUTING</li>
+</ul>
+<p>Cada hook representa un momento exacto en el ciclo de vida del paquete:</p>
+<ul>
+<li>PREROUTING ocurre antes de que el kernel decida a qué interfaz debe enviarse el paquete.</li>
+<li>INPUT ocurre después de determinar que el destino es el propio sistema.</li>
+<li>FORWARD ocurre cuando el sistema actúa como router.</li>
+<li>OUTPUT ocurre para paquetes creados por procesos locales.</li>
+<li>POSTROUTING ocurre justo antes de que el paquete abandone el sistema.</li>
+</ul>
+<p>Un hook no contiene reglas. Es solo un punto donde pueden asociarse cadenas.</p>
+<h2 id="4-tabla-y-cadena-estructura-jerarquica">4. Tabla y cadena: estructura jerárquica</h2>
+<p>En nftables, las reglas no cuelgan directamente del hook. Existe una jerarquía:</p>
+<ul>
+<li>Tabla</li>
+<li>Cadena<ul>
+<li>Reglas</li>
+</ul>
 </li>
 </ul>
-<p><strong>Ventajas</strong>:</p>
+<p>Representación conceptual:</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Tabla] --&gt; B[Cadena base]
+    B --&gt; C[Regla 1]
+    B --&gt; D[Regla 2]
+    B --&gt; E[Regla N]</code></pre>
+<p>La tabla es un contenedor lógico. Organiza reglas según familia (ip, ip6, inet) o propósito (filter, nat).</p>
+<p>La cadena es el conjunto ordenado de reglas que se ejecuta cuando un paquete alcanza el hook al que está asociada.</p>
+<h2 id="5-cadena-base">5. Cadena base</h2>
+<p>Una cadena base está vinculada a:</p>
 <ul>
-<li>
-<p>Rápidos y eficientes en términos de rendimiento.</p>
-</li>
-<li>
-<p>Simples de implementar.</p>
-</li>
+<li>Un hook</li>
+<li>Una prioridad</li>
+<li>Una política por defecto</li>
 </ul>
-<p><strong>Desventajas</strong>:</p>
+<p>Cuando el paquete llega al hook, el kernel ejecuta las cadenas asociadas a ese hook.</p>
+<p>Si existen varias cadenas en el mismo hook, se ejecutan según su prioridad.</p>
+<p>La cadena base es el punto real donde se toma la decisión de permitir o bloquear tráfico.</p>
+<h2 id="6-cadena-regular">6. Cadena regular</h2>
+<p>Una cadena regular no está asociada a ningún hook.</p>
+<p>Se utiliza como bloque auxiliar que puede ser invocado mediante:</p>
 <ul>
-<li>
-<p>No son capaces de inspeccionar el contenido del paquete ni de mantener el estado de las conexiones.</p>
-</li>
-<li>
-<p><strong>Firewalls de Inspección de Estado (Stateful Firewalls)</strong></p>
-</li>
+<li>jump</li>
+<li>goto</li>
 </ul>
-<p>A diferencia de los firewalls de filtrado de paquetes, los firewalls de inspección de estado mantienen el estado de las conexiones. Esto significa que no solo inspeccionan los paquetes de red, sino que también conocen el contexto de las conexiones que están permitiendo o bloqueando. Por ejemplo, un firewall stateful puede verificar si un paquete de respuesta corresponde a una solicitud previamente enviada desde dentro de la red.</p>
-<p><strong>Ventajas</strong>:</p>
-<ul>
-<li>
-<p>Son más seguros que los firewalls de filtrado de paquetes porque pueden rastrear el estado de las conexiones.</p>
-</li>
-<li>
-<p>Pueden tomar decisiones más inteligentes basadas en el estado de la conexión.</p>
-</li>
-</ul>
-<p><strong>Desventajas</strong>:</p>
-<ul>
-<li>
-<p>Mayor consumo de recursos, ya que necesita mantener información sobre el estado de cada conexión.</p>
-</li>
-<li>
-<p>Puede ser más complejo de configurar.</p>
-</li>
-<li>
-<p><strong>Firewalls de Inspección Profunda de Paquetes (Deep Packet Inspection - DPI)</strong></p>
-</li>
-</ul>
-<p>Estos firewalls son mucho más avanzados y se encargan de inspeccionar tanto los encabezados como el contenido de los paquetes. Permiten detectar ciertos tipos de tráfico o patrones específicos, como aplicaciones maliciosas, malware, o intentos de intrusión. Son capaces de filtrar el tráfico a un nivel más detallado, lo que proporciona un control más preciso sobre qué tráfico es permitido y qué tráfico es bloqueado.</p>
-<p><strong>Ventajas</strong>:</p>
-<ul>
-<li>
-<p>Proporcionan una capa de seguridad adicional, permitiendo la detección de amenazas complejas.</p>
-</li>
-<li>
-<p>Pueden bloquear tráfico de aplicaciones no deseadas o maliciosas (como malware, virus, etc.).</p>
-</li>
-</ul>
-<p><strong>Desventajas</strong>:</p>
-<ul>
-<li>
-<p>Requieren más recursos de procesamiento y pueden afectar el rendimiento.</p>
-</li>
-<li>
-<p>Son más complejos de configurar y gestionar.</p>
-</li>
-<li>
-<p><strong>Firewalls de Aplicación (Application Firewalls)</strong></p>
-</li>
-</ul>
-<p>Los firewalls de aplicación se centran en proteger aplicaciones específicas, como servidores web o bases de datos, de ataques que explotan vulnerabilidades a nivel de la aplicación (por ejemplo, ataques como SQL injection, XSS, etc.). Estos firewalls operan en la capa 7 del modelo OSI (capa de aplicación).</p>
-<p><strong>Ventajas</strong>:</p>
-<ul>
-<li>
-<p>Protegen aplicaciones específicas de amenazas que otros firewalls no pueden detectar.</p>
-</li>
-<li>
-<p>Pueden ofrecer una mayor granularidad en el control del tráfico.</p>
-</li>
-</ul>
-<p><strong>Desventajas</strong>:</p>
-<ul>
-<li>
-<p>Necesitan ser configurados específicamente para cada aplicación.</p>
-</li>
-<li>
-<p>Pueden ser más difíciles de implementar y mantener.</p>
-</li>
-</ul>
-<hr />
-<h2 id="nftables-vs-iptables">Nftables vs Iptables</h2>
-<p><strong>Nftables</strong> és el reemplaçament modern de <strong>iptables</strong> a Linux, introduït per abordar diverses limitacions d'iptables alhora que ofereix una funcionalitat i un rendiment millorats.</p>
-<h3 id="estat-actual"><strong>Estat actual:</strong></h3>
-<ul>
-<li>Tot i que <strong>iptables</strong> no està completament obsolet, <strong>nftables</strong> ha estat el marc de filtratge de paquets predeterminat a la majoria de distribucions principals de Linux des del 2018 (per exemple, Debian 10+, Ubuntu 20.04+ i CentOS 8+).</li>
-<li>La capa de compatibilitat (<code>iptables-nft</code>) permet als usuaris gestionar les regles d'iptables existents al backend de nftables, suavitzant la transició.</li>
-</ul>
-<p>Tot i que iptables encara és funcional i s'utilitza àmpliament, cada cop s'està eliminant gradualment a favor de nftables. Ací teniu una visió general de per què nftables es considera el successor:</p>
-<hr />
-<h3 id="1-per-que-iptables-esta-en-desus"><strong>1. Per què iptables està en desús:</strong></h3>
-<ul>
-<li>
-<p><strong>Complexitat i manteniment:</strong>
- iptables utilitza eines separades per gestionar diferents tipus de paquets (per exemple, <code>iptables</code>, <code>ip6tables</code>, <code>ebtables</code>). Això crea redundància i complica la gestió de regles.</p>
-</li>
-<li>
-<p><strong>Problemes de rendiment:</strong>
- iptables té un mecanisme de concordança de regles lineal, és a dir, cada paquet ha de travessar totes les regles de manera seqüencial, cosa que pot provocar ineficiències en grans conjunts de regles.</p>
-</li>
-<li>
-<p><strong>Manca de flexibilitat:</strong>
- Les regles d'iptables són estàtiques i la implementació de casos d'ús més complexos (per exemple, actualitzacions dinàmiques de regles o filtratge avançat) és complicat.</p>
-</li>
-<li>
-<p><strong>Sense marc unificat:</strong>
- Com que té múltiples eines per a IPv4, IPv6 i Ethernet, no té una interfície unificada, cosa que la fa menys eficient per gestionar entorns de xarxa moderns i heterogenis.</p>
-</li>
-</ul>
-<hr />
-<h3 id="2-avantatges-de-nftables"><strong>2. Avantatges de nftables:</strong></h3>
-<ul>
-<li>
-<p><strong>Marc unificat:</strong>
- nftables utilitza una única utilitat (<code>nft</code>) per gestionar el filtratge d'IPv4, IPv6 i Ethernet, racionalitzant la gestió.</p>
-</li>
-<li>
-<p><strong>Rendiment millorat:</strong>
- nftables utilitza una representació interna de regles més eficient, amb estructures de dades com taules hash i intervals per a una concordança més ràpida.</p>
-</li>
-<li>
-<p>** Sintaxi més senzilla:**
- La sintaxi de la regla nftables és més compacta i més fàcil d'entendre que iptables.</p>
-</li>
-<li>
-<p><strong>Actualitzacions de regles dinàmiques:</strong>
- Les regles es poden actualitzar dinàmicament sense esborrar ni interrompre els conjunts de regles existents.</p>
-</li>
-<li>
-<p><strong>Compatibilitat enrere:</strong>
- Les regles d'iptables es poden traduir a nftables mitjançant la capa de compatibilitat <code>iptables-nft</code>.</p>
-</li>
-<li>
-<p><strong>Extensibilitat:</strong>
- nftables està dissenyat per donar suport a funcions futures, com ara la classificació de paquets ampliada i accions avançades, fent-lo més a prova de futur.</p>
-</li>
-</ul>
-<h3 id="recomanacio"><strong>Recomanació:</strong></h3>
-<p>Si esteu començant un projecte nou o revisant una configuració de tallafocs existent, considereu canviar a nftables per les seves funcions modernes i per al futur. Eines com <strong>firewalld</strong> a Linux també es construeixen ara sobre nftables, emfatitzant encara més la seva adopció.</p>
-<hr />
-<h3 id="conceptos-clave-en-el-funcionamiento-de-un-firewall"><strong>Conceptos Clave en el Funcionamiento de un Firewall</strong></h3>
+<p>Conceptualmente, equivale a una función en programación estructurada.</p>
+<p>Permite modularizar reglas complejas y evitar duplicación.</p>
+<h2 id="7-orden-de-evaluacion-de-reglas">7. Orden de evaluación de reglas</h2>
+<p>Dentro de una cadena, las reglas se evalúan secuencialmente.</p>
+<p>Proceso interno simplificado:</p>
 <ol>
-<li><strong>Reglas (Rules)</strong>:</li>
+<li>Se evalúa la primera regla.</li>
+<li>Si la condición coincide y la acción es terminal (accept, drop), la evaluación se detiene.</li>
+<li>Si no coincide, se continúa con la siguiente.</li>
+<li>Si ninguna regla coincide:</li>
+<li>En cadena base: se aplica la política.</li>
+<li>En cadena regular: se retorna a la cadena llamadora.</li>
 </ol>
+<p>El orden es absolutamente determinista.</p>
+<h2 id="8-politica-fundamento-del-modelo-de-seguridad">8. Política: fundamento del modelo de seguridad</h2>
+<p>La política es la acción por defecto aplicada cuando ninguna regla coincide en una cadena base.</p>
+<p>Valores habituales:</p>
+<ul>
+<li>accept</li>
+<li>drop</li>
+</ul>
+<p>La política define la postura de seguridad del sistema.</p>
+<p>Modelo permisivo:</p>
+<ul>
+<li>Política accept</li>
+<li>Todo permitido salvo lo bloqueado explícitamente</li>
+<li>Alto riesgo de omisiones</li>
+</ul>
+<p>Modelo restrictivo:</p>
+<ul>
+<li>Política drop</li>
+<li>Todo bloqueado salvo lo permitido explícitamente</li>
+<li>Modelo recomendado en producción</li>
+</ul>
+<p>Un firewall profesional se diseña siempre bajo el principio de mínimo privilegio.</p>
+<h2 id="9-prioridad-orden-real-cuando-existen-multiples-cadenas">9. Prioridad: orden real cuando existen múltiples cadenas</h2>
+<p>Un mismo hook puede tener varias cadenas base asociadas.</p>
+<p>Cada cadena tiene una prioridad numérica.</p>
+<p>El kernel ejecuta las cadenas en orden creciente de prioridad.</p>
+<p>Ejemplo conceptual:</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Hook PREROUTING] --&gt; B[Cadena prioridad -100]
+    B --&gt; C[Cadena prioridad 0]
+    C --&gt; D[Cadena prioridad 100]</code></pre>
+<p>Esto permite separar:</p>
+<ul>
+<li>NAT (normalmente prioridad más baja)</li>
+<li>Filtrado</li>
+<li>Otras manipulaciones</li>
+</ul>
+<p>La prioridad es crucial para entender por qué ciertas transformaciones ocurren antes que otras.</p>
+<h2 id="10-conntrack-firewall-con-estado">10. Conntrack: firewall con estado</h2>
+<p>Sin seguimiento de conexiones, el firewall sería stateless.</p>
+<p>Conntrack mantiene una tabla interna de conexiones activas.</p>
+<p>Estados principales:</p>
+<ul>
+<li>NEW</li>
+<li>ESTABLISHED</li>
+<li>RELATED</li>
+<li>INVALID</li>
+</ul>
+<p>Flujo conceptual de conntrack:</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Paquete recibido] --&gt; B{¿Existe en tabla?}
+    B -- Sí --&gt; C[Estado ESTABLISHED]
+    B -- No --&gt; D[Crear nueva entrada]
+    D --&gt; E[Estado NEW]</code></pre>
+<p>Gracias a conntrack, el firewall puede:</p>
+<ul>
+<li>Permitir automáticamente respuestas de conexiones iniciadas desde dentro.</li>
+<li>Bloquear paquetes inválidos.</li>
+<li>Aplicar reglas distintas según el estado.</li>
+</ul>
+<p>Esto convierte al firewall en stateful.</p>
+<h2 id="11-nat-transformacion-de-paquetes">11. NAT: transformación de paquetes</h2>
+<p>NAT no decide si el paquete se acepta o no. Modifica direcciones.</p>
+<p>Tipos:</p>
+<ul>
+<li>SNAT: modifica IP origen.</li>
+<li>DNAT: modifica IP destino.</li>
+<li>Masquerade: SNAT dinámico.</li>
+</ul>
+<p>Ubicación típica:</p>
+<ul>
+<li>DNAT en PREROUTING.</li>
+<li>SNAT en POSTROUTING.</li>
+</ul>
+<p>Representación simplificada:</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Paquete entrante] --&gt; B[PREROUTING DNAT]
+    B --&gt; C[Routing]
+    C --&gt; D[Filtrado INPUT/FORWARD]
+    D --&gt; E[POSTROUTING SNAT]</code></pre>
+<p>Es fundamental entender que el filtrado puede ocurrir después de que la dirección haya sido modificada.</p>
+<h2 id="12-modelo-mental-que-debe-interiorizar-el-alumno">12. Modelo mental que debe interiorizar el alumno</h2>
+<p>Antes de escribir reglas se deben poder responder con precisión técnica:</p>
+<ul>
+<li>¿El paquete entra o sale?</li>
+<li>¿Está destinado al host o lo atraviesa?</li>
+<li>¿En qué hook se interceptará?</li>
+<li>¿Necesito filtrar o modificar direcciones?</li>
+<li>¿Qué ocurre si ninguna regla coincide?</li>
+<li>¿Estoy utilizando estado de conexión?</li>
+<li>¿En qué orden se ejecutarán las cadenas si hay varias?</li>
+</ul>
+<p>Estas preguntas son clave para entender el funcionamiento interno del firewall.</p>
+<h2 id="13-conclusion-estructural-y-resumen">13. Conclusión estructural y resumen</h2>
+<p>Un firewall basado en nftables se compone de:</p>
+<ul>
+<li>Tablas como contenedores lógicos</li>
+<li>Cadenas base asociadas a hooks</li>
+<li>Reglas evaluadas secuencialmente</li>
+<li>Política por defecto</li>
+<li>Sistema de prioridades</li>
+<li>Seguimiento de conexiones (conntrack)</li>
+<li>Separación entre NAT y filtrado</li>
+</ul>
+<p>Dominar estos conceptos es imprescindible antes de realizar cualquier práctica de configuración.</p>
+<h2 id="14-nftables">14. Nftables</h2>
+<h3 id="141-reglas-rules">14.1 <strong>Reglas (Rules)</strong>:</h3>
 <p>Las reglas de un firewall definen las condiciones bajo las cuales el tráfico es permitido o denegado. Las reglas son evaluadas en orden, y el tráfico se compara contra ellas para decidir si es permitido o no. Las reglas típicamente contienen:</p>
 <ul>
 <li>
@@ -1878,10 +2132,8 @@
 <li>
 <p>La acción (permitir o bloquear).</p>
 </li>
-<li>
-<p><strong>Cadenas (Chains)</strong>:</p>
-</li>
 </ul>
+<h3 id="142-cadenas-chains">14.2 <strong>Cadenas (Chains)</strong>:</h3>
 <p>Las cadenas son las secuencias de reglas que un firewall aplica al tráfico entrante y saliente. Una cadena define cómo se debe manejar el tráfico según su dirección (entrada, salida o tránsito) o su tipo. Por ejemplo:</p>
 <ul>
 <li>
@@ -1893,10 +2145,8 @@
 <li>
 <p><code>FORWARD</code>: Controla el tráfico que pasa a través del sistema, pero no está destinado al propio sistema.</p>
 </li>
-<li>
-<p><strong>Tablas (Tables)</strong>:</p>
-</li>
 </ul>
+<h3 id="143-tablas-tables">14.3 <strong>Tablas (Tables)</strong>:</h3>
 <p>Las tablas son contenedores que agrupan las cadenas. En Linux, las tablas más comunes son:</p>
 <ul>
 <li>
@@ -1911,10 +2161,8 @@
 <li>
 <p><strong>raw</strong>: Para configuraciones de bajo nivel, como habilitar o deshabilitar la conexión de seguimiento de estado.</p>
 </li>
-<li>
-<p><strong>Políticas Predeterminadas (Default Policies)</strong>:</p>
-</li>
 </ul>
+<h3 id="144-politicas-predeterminadas-default-policies">14.4 <strong>Políticas Predeterminadas (Default Policies)</strong>:</h3>
 <p>Si un paquete no coincide con ninguna regla en una cadena, se aplica la política predeterminada de la cadena. Las políticas predeterminadas pueden ser de dos tipos:</p>
 <ul>
 <li>
@@ -1925,33 +2173,25 @@
 </li>
 </ul>
 <hr />
-<h2 id="implementacion-practica-con-nftables"><strong>Implementación Práctica con nftables</strong></h2>
+<h2 id="15-implementacion-practica-con-nftables">15 <strong>Implementación Práctica con nftables</strong></h2>
 <p><strong>nftables</strong> es la herramienta moderna para gestionar firewalls en Linux. A partir del kernel 3.13, <strong>nftables</strong> reemplazó a <strong>iptables</strong>, <strong>ip6tables</strong>, <strong>arptables</strong> y <strong>ebtables</strong>. Su objetivo es unificar y simplificar la configuración de firewalls en sistemas Linux.</p>
 <h3 id="pasos-basicos-para-usar-nftables"><strong>Pasos Básicos para Usar nftables</strong></h3>
-<ol>
-<li><strong>Comprobar si nftables está disponible</strong>:</li>
-</ol>
+<h3 id="151-comprobar-si-nftables-esta-disponible">15.1 <strong>Comprobar si nftables está disponible</strong>:</h3>
 <p>Antes de empezar, asegúrate de que nftables esté instalado y habilitado. Para ver si está en uso, puedes usar el siguiente comando:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>nft<span class="w"> </span>list<span class="w"> </span>ruleset
 </span></code></pre></div>
 <p>Este comando te mostrará las reglas actuales que se están aplicando en el sistema.</p>
-<ol>
-<li><strong>Crear una tabla de filtrado</strong>:</li>
-</ol>
+<h3 id="152-crear-una-tabla-de-filtrado">15.2 <strong>Crear una tabla de filtrado</strong>:</h3>
 <p>Las tablas contienen las cadenas y reglas. Para crear una tabla de filtrado, usamos el siguiente comando:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>table<span class="w"> </span>ip<span class="w"> </span>filter
 </span></code></pre></div>
 <p>Esto crea una tabla llamada <code>filter</code> para IPv4. Si estás trabajando con IPv6, se usaría <code>ip6</code>.</p>
-<ol>
-<li><strong>Crear una cadena</strong>:</li>
-</ol>
+<h3 id="153-crear-una-cadena">15.3 <strong>Crear una cadena</strong>:</h3>
 <p>Ahora, vamos a crear una cadena dentro de la tabla <code>filter</code> para controlar el tráfico de entrada:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>chain<span class="w"> </span>ip<span class="w"> </span>filter<span class="w"> </span>input<span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="nb">type</span><span class="w"> </span>filter<span class="w"> </span>hook<span class="w"> </span>input<span class="w"> </span>priority<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="o">}</span>
 </span></code></pre></div>
 <p>En este caso, estamos creando la cadena <code>input</code>, que se engancha al "hook" de entrada. La opción <code>priority 0</code> especifica la prioridad de la cadena.</p>
-<ol>
-<li><strong>Añadir reglas de filtrado</strong>:</li>
-</ol>
+<h3 id="154-anadir-reglas-de-filtrado">15.4 <strong>Añadir reglas de filtrado</strong>:</h3>
 <p>Ahora podemos agregar reglas para controlar el tráfico que entra al sistema. Por ejemplo:</p>
 <ul>
 <li>Permitir tráfico desde una IP específica:</li>
@@ -1973,23 +2213,19 @@
 </ul>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>filter<span class="w"> </span>input<span class="w"> </span>drop
 </span></code></pre></div>
-<ol>
-<li><strong>Ver las reglas configuradas</strong>:</li>
-</ol>
+<h3 id="155-ver-las-reglas-configuradas">15.5 <strong>Ver las reglas configuradas</strong>:</h3>
 <p>Para revisar las reglas que has configurado, puedes utilizar el siguiente comando:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>nft<span class="w"> </span>list<span class="w"> </span>ruleset
 </span></code></pre></div>
 <p>Este comando te mostrará todas las tablas, cadenas y reglas configuradas en el sistema.</p>
-<ol>
-<li><strong>Guardar las reglas</strong>:</li>
-</ol>
+<h3 id="156-guardar-las-reglas">15.6 <strong>Guardar las reglas</strong>:</h3>
 <p>Para asegurarte de que las reglas se apliquen después de un reinicio, debes guardarlas en un archivo:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>nft<span class="w"> </span>list<span class="w"> </span>ruleset<span class="w"> </span>&gt;<span class="w"> </span>/etc/nftables.conf
 </span></code></pre></div>
 <p>Luego, para restaurarlas al reiniciar el sistema, puedes usar:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>nft<span class="w"> </span>-f<span class="w"> </span>/etc/nftables.conf
 </span></code></pre></div>
-<h3 id="ejemplo-completo-de-configuracion-de-un-firewall-basico-con-nftables"><strong>Ejemplo Completo de Configuración de un Firewall Básico con nftables</strong></h3>
+<h4 id="ejemplo-completo-de-configuracion-de-un-firewall-basico-con-nftables"><strong>Ejemplo Completo de Configuración de un Firewall Básico con nftables</strong></h4>
 <p>Imagina que quieres crear un firewall básico con las siguientes reglas:</p>
 <ul>
 <li>
